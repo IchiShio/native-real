@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>英語学習コラム | 英語学習サービス比較ナビ</title>
+  <meta name="description" content="オンライン英会話の選び方・英語学習のコツを詳しく解説するコラム集です。">
+  <link rel="canonical" href="https://IchiShio.github.io/eikaiwa-hikaku/articles/">
+  <meta property="og:title" content="英語学習コラム">
+  <meta property="og:description" content="オンライン英会話の選び方・英語学習のコツを詳しく解説するコラム集です。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://IchiShio.github.io/eikaiwa-hikaku/articles/">
+  <meta property="og:site_name" content="英語学習サービス比較ナビ">
+  <meta name="twitter:card" content="summary">
+  
+  <style>
+:root {
+  --primary: #1e40af;
+  --primary-light: #3b82f6;
+  --primary-pale: #eff6ff;
+  --accent: #f59e0b;
+  --accent-dark: #d97706;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --bg: #ffffff;
+  --bg-gray: #f9fafb;
+  --border: #e5e7eb;
+  --shadow: 0 1px 3px rgba(0,0,0,0.10);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI",
+    "Meiryo", sans-serif;
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--text);
+  background: var(--bg);
+}
+a { color: var(--primary); }
+a:hover { color: var(--primary-light); }
+img { max-width: 100%; height: auto; }
+
+/* Layout */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.site-header {
+  background: var(--primary);
+  color: white;
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.site-header .container { display: flex; align-items: center; justify-content: space-between; }
+.site-header .logo { font-size: 1.2rem; font-weight: 700; color: white; text-decoration: none; }
+.site-header nav a {
+  color: rgba(255,255,255,0.88);
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 0.9rem;
+}
+.site-header nav a:hover { color: white; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+  color: white;
+  padding: 64px 0 56px;
+  text-align: center;
+}
+.hero h1 { font-size: 1.9rem; font-weight: 800; line-height: 1.4; margin-bottom: 16px; }
+.hero p { font-size: 1.05rem; opacity: 0.92; max-width: 600px; margin: 0 auto 28px; }
+.hero .badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+
+/* Sections */
+.section { padding: 60px 0; }
+.section-alt { background: var(--bg-gray); }
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--text);
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 4px;
+  background: var(--primary);
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+/* Ranking cards */
+.ranking-list { display: flex; flex-direction: column; gap: 20px; }
+.ranking-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.ranking-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.ranking-card.rank-1 { border-left: 4px solid #f59e0b; }
+.ranking-card.rank-2 { border-left: 4px solid #9ca3af; }
+.ranking-card.rank-3 { border-left: 4px solid #cd7c2f; }
+.rank-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.rank-1 .rank-badge { background: #fef3c7; color: #d97706; }
+.rank-2 .rank-badge { background: #f3f4f6; color: #6b7280; }
+.rank-3 .rank-badge { background: #fef9c3; color: #92400e; }
+.rank-badge.rank-other { background: var(--primary-pale); color: var(--primary); font-size: 1rem; }
+.card-body h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+.card-body .price { color: var(--primary); font-weight: 600; font-size: 0.9rem; }
+.card-body .features { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+.feature-tag {
+  background: var(--primary-pale);
+  color: var(--primary);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.78rem;
+}
+.stars { color: #f59e0b; font-size: 1.1rem; }
+.score { font-weight: 700; color: var(--text); margin-left: 4px; }
+.card-actions { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; flex-shrink: 0; }
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--accent-dark); color: white; }
+.btn-secondary {
+  display: inline-block;
+  background: white;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.btn-secondary:hover { background: var(--primary-pale); }
+
+/* Article grid */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.article-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.article-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.article-card-body { padding: 20px; }
+.article-category {
+  display: inline-block;
+  background: var(--primary-pale);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.article-card h3 { font-size: 0.95rem; line-height: 1.5; }
+.article-card a { text-decoration: none; color: var(--text); }
+.article-card a:hover h3 { color: var(--primary); }
+
+/* Article page */
+.article-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 40px;
+  padding: 40px 0;
+}
+.article-content { min-width: 0; }
+.article-content h1 { font-size: 1.6rem; line-height: 1.4; margin-bottom: 20px; }
+.article-content h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 36px 0 16px;
+  padding: 12px 16px;
+  background: var(--primary-pale);
+  border-left: 4px solid var(--primary);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.article-content h3 { font-size: 1.1rem; font-weight: 700; margin: 24px 0 12px; color: var(--primary); }
+.article-content p { margin-bottom: 16px; }
+.article-content ul, .article-content ol { margin: 16px 0 16px 24px; }
+.article-content li { margin-bottom: 8px; }
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 0.9rem;
+}
+.article-content th {
+  background: var(--primary);
+  color: white;
+  padding: 10px 14px;
+  text-align: left;
+}
+.article-content td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.article-content tr:nth-child(even) td { background: var(--bg-gray); }
+
+/* Sidebar */
+.sidebar {}
+.sidebar-widget {
+  background: var(--bg-gray);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+.sidebar-widget h4 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: var(--primary); }
+.sidebar-service-list { display: flex; flex-direction: column; gap: 10px; }
+.sidebar-service-item { display: flex; align-items: center; justify-content: space-between; }
+.sidebar-service-item a { font-size: 0.9rem; text-decoration: none; }
+
+/* TOC */
+.toc {
+  background: var(--bg-gray);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin: 24px 0 32px;
+}
+.toc h4 { font-size: 1rem; font-weight: 700; margin-bottom: 12px; }
+.toc ol { margin-left: 20px; }
+.toc li { margin-bottom: 6px; font-size: 0.9rem; }
+
+/* Breadcrumb */
+.breadcrumb {
+  padding: 12px 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.breadcrumb a { color: var(--text-muted); text-decoration: none; }
+.breadcrumb a:hover { color: var(--primary); }
+.breadcrumb span { margin: 0 8px; }
+
+/* CTA Box */
+.cta-box {
+  background: linear-gradient(135deg, #1e40af, #3b82f6);
+  color: white;
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  text-align: center;
+  margin: 32px 0;
+}
+.cta-box h3 { font-size: 1.2rem; margin-bottom: 10px; }
+.cta-box p { opacity: 0.9; margin-bottom: 20px; font-size: 0.95rem; }
+.btn-cta-white {
+  display: inline-block;
+  background: white;
+  color: var(--primary);
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.btn-cta-white:hover { opacity: 0.9; color: var(--primary); }
+
+/* Footer */
+.site-footer {
+  background: #1f2937;
+  color: rgba(255,255,255,0.7);
+  padding: 40px 0 20px;
+  margin-top: 60px;
+  font-size: 0.9rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.site-footer h4 { color: white; font-size: 1rem; margin-bottom: 12px; }
+.site-footer ul { list-style: none; }
+.site-footer li { margin-bottom: 8px; }
+.site-footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+.site-footer a:hover { color: white; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+  text-align: center;
+  font-size: 0.8rem;
+}
+.disclaimer {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 40px;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 1.4rem; }
+  .ranking-card { grid-template-columns: 44px 1fr; }
+  .card-actions { display: none; }
+  .article-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .articles-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="logo">英語学習サービス比較ナビ</a>
+    <nav>
+      <a href="/">ランキング</a>
+      <a href="/articles/">学習コラム</a>
+    </nav>
+  </div>
+</header>
+<div class="container" style="padding-top:32px;">
+  <h1 style="font-size:1.6rem;margin-bottom:8px;">英語学習コラム</h1>
+  <p style="color:#6b7280;margin-bottom:32px;">オンライン英会話の選び方・英語学習のコツを分かりやすく解説します</p>
+  <div class="articles-grid">
+  <div class="article-card">
+    <div class="article-card-body">
+      <span class="article-category">継続・挫折</span>
+      <h3><a href="/articles/online-eikaiwa-not-continue-reasons/">オンライン英会話が続かない12の理由と、3ヶ月以上続けるための対策</a></h3>
+      <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">オンライン英会話が続かない12の理由と、3ヶ月以上続けるための対策。英会話を始めたが2〜3ヶ月で挫折した経験がある30代社会人向けに分かりやすく解説します。...</p>
+    </div>
+  </div>
+  <div class="article-card">
+    <div class="article-card-body">
+      <span class="article-category">継続・挫折</span>
+      <h3><a href="/articles/busy-worker-online-eikaiwa-guide/">忙しい社会人がオンライン英会話を続ける方法【1日15分でOKな現実プラン】</a></h3>
+      <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">忙しい社会人がオンライン英会話を続ける方法【1日15分でOKな現実プラン】。残業が多く英語学習の時間が確保できない20〜40代向けに分かりやすく解説します。...</p>
+    </div>
+  </div>
+  <div class="article-card">
+    <div class="article-card-body">
+      <span class="article-category">年代別</span>
+      <h3><a href="/articles/40s-online-eikaiwa-guide/">40代からのオンライン英会話、本当に効果はある？3ヶ月で変わった体験談</a></h3>
+      <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">40代からのオンライン英会話、本当に効果はある？3ヶ月で変わった体験談。40代で英語を始めることに不安を持っている社会人向けに分かりやすく解説します。...</p>
+    </div>
+  </div>
+  <div class="article-card">
+    <div class="article-card-body">
+      <span class="article-category">比較・選び方</span>
+      <h3><a href="/articles/english-coaching-vs-online-eikaiwa/">英語コーチングとオンライン英会話、どっちを選ぶべきか【費用対効果で判断】</a></h3>
+      <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">英語コーチングとオンライン英会話、どっちを選ぶべきか【費用対効果で判断】。本気で英語を習得したいが、どのサービスを選ぶか迷っている社会人向けに分かりやすく解説し...</p>
+    </div>
+  </div>
+  <div class="article-card">
+    <div class="article-card-body">
+      <span class="article-category">英語コーチング</span>
+      <h3><a href="/articles/progrit-review/">プログリット（PROGRIT）の評判は？実際の効果・料金・3ヶ月で変わること</a></h3>
+      <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">プログリット（PROGRIT）の評判は？実際の効果・料金・3ヶ月で変わること。プログリットへの入会を検討している30〜40代社会人向けに分かりやすく解説します。...</p>
+    </div>
+  </div>
+  <div class="article-card">
+    <div class="article-card-body">
+      <span class="article-category">英語コーチング</span>
+      <h3><a href="/articles/toraiz-review/">トライズの評判・口コミまとめ【1,000時間プログラムの実態と料金を解説】</a></h3>
+      <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">トライズの評判・口コミまとめ【1,000時間プログラムの実態と料金を解説】。トライズの入会を検討している本気で英語を習得したい人向けに分かりやすく解説します。...</p>
+    </div>
+  </div>
+  <div class="article-card">
+    <div class="article-card-body">
+      <span class="article-category">子供・教育</span>
+      <h3><a href="/articles/kids-online-eikaiwa-guide/">子供の英語教育いつから始める？年齢別オンライン英会話の選び方【小学生対応】</a></h3>
+      <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">子供の英語教育いつから始める？年齢別オンライン英会話の選び方【小学生対応】。子供に英語教育を始めたい親（子供3〜12歳）向けに分かりやすく解説します。...</p>
+    </div>
+  </div>
+  <div class="article-card">
+    <div class="article-card-body">
+      <span class="article-category">英語コーチング</span>
+      <h3><a href="/articles/english-coaching-ranking/">英語コーチングおすすめランキング【2026年版】社会人向け厳選7社を比較</a></h3>
+      <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">英語コーチングおすすめランキング【2026年版】社会人向け厳選7社を比較。本気で英語を習得したい30〜40代の社会人向けに分かりやすく解説します。...</p>
+    </div>
+  </div>
+  <div class="article-card">
+    <div class="article-card-body">
+      <span class="article-category">お得情報</span>
+      <h3><a href="/articles/free-trial-online-eikaiwa/">オンライン英会話の無料体験をはしごする方法【全社比較・2026年版】</a></h3>
+      <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">オンライン英会話の無料体験をはしごする方法【全社比較・2026年版】。複数のサービスを無料で試してから決めたい人向けに分かりやすく解説します。...</p>
+    </div>
+  </div>
+  <div class="article-card">
+    <div class="article-card-body">
+      <span class="article-category">学習法</span>
+      <h3><a href="/articles/online-eikaiwa-frequency-guide/">オンライン英会話は週何回受けると効果が出る？科学的根拠から最適頻度を解説</a></h3>
+      <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">オンライン英会話は週何回受けると効果が出る？科学的根拠から最適頻度を解説。レッスン頻度で悩んでいる英会話学習者向けに分かりやすく解説します。...</p>
+    </div>
+  </div>
+  <div class="article-card">
+    <div class="article-card-body">
+      <span class="article-category">学習法</span>
+      <h3><a href="/articles/english-speaking-improvement/">英語スピーキングが伸びない人の3つの共通点と、今日からできる改善法</a></h3>
+      <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">英語スピーキングが伸びない人の3つの共通点と、今日からできる改善法。英会話を3ヶ月以上続けているのに話せない感覚がある人向けに分かりやすく解説します。...</p>
+    </div>
+  </div>
+  <div class="article-card">
+    <div class="article-card-body">
+      <span class="article-category">お得情報</span>
+      <h3><a href="/articles/online-eikaiwa-cost-comparison/">オンライン英会話の月額料金を安い順に徹底比較【2026年最新・コスパ最強はここ】</a></h3>
+      <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">オンライン英会話の月額料金を安い順に徹底比較【2026年最新・コスパ最強はここ】。できるだけコストを抑えて英語を学びたい人向けに分かりやすく解説します。...</p>
+    </div>
+  </div>
+  <div class="article-card">
+    <div class="article-card-body">
+      <span class="article-category">学習法</span>
+      <h3><a href="/articles/japanese-english-pronunciation-guide/">日本人が絶対に苦手な英語発音5つと、正しい矯正方法【動画解説付き】</a></h3>
+      <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">日本人が絶対に苦手な英語発音5つと、正しい矯正方法【動画解説付き】。発音のせいでネイティブに伝わらないと悩む日本人向けに分かりやすく解説します。...</p>
+    </div>
+  </div>
+  <div class="article-card">
+    <div class="article-card-body">
+      <span class="article-category">資格対策</span>
+      <h3><a href="/articles/toeic-online-eikaiwa-strategy/">TOEIC800点を取るためのオンライン英会話活用術【点数別スコアアップ戦略】</a></h3>
+      <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">TOEIC800点を取るためのオンライン英会話活用術【点数別スコアアップ戦略】。TOEIC700点台でスコアアップが止まっている社会人向けに分かりやすく解説しま...</p>
+    </div>
+  </div>
+  <div class="article-card">
+    <div class="article-card-body">
+      <span class="article-category">キャリア</span>
+      <h3><a href="/articles/english-career-salary-impact/">英語ができると年収はどれくらい上がる？データで見るキャリアへの影響</a></h3>
+      <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">英語ができると年収はどれくらい上がる？データで見るキャリアへの影響。キャリアアップのために英語学習を考えている30〜40代向けに分かりやすく解説します。...</p>
+    </div>
+  </div>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>英語学習サービス比較ナビ</h4>
+        <p>プロが選ぶオンライン英会話・英語アプリ徹底比較</p>
+        <p style="margin-top:12px;">※当サイトはアフィリエイトリンクを含みます。</p>
+      </div>
+      <div>
+        <h4>サービス一覧</h4>
+        <ul>      <li><a href="/services/dmm-eikaiwa/">DMM英会話</a></li>
+      <li><a href="/services/rarejob/">レアジョブ英会話</a></li>
+      <li><a href="/services/nativecamp/">ネイティブキャンプ</a></li>
+      <li><a href="/services/studysapuri-english/">スタディサプリENGLISH</a></li>
+      <li><a href="/services/cambly/">Cambly（キャンブリー）</a></li>
+      <li><a href="/services/bizmates/">Bizmates（ビズメイツ）</a></li>
+      <li><a href="/services/progrit/">プログリット</a></li>
+      <li><a href="/services/toraiz/">トライズ</a></li>
+      <li><a href="/services/english-company/">THE ENGLISH COMPANY</a></li></ul>
+      </div>
+      <div>
+        <h4>コンテンツ</h4>
+        <ul>
+          <li><a href="/articles/">学習コラム一覧</a></li>
+          <li><a href="/">ランキングTOP</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 英語学習サービス比較ナビ. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
