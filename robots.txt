@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://IchiShio.github.io/eikaiwa-hikaku/sitemap.xml
