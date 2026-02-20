@@ -281,8 +281,44 @@ img { max-width: 100%; height: auto; }
   transition: box-shadow 0.25s, transform 0.25s;
 }
 .article-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.article-card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
 .article-card-accent { height: 5px; background: linear-gradient(90deg, var(--primary), var(--accent)); }
 .article-card-body { padding: 20px; }
+
+/* Review hero image */
+.review-hero-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  margin-bottom: 28px;
+  display: block;
+  box-shadow: var(--shadow-md);
+}
+.review-hero-credit {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: -22px;
+  margin-bottom: 24px;
+  text-align: right;
+}
+.review-hero-credit a { color: var(--text-muted); }
+
+/* Article hero image */
+.article-hero-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  margin-bottom: 28px;
+  display: block;
+  box-shadow: var(--shadow);
+}
 .article-category {
   display: inline-block;
   background: var(--primary-pale);
@@ -501,6 +537,7 @@ img { max-width: 100%; height: auto; }
 <div class="container">
   <div class="article-layout">
     <main class="article-content">
+      <img src="https://images.unsplash.com/photo-1567057420215-0afa9aa9253a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzkxMDZ8MHwxfHNlYXJjaHwxfHxraWRzJTIwZW5nbGlzaCUyMGxlYXJuaW5nJTIwZWR1Y2F0aW9ufGVufDB8MHx8fDE3NzE1OTY5ODh8MA&ixlib=rb-4.1.0&q=80&w=1080" class="article-hero-img" alt="子供の英語教育いつから始める？年齢別オンライン英会話の選び方【小学生対応】" loading="eager">
       <div class="toc">
   <h4>目次</h4>
   <ol><li><a href="#----">はじめに</a></li>
