@@ -1,0 +1,280 @@
+{
+  "how_to_articles": [
+    {
+      "id": "not-continue-reasons",
+      "title": "オンライン英会話が続かない12の理由と、3ヶ月以上続けるための対策",
+      "slug": "online-eikaiwa-not-continue-reasons",
+      "target_keyword": "オンライン英会話 続かない 原因",
+      "target_reader": "英会話を始めたが2〜3ヶ月で挫折した経験がある30代社会人",
+      "h2_topics": [
+        "続かない理由TOP12（データと実例付き）",
+        "挫折のパターン別・対策法",
+        "3ヶ月継続できる人だけがやっていること",
+        "自分の継続力に合ったサービスの選び方"
+      ],
+      "category": "継続・挫折",
+      "keyword_difficulty": "低"
+    },
+    {
+      "id": "busy-person-guide",
+      "title": "忙しい社会人がオンライン英会話を続ける方法【1日15分でOKな現実プラン】",
+      "slug": "busy-worker-online-eikaiwa-guide",
+      "target_keyword": "オンライン英会話 忙しい 社会人 続ける",
+      "target_reader": "残業が多く英語学習の時間が確保できない20〜40代",
+      "h2_topics": [
+        "忙しい人がオンライン英会話を諦める本当の理由",
+        "週3回15分から始める超現実的プラン",
+        "通勤・昼休み・寝る前の時間別活用法",
+        "忙しい人に最も向いているサービスはどれか"
+      ],
+      "category": "継続・挫折",
+      "keyword_difficulty": "低"
+    },
+    {
+      "id": "40s-guide",
+      "title": "40代からのオンライン英会話、本当に効果はある？3ヶ月で変わった体験談",
+      "slug": "40s-online-eikaiwa-guide",
+      "target_keyword": "40代 オンライン英会話 効果 遅い",
+      "target_reader": "40代で英語を始めることに不安を持っている社会人",
+      "h2_topics": [
+        "40代で英語学習を始めることへの不安を解消するデータ",
+        "40代が英語習得で有利な理由3つ",
+        "40代に向いているサービスと向いていないサービス",
+        "40代が3ヶ月で実感する変化のリアル"
+      ],
+      "category": "年代別",
+      "keyword_difficulty": "低"
+    },
+    {
+      "id": "coaching-vs-online",
+      "title": "英語コーチングとオンライン英会話、どっちを選ぶべきか【費用対効果で判断】",
+      "slug": "english-coaching-vs-online-eikaiwa",
+      "target_keyword": "英語コーチング オンライン英会話 違い どっち",
+      "target_reader": "本気で英語を習得したいが、どのサービスを選ぶか迷っている社会人",
+      "h2_topics": [
+        "英語コーチングとオンライン英会話の根本的な違い",
+        "費用・効果・継続率の徹底比較",
+        "コーチングが向いている人・英会話が向いている人",
+        "月予算別のおすすめ組み合わせ"
+      ],
+      "category": "比較・選び方",
+      "keyword_difficulty": "中"
+    },
+    {
+      "id": "progrit-review",
+      "title": "プログリット（PROGRIT）の評判は？実際の効果・料金・3ヶ月で変わること",
+      "slug": "progrit-review",
+      "target_keyword": "プログリット 評判 効果 料金",
+      "target_reader": "プログリットへの入会を検討している30〜40代社会人",
+      "h2_topics": [
+        "プログリットとは何が違うのか（他コーチングとの比較）",
+        "料金プランと費用対効果の正直な評価",
+        "受講生の実際の声（良い点・悪い点）",
+        "どんな人に向いていて、向いていないか"
+      ],
+      "category": "英語コーチング",
+      "keyword_difficulty": "中"
+    },
+    {
+      "id": "toraiz-review",
+      "title": "トライズの評判・口コミまとめ【1,000時間プログラムの実態と料金を解説】",
+      "slug": "toraiz-review",
+      "target_keyword": "トライズ 評判 口コミ 料金",
+      "target_reader": "トライズの入会を検討している本気で英語を習得したい人",
+      "h2_topics": [
+        "トライズの1,000時間プログラムとは何か",
+        "料金と他コーチングとの費用比較",
+        "実際の受講生の声（SNSリサーチ）",
+        "向いている人・向いていない人の特徴"
+      ],
+      "category": "英語コーチング",
+      "keyword_difficulty": "中"
+    },
+    {
+      "id": "kids-english",
+      "title": "子供の英語教育いつから始める？年齢別オンライン英会話の選び方【小学生対応】",
+      "slug": "kids-online-eikaiwa-guide",
+      "target_keyword": "子供 英会話 オンライン いつから 小学生",
+      "target_reader": "子供に英語教育を始めたい親（子供3〜12歳）",
+      "h2_topics": [
+        "英語習得のゴールデンタイム（3〜12歳）に科学的根拠はあるか",
+        "年齢別の学習アプローチ（未就学児・小学生低学年・高学年）",
+        "子供向けオンライン英会話の選び方5つのポイント",
+        "継続させるための家庭でできるサポート"
+      ],
+      "category": "子供・教育",
+      "keyword_difficulty": "中"
+    },
+    {
+      "id": "business-english-coaching",
+      "title": "英語コーチングおすすめランキング【2026年版】社会人向け厳選7社を比較",
+      "slug": "english-coaching-ranking",
+      "target_keyword": "英語コーチング おすすめ ランキング",
+      "target_reader": "本気で英語を習得したい30〜40代の社会人",
+      "h2_topics": [
+        "英語コーチングを選ぶ3つの基準",
+        "価格帯別おすすめコーチング比較表",
+        "短期集中型 vs 長期型の選び方",
+        "無料カウンセリングで確認すべきこと"
+      ],
+      "category": "英語コーチング",
+      "keyword_difficulty": "中"
+    },
+    {
+      "id": "free-trial-guide",
+      "title": "オンライン英会話の無料体験をはしごする方法【全社比較・2026年版】",
+      "slug": "free-trial-online-eikaiwa",
+      "target_keyword": "オンライン英会話 無料体験 はしご まとめ",
+      "target_reader": "複数のサービスを無料で試してから決めたい人",
+      "h2_topics": [
+        "各サービスの無料体験内容と条件まとめ（表）",
+        "はしごする順番と注意点",
+        "体験レッスンで確認すべき5つのポイント",
+        "無料体験後に後悔しない選び方"
+      ],
+      "category": "お得情報",
+      "keyword_difficulty": "中"
+    },
+    {
+      "id": "frequency-guide",
+      "title": "オンライン英会話は週何回受けると効果が出る？科学的根拠から最適頻度を解説",
+      "slug": "online-eikaiwa-frequency-guide",
+      "target_keyword": "オンライン英会話 週何回 効果 出る",
+      "target_reader": "レッスン頻度で悩んでいる英会話学習者",
+      "h2_topics": [
+        "言語習得研究から見た最低必要学習時間",
+        "目的別おすすめ頻度（資格対策・日常会話・ビジネス）",
+        "週2回からでも効果が出る条件",
+        "頻度より大切な「1レッスンの質」の上げ方"
+      ],
+      "category": "学習法",
+      "keyword_difficulty": "低"
+    },
+    {
+      "id": "speaking-improvement",
+      "title": "英語スピーキングが伸びない人の3つの共通点と、今日からできる改善法",
+      "slug": "english-speaking-improvement",
+      "target_keyword": "英語 スピーキング 伸びない 理由 原因",
+      "target_reader": "英会話を3ヶ月以上続けているのに話せない感覚がある人",
+      "h2_topics": [
+        "「伸びない」と感じる本当の原因（インプット不足の錯覚）",
+        "アウトプットだけでは伸びない理由",
+        "今日からできる1日15分の自主練法",
+        "オンライン英会話の効果を3倍にする受け方"
+      ],
+      "category": "学習法",
+      "keyword_difficulty": "低"
+    },
+    {
+      "id": "cost-comparison",
+      "title": "オンライン英会話の月額料金を安い順に徹底比較【2026年最新・コスパ最強はここ】",
+      "slug": "online-eikaiwa-cost-comparison",
+      "target_keyword": "オンライン英会話 月額 安い 比較 2026",
+      "target_reader": "できるだけコストを抑えて英語を学びたい人",
+      "h2_topics": [
+        "主要10社の月額料金比較表（1レッスン単価換算）",
+        "安いだけで選ぶと後悔する理由",
+        "コスパが本当に高いサービスの見極め方",
+        "予算別おすすめサービス（月2,000円台・月5,000円台・月10,000円以上）"
+      ],
+      "category": "お得情報",
+      "keyword_difficulty": "高"
+    },
+    {
+      "id": "pronunciation-guide",
+      "title": "日本人が絶対に苦手な英語発音5つと、正しい矯正方法【動画解説付き】",
+      "slug": "japanese-english-pronunciation-guide",
+      "target_keyword": "日本人 英語 発音 苦手 矯正",
+      "target_reader": "発音のせいでネイティブに伝わらないと悩む日本人",
+      "h2_topics": [
+        "日本人が特に苦手なLとR・TとD・VとBの正しい発音",
+        "カタカナ英語から抜け出すための3ステップ",
+        "発音矯正に強いサービスとその選び方",
+        "3ヶ月で発音が変わる自主練法"
+      ],
+      "category": "学習法",
+      "keyword_difficulty": "低"
+    },
+    {
+      "id": "toeic-strategy",
+      "title": "TOEIC800点を取るためのオンライン英会話活用術【点数別スコアアップ戦略】",
+      "slug": "toeic-online-eikaiwa-strategy",
+      "target_keyword": "TOEIC 800点 オンライン英会話 効果",
+      "target_reader": "TOEIC700点台でスコアアップが止まっている社会人",
+      "h2_topics": [
+        "TOEIC700→800点の壁を突破する本当の方法",
+        "スピーキング練習がリスニングスコアを伸ばす仕組み",
+        "TOEIC対策に特化したオンライン英会話の選び方",
+        "週3回・3ヶ月のTOEICスコアアップスケジュール"
+      ],
+      "category": "資格対策",
+      "keyword_difficulty": "中"
+    },
+    {
+      "id": "english-career",
+      "title": "英語ができると年収はどれくらい上がる？データで見るキャリアへの影響",
+      "slug": "english-career-salary-impact",
+      "target_keyword": "英語 年収 上がる データ キャリア",
+      "target_reader": "キャリアアップのために英語学習を考えている30〜40代",
+      "h2_topics": [
+        "英語力と年収の相関を示す調査データ",
+        "英語が活きる職種・業界（転職市場の実態）",
+        "英語学習の投資回収期間を計算する",
+        "今から始めて3年後のキャリアを変える最短プラン"
+      ],
+      "category": "キャリア",
+      "keyword_difficulty": "低"
+    },
+    {
+      "id": "business-english-online",
+      "title": "ビジネス英語に強いオンライン英会話おすすめ5選【社会人・職場で使える英語を習得】",
+      "slug": "business-english-online-eikaiwa",
+      "target_keyword": "オンライン英会話 ビジネス英語 おすすめ",
+      "target_reader": "職場で英語を使う機会が増えてきたビジネスパーソン（20〜40代）",
+      "h2_topics": [
+        "ビジネス英語に特化したオンライン英会話の選び方",
+        "ビジネス英語専門サービス5社の比較（特徴・料金・講師）",
+        "ビジネスシーン別おすすめフレーズと練習法",
+        "3ヶ月でビジネス英会話を実用レベルにする学習プラン"
+      ],
+      "category": "ビジネス英語",
+      "keyword_difficulty": "低",
+      "seo_priority": "A",
+      "source": "docs/seo/strategy-2026-02.md Phase 2"
+    },
+    {
+      "id": "junior-high-english",
+      "title": "中学生向けオンライン英会話おすすめ7選【定期テスト・高校受験対策にも】",
+      "slug": "junior-high-online-eikaiwa",
+      "target_keyword": "オンライン英会話 中学生 おすすめ",
+      "target_reader": "中学生の子供に英会話を習わせたい保護者",
+      "h2_topics": [
+        "中学生がオンライン英会話を使うメリットと注意点",
+        "中学生向けサービス7社比較（料金・講師・教材）",
+        "定期テスト対策に活かすレッスンの受け方",
+        "高校受験の英語スピーキング対策としての活用法"
+      ],
+      "category": "子供・教育",
+      "keyword_difficulty": "低",
+      "seo_priority": "B",
+      "source": "docs/seo/strategy-2026-02.md Phase 2"
+    },
+    {
+      "id": "coaching-meaningless",
+      "title": "英語コーチングは意味ない？効果がない人の特徴と失敗しない選び方",
+      "slug": "english-coaching-meaningless-truth",
+      "target_keyword": "英語コーチング 意味ない 効果ない",
+      "target_reader": "英語コーチングへの投資を迷っている・懐疑的な社会人",
+      "h2_topics": [
+        "「英語コーチングは意味ない」という声の実態調査",
+        "効果が出ない人に共通する3つの失敗パターン",
+        "英語コーチングで確実に成果を出す条件",
+        "費用対効果が高いコーチングサービスの選び方"
+      ],
+      "category": "英語コーチング",
+      "keyword_difficulty": "低",
+      "seo_priority": "S",
+      "source": "docs/seo/strategy-2026-02.md Phase 2"
+    }
+  ]
+}
