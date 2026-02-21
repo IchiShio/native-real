@@ -324,20 +324,48 @@ class ContentGenerator:
         count: int = 2,
         existing_slugs: list[str] | None = None,
         output_dir: str = "generated_content",
+        deployer: Any = None,
     ) -> list[dict[str, Any]]:
-        """週次更新用：新しい記事を生成"""
+        """週次更新用：新しい記事を生成
+
+        Args:
+            count: 今回生成する最大件数
+            existing_slugs: ローカルキャッシュから得た生成済みスラッグ
+            output_dir: 出力ディレクトリ（未使用、将来用）
+            deployer: GitHubDeployer インスタンス。渡すと GitHub 上の
+                      デプロイ済みスラッグも照合してスキップ漏れを防ぐ
+        """
         with open("data/topics.json", encoding="utf-8") as f:
             topics_data = json.load(f)
 
-        existing = set(existing_slugs or [])
+        # ローカルキャッシュ由来のスラッグ
+        skip = set(existing_slugs or [])
+
+        # GitHub にデプロイ済みのスラッグを取得してマージ
+        if deployer is not None:
+            try:
+                deployed = set(deployer.get_deployed_slugs())
+                new_from_github = deployed - skip
+                if new_from_github:
+                    print(f"   GitHub確認: ローカルキャッシュにない既デプロイ記事 {len(new_from_github)} 件を検出 → スキップ対象に追加")
+                else:
+                    print(f"   GitHub確認: デプロイ済み {len(deployed)} 件 (ローカルと一致)")
+                skip |= deployed
+            except Exception as e:
+                print(f"   警告: GitHub デプロイ済みスラッグ取得失敗 (ローカルキャッシュのみで判断): {e}")
+
         new_topics = [
             t for t in topics_data["how_to_articles"]
-            if t["slug"] not in existing
+            if t["slug"] not in skip
         ]
 
         if not new_topics:
             print("   新しいトピックがありません")
             return []
+
+        # SEO 優先度でソート（seo_priority フィールドがある場合: S > A > B > なし）
+        priority_order = {"S": 0, "A": 1, "B": 2}
+        new_topics.sort(key=lambda t: priority_order.get(t.get("seo_priority", ""), 9))
 
         articles = []
         for topic in new_topics[:count]:
