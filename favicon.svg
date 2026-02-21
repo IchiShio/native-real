@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- 吹き出し背景 -->
+  <rect x="1" y="1" width="28" height="22" rx="5" fill="#b85c45"/>
+  <!-- 吹き出しの尻尾 -->
+  <polygon points="8,22 5,30 15,22" fill="#b85c45"/>
+  <!-- 英の文字 -->
+  <text x="15" y="18" font-family="'Helvetica Neue',Arial,sans-serif" font-size="15" font-weight="bold" fill="white" text-anchor="middle">英</text>
+</svg>
