@@ -441,8 +441,10 @@ img { max-width: 100%; height: auto; }
   margin: 36px 0;
   box-shadow: 0 8px 24px rgba(184,92,69,0.25);
 }
-.cta-box h3 { font-size: 1.15rem; margin-bottom: 10px; font-weight: 700; }
+.cta-box h3 { font-size: 1.15rem; margin-bottom: 10px; font-weight: 700; color: white; border-left: none; padding-left: 0; }
 .cta-box p { opacity: 0.9; margin-bottom: 20px; font-size: 0.93rem; }
+.cta-box a { color: white; }
+.cta-box a:hover { color: rgba(255,255,255,0.8); }
 .btn-cta-white {
   display: inline-block;
   background: white;
@@ -517,6 +519,39 @@ img { max-width: 100%; height: auto; }
   .footer-grid { grid-template-columns: 1fr; }
   .articles-grid { grid-template-columns: 1fr; }
 }
+/* Review / survey cards */
+.review-cards { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+.review-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+}
+.review-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.review-source-badge {
+  background: #1da1f2;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.review-source-badge.survey { background: #5a3ec8; }
+.review-card p { font-size: 0.95rem; line-height: 1.8; color: var(--text); }
+.review-card cite {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+  font-style: normal;
+}
+.review-card cite a { color: var(--text-muted); text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -603,7 +638,7 @@ img { max-width: 100%; height: auto; }
 
 
 
-<p>たとえば理由1位の「疲れて後回し」は、残業後の21時にレッスンを入れていた32歳・IT企業勤務のAさんの実例が典型的です。最初の2週間は頑張れても、繁忙期に入った3週目から「明日やろう」が常態化し、そのまま退会に至りました。</p>
+<p>株式会社Colorの調査によれば、63%の利用者が半年以内にオンライン英会話を辞めており、95.3%が1年未満で退会しています（出典: <a href="https://www.sma-world.com/world-english-online/online-frustration/" rel="nofollow" target="_blank">World English Online調査</a>）。特に「疲れて後回し」のパターンは、仕事帰りの夜間帯にレッスンを設定している場合に起きやすく、繁忙期に入ると「今日だけ」が常態化して退会につながるケースが多いとされています。</p>
 
 
 
