@@ -384,7 +384,15 @@ img { max-width: 100%; height: auto; }
 }
 
 /* Responsive */
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+  .articles-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Responsive - Mobile */
 @media (max-width: 768px) {
+  .site-header nav { display: none; }
+  .hamburger { display: block; }
   .hero h1 { font-size: 1.4rem; }
   .ranking-card { grid-template-columns: 44px 1fr; }
   .card-actions { display: none; }
@@ -403,8 +411,15 @@ img { max-width: 100%; height: auto; }
       <a href="/">ランキング</a>
       <a href="/articles/">学習コラム</a>
     </nav>
+    <button class="hamburger" aria-label="メニューを開く" onclick="document.querySelector('.hamburger').classList.toggle('active');document.querySelector('.mobile-nav-overlay').classList.toggle('active');document.body.style.overflow=document.querySelector('.mobile-nav-overlay').classList.contains('active')?'hidden':'';">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+<div class="mobile-nav-overlay" onclick="if(event.target===this||event.target.tagName==='A'){this.classList.remove('active');document.querySelector('.hamburger').classList.remove('active');document.body.style.overflow='';}">
+  <a href="/">ランキング</a>
+  <a href="/articles/">学習コラム</a>
+</div>
 <div class="breadcrumb container">
   <a href="/">ホーム</a><span>›</span>
   <a href="/articles/">学習コラム</a><span>›</span>

@@ -152,6 +152,52 @@ img { max-width: 100%; height: auto; }
   transition: color 0.2s, border-color 0.2s;
 }
 .site-header nav a:hover { color: white; border-color: #f0a080; }
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  width: 36px;
+  height: 36px;
+  position: relative;
+  z-index: 102;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  margin: 5px auto;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(44,37,32,0.95);
+  z-index: 101;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.mobile-nav-overlay.active { display: flex; }
+.mobile-nav-overlay a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  transition: background 0.2s;
+}
+.mobile-nav-overlay a:hover { background: rgba(255,255,255,0.1); }
 
 /* Hero */
 .hero {
@@ -521,6 +567,7 @@ img { max-width: 100%; height: auto; }
   background: #2c2520;
   color: rgba(255,255,255,0.65);
   padding: 48px 0 24px;
+  padding-bottom: 80px;
   margin-top: 72px;
   font-size: 0.88rem;
 }
@@ -681,7 +728,15 @@ img { max-width: 100%; height: auto; }
 }
 
 /* Responsive */
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+  .articles-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Responsive - Mobile */
 @media (max-width: 768px) {
+  .site-header nav { display: none; }
+  .hamburger { display: block; }
   .hero h1 { font-size: 1.45rem; }
   .hero-badges { gap: 8px; }
   .ranking-card {
@@ -757,6 +812,8 @@ img { max-width: 100%; height: auto; }
 }
 .sticky-cta-btn:hover { opacity: 0.92; color: var(--primary); transform: translateY(-1px); }
 @media (max-width: 768px) {
+  .site-header nav { display: none; }
+  .hamburger { display: block; }
   .sticky-cta-inner { flex-direction: column; gap: 6px; text-align: center; }
   .sticky-cta-name { font-size: 0.85rem; }
   .sticky-cta-btn { width: 100%; text-align: center; padding: 12px 16px; }
@@ -771,8 +828,15 @@ img { max-width: 100%; height: auto; }
       <a href="/">ランキング</a>
       <a href="/articles/">学習コラム</a>
     </nav>
+    <button class="hamburger" aria-label="メニューを開く" onclick="document.querySelector('.hamburger').classList.toggle('active');document.querySelector('.mobile-nav-overlay').classList.toggle('active');document.body.style.overflow=document.querySelector('.mobile-nav-overlay').classList.contains('active')?'hidden':'';">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+<div class="mobile-nav-overlay" onclick="if(event.target===this||event.target.tagName==='A'){this.classList.remove('active');document.querySelector('.hamburger').classList.remove('active');document.body.style.overflow='';}">
+  <a href="/">ランキング</a>
+  <a href="/articles/">学習コラム</a>
+</div>
 <div class="breadcrumb container">
   <a href="/">ホーム</a><span>›</span>THE ENGLISH COMPANYレビュー
 </div>
