@@ -4,8 +4,11 @@
 新記事を2件生成してGitHub Pagesを更新する
 """
 import json
+import os
 import sys
 from pathlib import Path
+
+from dotenv import load_dotenv
 
 # プロジェクトルートをパスに追加
 sys.path.insert(0, str(Path(__file__).parent))
@@ -16,12 +19,25 @@ from src.site_builder import SiteBuilder
 
 
 def load_config() -> dict:
+    load_dotenv()
     config_path = Path("config.json")
-    if not config_path.exists():
-        print("エラー: config.json が見つかりません。main.py を先に実行してください。")
+    config: dict = {}
+    if config_path.exists():
+        with open(config_path, encoding="utf-8") as f:
+            config = json.load(f)
+    # シークレットは .env から上書き
+    for env_key, field in [
+        ("CLAUDE_API_KEY", "claude_api_key"),
+        ("GITHUB_TOKEN", "github_token"),
+        ("UNSPLASH_ACCESS_KEY", "unsplash_access_key"),
+    ]:
+        val = os.getenv(env_key)
+        if val:
+            config[field] = val
+    if not config.get("claude_api_key") and not config.get("github_token"):
+        print("エラー: .env にAPIキーが設定されていません。.env.example を参考に .env を作成してください。")
         sys.exit(1)
-    with open(config_path, encoding="utf-8") as f:
-        return json.load(f)
+    return config
 
 
 def load_existing_articles() -> list[dict]:
