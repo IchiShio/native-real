@@ -660,12 +660,30 @@ img { max-width: 100%; height: auto; }
 <div class="mobile-nav-overlay" onclick="if(event.target===this||event.target.tagName==='A'){this.classList.remove('active');document.querySelector('.hamburger').classList.remove('active');document.body.style.overflow='';}">
   <a href="/">ランキング</a>
   <a href="/articles/">学習コラム</a>
+  <a href="/listening/">リスニングクイズ</a>
 </div>
-<div class="container" style="padding-top:32px;">
-  <h1 style="font-size:1.6rem;margin-bottom:8px;">英語学習コラム</h1>
-  <p style="color:#6b7280;margin-bottom:32px;">オンライン英会話の選び方・英語学習のコツを分かりやすく解説します</p>
-  <div class="articles-grid">
-  <div class="article-card">
+<section class="hero">
+  <div class="container">
+    <h1>英語学習<em>コラム</em></h1>
+    <p>オンライン英会話の選び方・英語学習のコツを分かりやすく解説します</p>
+    <div class="hero-badges">
+      <span class="hero-badge"><strong>15</strong>記事掲載</span>
+      <span class="hero-badge"><strong>6</strong>カテゴリ</span>
+      <span class="hero-badge">随時更新中</span>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <nav class="filter-bar" aria-label="カテゴリフィルター">
+    <button class="filter-tab active" data-cat="all" onclick="applyArticleFilter(this)">すべて<span class="filter-count">15</span></button>
+    <button class="filter-tab" data-cat="learning" onclick="applyArticleFilter(this)">学習法・継続<span class="filter-count">5</span></button>
+    <button class="filter-tab" data-cat="coaching" onclick="applyArticleFilter(this)">コーチング<span class="filter-count">3</span></button>
+    <button class="filter-tab" data-cat="otoku" onclick="applyArticleFilter(this)">お得情報<span class="filter-count">2</span></button>
+    <button class="filter-tab" data-cat="career" onclick="applyArticleFilter(this)">資格・キャリア<span class="filter-count">2</span></button>
+    <button class="filter-tab" data-cat="other" onclick="applyArticleFilter(this)">その他<span class="filter-count">3</span></button>
+  </nav>
+  <div class="articles-grid" id="articlesGrid">
+  <div class="article-card" data-cat="learning">
     <div class="article-card-eyecatch" style="background:linear-gradient(135deg,#d4735f,#b85c45);">&#x1F525;</div>
     <div class="article-card-accent"></div>
     <div class="article-card-body">
@@ -674,7 +692,7 @@ img { max-width: 100%; height: auto; }
       <p style="font-size:0.83rem;color:var(--text-muted);margin-top:8px;line-height:1.55;">オンライン英会話が続かない12の理由と、3ヶ月以上続けるための対策。英会話を始めたが2〜3ヶ月で挫折した経験がある30代社会人向けに分かりやすく解説します。...</p>
     </div>
   </div>
-  <div class="article-card">
+  <div class="article-card" data-cat="learning">
     <div class="article-card-eyecatch" style="background:linear-gradient(135deg,#e8984b,#c87030);">&#x23F0;</div>
     <div class="article-card-accent"></div>
     <div class="article-card-body">
@@ -683,7 +701,7 @@ img { max-width: 100%; height: auto; }
       <p style="font-size:0.83rem;color:var(--text-muted);margin-top:8px;line-height:1.55;">忙しい社会人がオンライン英会話を続ける方法【1日15分でOKな現実プラン】。残業が多く英語学習の時間が確保できない20〜40代向けに分かりやすく解説します。...</p>
     </div>
   </div>
-  <div class="article-card">
+  <div class="article-card" data-cat="other">
     <div class="article-card-eyecatch" style="background:linear-gradient(135deg,#5b8cc9,#3a6ea5);">&#x1F331;</div>
     <div class="article-card-accent"></div>
     <div class="article-card-body">
@@ -692,7 +710,7 @@ img { max-width: 100%; height: auto; }
       <p style="font-size:0.83rem;color:var(--text-muted);margin-top:8px;line-height:1.55;">40代からのオンライン英会話、本当に効果はある？3ヶ月で変わった体験談。40代で英語を始めることに不安を持っている社会人向けに分かりやすく解説します。...</p>
     </div>
   </div>
-  <div class="article-card">
+  <div class="article-card" data-cat="other">
     <div class="article-card-eyecatch" style="background:linear-gradient(135deg,#3a9e72,#2d8059);">&#x2696;&#xFE0F;</div>
     <div class="article-card-accent"></div>
     <div class="article-card-body">
@@ -701,7 +719,7 @@ img { max-width: 100%; height: auto; }
       <p style="font-size:0.83rem;color:var(--text-muted);margin-top:8px;line-height:1.55;">英語コーチングとオンライン英会話、どっちを選ぶべきか【費用対効果で判断】。本気で英語を習得したいが、どのサービスを選ぶか迷っている社会人向けに分かりやすく解説し...</p>
     </div>
   </div>
-  <div class="article-card">
+  <div class="article-card" data-cat="coaching">
     <div class="article-card-eyecatch" style="background:linear-gradient(135deg,#7c5bbf,#5a3d99);">&#x1F680;</div>
     <div class="article-card-accent"></div>
     <div class="article-card-body">
@@ -710,7 +728,7 @@ img { max-width: 100%; height: auto; }
       <p style="font-size:0.83rem;color:var(--text-muted);margin-top:8px;line-height:1.55;">プログリット（PROGRIT）の評判は？実際の効果・料金・3ヶ月で変わること。プログリットへの入会を検討している30〜40代社会人向けに分かりやすく解説します。...</p>
     </div>
   </div>
-  <div class="article-card">
+  <div class="article-card" data-cat="coaching">
     <div class="article-card-eyecatch" style="background:linear-gradient(135deg,#9065c0,#6b45a0);">&#x1F3AF;</div>
     <div class="article-card-accent"></div>
     <div class="article-card-body">
@@ -719,7 +737,7 @@ img { max-width: 100%; height: auto; }
       <p style="font-size:0.83rem;color:var(--text-muted);margin-top:8px;line-height:1.55;">トライズの評判・口コミまとめ【1,000時間プログラムの実態と料金を解説】。トライズの入会を検討している本気で英語を習得したい人向けに分かりやすく解説します。...</p>
     </div>
   </div>
-  <div class="article-card">
+  <div class="article-card" data-cat="other">
     <div class="article-card-eyecatch" style="background:linear-gradient(135deg,#e8734b,#c85530);">&#x1F476;</div>
     <div class="article-card-accent"></div>
     <div class="article-card-body">
@@ -728,7 +746,7 @@ img { max-width: 100%; height: auto; }
       <p style="font-size:0.83rem;color:var(--text-muted);margin-top:8px;line-height:1.55;">子供の英語教育いつから始める？年齢別オンライン英会話の選び方【小学生対応】。子供に英語教育を始めたい親（子供3〜12歳）向けに分かりやすく解説します。...</p>
     </div>
   </div>
-  <div class="article-card">
+  <div class="article-card" data-cat="coaching">
     <div class="article-card-eyecatch" style="background:linear-gradient(135deg,#e8b84b,#c89030);">&#x1F3C6;</div>
     <div class="article-card-accent"></div>
     <div class="article-card-body">
@@ -737,7 +755,7 @@ img { max-width: 100%; height: auto; }
       <p style="font-size:0.83rem;color:var(--text-muted);margin-top:8px;line-height:1.55;">英語コーチングおすすめランキング【2026年版】社会人向け厳選7社を比較。本気で英語を習得したい30〜40代の社会人向けに分かりやすく解説します。...</p>
     </div>
   </div>
-  <div class="article-card">
+  <div class="article-card" data-cat="otoku">
     <div class="article-card-eyecatch" style="background:linear-gradient(135deg,#5bc98c,#3aa56a);">&#x1F381;</div>
     <div class="article-card-accent"></div>
     <div class="article-card-body">
@@ -746,7 +764,7 @@ img { max-width: 100%; height: auto; }
       <p style="font-size:0.83rem;color:var(--text-muted);margin-top:8px;line-height:1.55;">オンライン英会話の無料体験をはしごする方法【全社比較・2026年版】。複数のサービスを無料で試してから決めたい人向けに分かりやすく解説します。...</p>
     </div>
   </div>
-  <div class="article-card">
+  <div class="article-card" data-cat="learning">
     <div class="article-card-eyecatch" style="background:linear-gradient(135deg,#5b8cc9,#3a6ea5);">&#x1F4C5;</div>
     <div class="article-card-accent"></div>
     <div class="article-card-body">
@@ -755,7 +773,7 @@ img { max-width: 100%; height: auto; }
       <p style="font-size:0.83rem;color:var(--text-muted);margin-top:8px;line-height:1.55;">オンライン英会話は週何回受けると効果が出る？科学的根拠から最適頻度を解説。レッスン頻度で悩んでいる英会話学習者向けに分かりやすく解説します。...</p>
     </div>
   </div>
-  <div class="article-card">
+  <div class="article-card" data-cat="learning">
     <div class="article-card-eyecatch" style="background:linear-gradient(135deg,#e85c8c,#c83a6a);">&#x1F4AC;</div>
     <div class="article-card-accent"></div>
     <div class="article-card-body">
@@ -764,7 +782,7 @@ img { max-width: 100%; height: auto; }
       <p style="font-size:0.83rem;color:var(--text-muted);margin-top:8px;line-height:1.55;">英語スピーキングが伸びない人の3つの共通点と、今日からできる改善法。英会話を3ヶ月以上続けているのに話せない感覚がある人向けに分かりやすく解説します。...</p>
     </div>
   </div>
-  <div class="article-card">
+  <div class="article-card" data-cat="otoku">
     <div class="article-card-eyecatch" style="background:linear-gradient(135deg,#3a9e72,#2d8059);">&#x1F4B0;</div>
     <div class="article-card-accent"></div>
     <div class="article-card-body">
@@ -773,7 +791,7 @@ img { max-width: 100%; height: auto; }
       <p style="font-size:0.83rem;color:var(--text-muted);margin-top:8px;line-height:1.55;">オンライン英会話の月額料金を安い順に徹底比較【2026年最新・コスパ最強はここ】。できるだけコストを抑えて英語を学びたい人向けに分かりやすく解説します。...</p>
     </div>
   </div>
-  <div class="article-card">
+  <div class="article-card" data-cat="learning">
     <div class="article-card-eyecatch" style="background:linear-gradient(135deg,#c97050,#a55030);">&#x1F50A;</div>
     <div class="article-card-accent"></div>
     <div class="article-card-body">
@@ -782,7 +800,7 @@ img { max-width: 100%; height: auto; }
       <p style="font-size:0.83rem;color:var(--text-muted);margin-top:8px;line-height:1.55;">日本人が絶対に苦手な英語発音5つと、正しい矯正方法【動画解説付き】。発音のせいでネイティブに伝わらないと悩む日本人向けに分かりやすく解説します。...</p>
     </div>
   </div>
-  <div class="article-card">
+  <div class="article-card" data-cat="career">
     <div class="article-card-eyecatch" style="background:linear-gradient(135deg,#5b6ec9,#3a4ea5);">&#x1F4DD;</div>
     <div class="article-card-accent"></div>
     <div class="article-card-body">
@@ -791,7 +809,7 @@ img { max-width: 100%; height: auto; }
       <p style="font-size:0.83rem;color:var(--text-muted);margin-top:8px;line-height:1.55;">TOEIC800点を取るためのオンライン英会話活用術【点数別スコアアップ戦略】。TOEIC700点台でスコアアップが止まっている社会人向けに分かりやすく解説しま...</p>
     </div>
   </div>
-  <div class="article-card">
+  <div class="article-card" data-cat="career">
     <div class="article-card-eyecatch" style="background:linear-gradient(135deg,#e8984b,#c87030);">&#x1F4C8;</div>
     <div class="article-card-accent"></div>
     <div class="article-card-body">
@@ -834,6 +852,7 @@ img { max-width: 100%; height: auto; }
         <ul>
           <li><a href="/articles/">学習コラム一覧</a></li>
           <li><a href="/">ランキングTOP</a></li>
+          <li><a href="/listening/">英語リスニングクイズ</a></li>
         </ul>
       </div>
     </div>
@@ -842,5 +861,15 @@ img { max-width: 100%; height: auto; }
     </div>
   </div>
 </footer>
+<script>
+function applyArticleFilter(btn) {
+  document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+  btn.classList.add('active');
+  var cat = btn.dataset.cat;
+  document.querySelectorAll('#articlesGrid .article-card').forEach(function(card) {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+  });
+}
+</script>
 </body>
 </html>
