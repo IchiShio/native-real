@@ -616,7 +616,175 @@ img { max-width: 100%; height: auto; }
   .sidebar { display: none; }
   .footer-grid { grid-template-columns: 1fr; }
   .articles-grid { grid-template-columns: 1fr; }
+  .diag-widget { padding: 0 16px 20px; }
+  .diag-options { gap: 8px; }
+  .diag-opt { padding: 10px 14px; font-size: 0.82rem; }
+  .quiz-promo { padding: 40px 0; }
+  .quiz-promo h2 { font-size: 1.25rem; }
 }
+
+/* ── 診断ウィジェット ── */
+.diag-widget {
+  padding: 0 0 20px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.diag-widget-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.diag-steps { display: flex; flex-direction: column; gap: 16px; }
+.diag-step-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.diag-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.diag-opt {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  padding: 9px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  color: var(--text-muted);
+}
+.diag-opt:hover { border-color: var(--primary-light); color: var(--primary); background: var(--primary-pale); }
+.diag-opt.selected { border-color: var(--primary); color: var(--primary); background: var(--primary-pale); }
+.diag-result {
+  display: none;
+  margin-top: 18px;
+  background: linear-gradient(135deg, var(--accent-pale), #e0f5ec);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 0.88rem;
+}
+.diag-result.show { display: block; }
+.diag-result-label { font-size: 0.76rem; font-weight: 700; color: var(--accent-dark); letter-spacing: 0.05em; margin-bottom: 6px; }
+.diag-result-text { font-weight: 600; color: var(--text); font-size: 0.93rem; margin-bottom: 12px; }
+.diag-result-link {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 8px 20px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.83rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.diag-result-link:hover { background: var(--accent-dark); color: white; }
+
+/* ── 目的別フィルタータブ ── */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  align-items: center;
+}
+.filter-bar-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.filter-tab {
+  border: 1.5px solid var(--border);
+  border-radius: 24px;
+  padding: 6px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  background: white;
+  color: var(--text-muted);
+}
+.filter-tab:hover:not(.active) { border-color: var(--primary-light); color: var(--primary); }
+.filter-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
+.ranking-card[data-hidden="true"] { display: none; }
+
+/* ── リスニングクイズ cross-promo ── */
+.quiz-promo {
+  background: linear-gradient(135deg, #0b1735 0%, #172860 100%);
+  padding: 56px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.quiz-promo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+.quiz-promo-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+}
+.quiz-promo-eyecatch {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+.quiz-promo h2 {
+  color: white;
+  font-size: 1.55rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.quiz-promo h2 em { font-style: normal; color: #FBBF24; }
+.quiz-promo p {
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+.quiz-promo-badges {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.quiz-promo-badge {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.82);
+}
+.btn-quiz-promo {
+  display: inline-block;
+  background: linear-gradient(135deg, #F59E0B, #FCD34D);
+  color: #1a1200;
+  padding: 14px 40px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(251,191,36,0.4);
+  transition: opacity 0.18s, transform 0.15s;
+}
+.btn-quiz-promo:hover { opacity: 0.88; transform: translateY(-2px); color: #1a1200; }
 </style>
 <script type="application/ld+json">
 {
@@ -673,16 +841,47 @@ img { max-width: 100%; height: auto; }
       <span class="hero-badge"><strong>27</strong>本の解説記事</span>
       <span class="hero-badge"><strong>毎週</strong>情報更新</span>
     </div>
+
+    <!-- 診断ウィジェット -->
+    <div class="diag-widget">
+      <p class="diag-widget-title">あなたに合うサービスを絞り込む</p>
+      <div class="diag-steps">
+        <div>
+          <p class="diag-step-label">英語を学ぶ主な目的は？</p>
+          <div class="diag-options" id="diagGoal">
+            <button class="diag-opt" data-val="cospa" onclick="diagSelect(this,'goal')">コスパよく続けたい</button>
+            <button class="diag-opt" data-val="business" onclick="diagSelect(this,'goal')">ビジネス英語を強化</button>
+            <button class="diag-opt" data-val="sukima" onclick="diagSelect(this,'goal')">スキマ時間を活用</button>
+            <button class="diag-opt" data-val="native" onclick="diagSelect(this,'goal')">ネイティブと話したい</button>
+          </div>
+        </div>
+      </div>
+      <div class="diag-result" id="diagResult">
+        <p class="diag-result-label">おすすめのカテゴリ</p>
+        <p class="diag-result-text" id="diagResultText"></p>
+        <a href="#ranking" class="diag-result-link" id="diagResultLink" onclick="applyDiagFilter()">▼ 絞り込んで表示する</a>
+      </div>
+    </div>
+
     <p class="hero-updated">最終更新: 2026年02月20日</p>
     <p class="hero-owner"><a href="https://x.com/ichi_eigo" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:currentColor;vertical-align:-2px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> @ichi_eigo</a> が運営しています</p>
   </div>
 </section>
-<section class="section">
+<section class="section" id="ranking">
   <div class="container">
     <h2 class="section-title">オンライン英会話 おすすめランキング</h2>
     <p class="section-subtitle">コスパ重視・続けやすさで選ぶならオンライン英会話</p>
-    <div class="ranking-list">
-  <div class="ranking-card rank-1">
+    <!-- フィルタータブ -->
+    <div class="filter-bar">
+      <span class="filter-bar-label">絞り込み：</span>
+      <button class="filter-tab active" data-filter="all"     onclick="applyFilter(this)">すべて</button>
+      <button class="filter-tab"        data-filter="cospa"   onclick="applyFilter(this)">コスパ重視</button>
+      <button class="filter-tab"        data-filter="business" onclick="applyFilter(this)">ビジネス英語</button>
+      <button class="filter-tab"        data-filter="sukima"  onclick="applyFilter(this)">スキマ時間</button>
+      <button class="filter-tab"        data-filter="native"  onclick="applyFilter(this)">ネイティブ講師</button>
+    </div>
+    <div class="ranking-list" id="onlineRankingList">
+  <div class="ranking-card rank-1" data-tags="cospa sukima">
     <div class="rank-badge">1</div>
     <div class="card-body">
       <h3><a href="/services/dmm-eikaiwa/" style="text-decoration:none;color:inherit;">DMM英会話</a></h3>
@@ -696,7 +895,7 @@ img { max-width: 100%; height: auto; }
       <a href="/services/dmm-eikaiwa/" class="btn-secondary">詳細を見る</a>
     </div>
   </div>
-  <div class="ranking-card rank-2">
+  <div class="ranking-card rank-2" data-tags="business cospa">
     <div class="rank-badge">2</div>
     <div class="card-body">
       <h3><a href="/services/rarejob/" style="text-decoration:none;color:inherit;">レアジョブ英会話</a></h3>
@@ -710,7 +909,7 @@ img { max-width: 100%; height: auto; }
       <a href="/services/rarejob/" class="btn-secondary">詳細を見る</a>
     </div>
   </div>
-  <div class="ranking-card rank-3">
+  <div class="ranking-card rank-3" data-tags="cospa sukima">
     <div class="rank-badge">3</div>
     <div class="card-body">
       <h3><a href="/services/nativecamp/" style="text-decoration:none;color:inherit;">ネイティブキャンプ</a></h3>
@@ -724,7 +923,7 @@ img { max-width: 100%; height: auto; }
       <a href="/services/nativecamp/" class="btn-secondary">詳細を見る</a>
     </div>
   </div>
-  <div class="ranking-card ">
+  <div class="ranking-card" data-tags="cospa">
     <div class="rank-badge rank-other">4</div>
     <div class="card-body">
       <h3><a href="/services/studysapuri-english/" style="text-decoration:none;color:inherit;">スタディサプリENGLISH</a></h3>
@@ -738,7 +937,7 @@ img { max-width: 100%; height: auto; }
       <a href="/services/studysapuri-english/" class="btn-secondary">詳細を見る</a>
     </div>
   </div>
-  <div class="ranking-card ">
+  <div class="ranking-card" data-tags="business native">
     <div class="rank-badge rank-other">5</div>
     <div class="card-body">
       <h3><a href="/services/cambly/" style="text-decoration:none;color:inherit;">Cambly（キャンブリー）</a></h3>
@@ -752,7 +951,7 @@ img { max-width: 100%; height: auto; }
       <a href="/services/cambly/" class="btn-secondary">詳細を見る</a>
     </div>
   </div>
-  <div class="ranking-card ">
+  <div class="ranking-card" data-tags="business">
     <div class="rank-badge rank-other">6</div>
     <div class="card-body">
       <h3><a href="/services/bizmates/" style="text-decoration:none;color:inherit;">Bizmates（ビズメイツ）</a></h3>
@@ -766,7 +965,7 @@ img { max-width: 100%; height: auto; }
       <a href="/services/bizmates/" class="btn-secondary">詳細を見る</a>
     </div>
   </div>
-  <div class="ranking-card ">
+  <div class="ranking-card" data-tags="sukima native">
     <div class="rank-badge rank-other">7</div>
     <div class="card-body">
       <h3><a href="/services/esports-eikaiwa/" style="text-decoration:none;color:inherit;">eスポーツ英会話</a></h3>
@@ -780,7 +979,7 @@ img { max-width: 100%; height: auto; }
       <a href="/services/esports-eikaiwa/" class="btn-secondary">詳細を見る</a>
     </div>
   </div>
-  <div class="ranking-card ">
+  <div class="ranking-card" data-tags="cospa native">
     <div class="rank-badge rank-other">8</div>
     <div class="card-body">
       <h3><a href="/services/italki/" style="text-decoration:none;color:inherit;">italki（アイトーキー）</a></h3>
@@ -848,6 +1047,23 @@ img { max-width: 100%; height: auto; }
     </div>
   </div>
 </section>
+
+<!-- リスニングクイズ cross-promo -->
+<section class="quiz-promo">
+  <div class="quiz-promo-inner">
+    <div class="quiz-promo-eyecatch">🎧</div>
+    <h2>英語が<em>本当に</em>聞き取れるか、<br>試してみましょう</h2>
+    <p>日常会話・ビジネス・旅行など455問のリスニング問題を無料で体験できます。<br>問題に答えながら、自分の実力と課題が分かります。</p>
+    <div class="quiz-promo-badges">
+      <span class="quiz-promo-badge">455問収録</span>
+      <span class="quiz-promo-badge">3段階の難易度</span>
+      <span class="quiz-promo-badge">ヒント・解説付き</span>
+      <span class="quiz-promo-badge">無料で体験</span>
+    </div>
+    <a href="/listening/" class="btn-quiz-promo">リスニングクイズを試す →</a>
+  </div>
+</section>
+
 <section class="section section-alt">
   <div class="container">
     <h2 class="section-title">英語学習コラム</h2>
@@ -948,5 +1164,59 @@ img { max-width: 100%; height: auto; }
     </div>
   </div>
 </footer>
+<script>
+// ── 診断ウィジェット ──────────────────────────────
+var diagState = {};
+var diagMap = {
+  cospa:    { text: 'コスパ重視のオンライン英会話がおすすめです。DMM英会話・ネイティブキャンプは月額2,000円前後でコスパ最強。', filter: 'cospa' },
+  business: { text: 'ビジネス英語強化ならレアジョブ・Bizmates・Camblyが最適。目的に特化したカリキュラムで効率よく伸ばせます。', filter: 'business' },
+  sukima:   { text: 'スキマ時間ならDMM英会話・ネイティブキャンプ。予約不要・24時間対応で思い立ったらすぐ始められます。', filter: 'sukima' },
+  native:   { text: 'ネイティブ講師ならCambly・italki・eスポーツ英会話。本場の英語でリスニング力も自然に上がります。', filter: 'native' },
+};
+
+function diagSelect(el, step) {
+  var group = el.closest('.diag-options');
+  group.querySelectorAll('.diag-opt').forEach(function(b){ b.classList.remove('selected'); });
+  el.classList.add('selected');
+  diagState[step] = el.dataset.val;
+  showDiagResult();
+}
+
+function showDiagResult() {
+  var val = diagState.goal;
+  if (!val) return;
+  var info = diagMap[val];
+  document.getElementById('diagResultText').textContent = info.text;
+  document.getElementById('diagResult').classList.add('show');
+}
+
+var pendingFilter = null;
+function applyDiagFilter() {
+  var val = diagState.goal;
+  if (!val) return;
+  var filter = diagMap[val].filter;
+  var tab = document.querySelector('.filter-tab[data-filter="' + filter + '"]');
+  if (tab) { applyFilter(tab); }
+}
+
+// ── 目的別フィルタータブ ──────────────────────────
+function applyFilter(tab) {
+  document.querySelectorAll('.filter-tab').forEach(function(t){ t.classList.remove('active'); });
+  tab.classList.add('active');
+  var filter = tab.dataset.filter;
+  document.querySelectorAll('#onlineRankingList .ranking-card').forEach(function(card) {
+    if (filter === 'all') {
+      card.removeAttribute('data-hidden');
+    } else {
+      var tags = (card.dataset.tags || '').split(' ');
+      if (tags.indexOf(filter) >= 0) {
+        card.removeAttribute('data-hidden');
+      } else {
+        card.setAttribute('data-hidden', 'true');
+      }
+    }
+  });
+}
+</script>
 </body>
 </html>
