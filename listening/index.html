@@ -302,7 +302,7 @@
 
     /* ── PHILOSOPHY ── */
     .philosophy-section {
-      padding: 96px 0 104px;
+      padding: 88px 0 96px;
       background: linear-gradient(180deg, #070d1c 0%, #0a1428 60%, #070d1c 100%);
       border-top: 1px solid rgba(251,191,36,.12);
       border-bottom: 1px solid rgba(251,191,36,.12);
@@ -317,7 +317,7 @@
       pointer-events: none;
     }
     .philosophy-wrap {
-      max-width: 740px;
+      max-width: 620px;
       margin: 0 auto;
       padding: 0 24px;
     }
@@ -326,22 +326,31 @@
       font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: rgba(251,191,36,.6);
+      color: rgba(251,191,36,.55);
+      margin-bottom: 36px;
+      text-align: center;
+    }
+    /* 感情的フック — 中サイズ、中央揃え */
+    .philosophy-hook {
+      font-size: clamp(16px, 2.2vw, 19px);
+      color: rgba(255,255,255,.6);
+      line-height: 1.9;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    /* 説明文 — 小さめ、左揃え、読みやすい */
+    .philosophy-desc {
+      font-size: clamp(13px, 1.6vw, 14px);
+      color: rgba(255,255,255,.35);
+      line-height: 2.1;
       margin-bottom: 32px;
-      text-align: center;
     }
-    .philosophy-opener {
-      font-size: clamp(13px, 1.6vw, 15px);
-      color: rgba(255,255,255,.45);
-      line-height: 2;
-      margin-bottom: 40px;
-      text-align: center;
-    }
+    /* 大きな問いかけ — 太字・中央 */
     .philosophy-question {
-      font-size: clamp(20px, 3vw, 26px);
+      font-size: clamp(19px, 2.8vw, 24px);
       font-weight: 700;
       color: rgba(255,255,255,.9);
-      line-height: 1.6;
+      line-height: 1.65;
       text-align: center;
       margin-bottom: 56px;
     }
@@ -351,63 +360,65 @@
     }
     .philosophy-divider {
       width: 1px;
-      height: 64px;
+      height: 56px;
       background: linear-gradient(to bottom, transparent, rgba(251,191,36,.35), transparent);
-      margin: 0 auto 56px;
+      margin: 0 auto 48px;
     }
-    .philosophy-revelation {
-      font-size: clamp(14px, 1.8vw, 16px);
-      color: rgba(255,255,255,.6);
-      line-height: 2;
-      text-align: center;
-      margin-bottom: 48px;
+    /* 洞察テキスト — 左揃え */
+    .philosophy-insight {
+      font-size: clamp(14px, 1.8vw, 15px);
+      color: rgba(255,255,255,.58);
+      line-height: 2.1;
+      margin-bottom: 16px;
     }
-    .philosophy-revelation strong {
-      color: rgba(255,255,255,.9);
-      font-weight: 700;
-    }
+    .philosophy-insight:last-of-type { margin-bottom: 44px; }
+    .philosophy-insight strong { color: rgba(255,255,255,.88); font-weight: 700; }
+    /* 引用ブロック */
     .philosophy-quote {
       border: none;
-      padding: 32px 24px;
-      margin: 0 0 48px;
+      padding: 28px 24px 28px 28px;
+      margin: 0 0 44px;
       background: rgba(251,191,36,.06);
       border-left: 3px solid var(--gold);
       border-radius: 0 12px 12px 0;
     }
     .philosophy-quote p {
-      font-size: clamp(18px, 2.8vw, 24px);
+      font-size: clamp(16px, 2.4vw, 21px);
       font-weight: 700;
       color: var(--gold);
-      line-height: 1.65;
+      line-height: 1.75;
       font-style: italic;
     }
+    /* 締めテキスト — 左揃え */
     .philosophy-body {
-      font-size: clamp(14px, 1.8vw, 16px);
-      color: rgba(255,255,255,.55);
+      font-size: clamp(14px, 1.8vw, 15px);
+      color: rgba(255,255,255,.52);
       line-height: 2.1;
-      text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 0;
     }
-    .philosophy-body strong {
-      color: rgba(255,255,255,.85);
-    }
+    .philosophy-body strong { color: rgba(255,255,255,.85); }
+    /* 結論ボックス */
     .philosophy-conclusion {
-      margin-top: 56px;
-      padding: 36px 32px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(251,191,36,.18);
-      border-radius: 16px;
+      margin-top: 48px;
+      padding: 28px 28px;
+      background: rgba(255,255,255,.028);
+      border: 1px solid rgba(251,191,36,.16);
+      border-radius: 14px;
       text-align: center;
     }
     .philosophy-conclusion p {
-      font-size: clamp(15px, 2vw, 18px);
-      color: rgba(255,255,255,.75);
-      line-height: 1.85;
-      margin-bottom: 8px;
+      font-size: clamp(14px, 1.9vw, 17px);
+      color: rgba(255,255,255,.72);
+      line-height: 1.9;
+      margin-bottom: 6px;
     }
     .philosophy-conclusion p:last-child { margin-bottom: 0; }
-    .philosophy-conclusion strong {
-      color: var(--gold);
+    .philosophy-conclusion strong { color: var(--gold); }
+    .philosophy-tagline {
+      font-size: 12px !important;
+      color: rgba(255,255,255,.28) !important;
+      font-style: italic;
+      margin-top: 12px !important;
     }
 
     .section-eyebrow {
@@ -1366,8 +1377,7 @@
       <div class="hero-eyebadge">🎯 AI Listening Training</div>
       <h1 class="hero-h1">英語が、<br><span class="text-gold">聴こえ始める</span>。</h1>
       <p class="hero-sub">
-        ネイティブ音声を聴いて状況を判断する。<br>
-        最短で実践力が身につく、次世代のリスニングトレーニング。
+        ネイティブ音声を聴いて「状況のイメージ」をつかむ。一語一句ではなく、意味を直感で理解する力を育てます。
       </p>
       <div class="returning-stats" id="returningStats">
         <div class="rs-item"><span id="rsTotalAnswered">—</span><small>累計回答</small></div>
@@ -1423,7 +1433,7 @@
     <div class="feature-item">
       <span class="feature-icon">🆓</span>
       <div class="feature-text">
-        <strong>3問まで無料体験</strong>
+        <strong>毎日5問まで無料</strong>
         <span>登録不要・クレジットカード不要</span>
       </div>
     </div>
@@ -1435,43 +1445,39 @@
 
       <div class="philosophy-eyebrow">OUR PHILOSOPHY</div>
 
-      <p class="philosophy-opener">
-        「全部聞き取れなかった…」「あの単語、わからなかった…」<br>
-        そんなプレッシャーを、ずっと感じてきませんでしたか。
+      <p class="philosophy-hook">
+        「全部聞き取れなかった…」「あの単語、わからなかった…」そんなプレッシャーを、ずっと感じてきませんでしたか。
+      </p>
+
+      <p class="philosophy-desc">
+        何十年も変わらない、日本の英語学習のやり方があります。音声を聞き、スクリプトを確認し、聞き取れなかった単語をひとつずつ照合する。
       </p>
 
       <p class="philosophy-question">
-        何十年も変わらない、日本の英語学習のやり方があります。<br>
-        音声を聞き、スクリプトを確認し、<br>
-        聞き取れなかった単語をひとつずつ照合する。<br><br>
-        でも、正直に聞かせてください。<br>
-        それで、英語が<em>自由に話せる</em>ようになりましたか？
+        でも、正直に聞かせてください。それで、英語が<em>自由に話せる</em>ようになりましたか？
       </p>
 
       <div class="philosophy-divider"></div>
 
-      <p class="philosophy-revelation">
-        ネイティブスピーカーは、会話の中で<strong>一語一句を完璧に聞き取っているわけではありません。</strong><br>
-        言葉の「イメージ」を、瞬時にキャッチしているのです。<br><br>
-        その場面が頭の中に浮かぶかどうか。<br>
-        意味がつかめるかどうか。<br>
-        それだけが、会話に必要なことです。
+      <p class="philosophy-insight">
+        ネイティブスピーカーは、会話の中で<strong>一語一句を完璧に聞き取っているわけではありません。</strong>言葉の「イメージ」を、瞬時にキャッチしているのです。
+      </p>
+      <p class="philosophy-insight">
+        その場面が頭の中に浮かぶかどうか。意味がつかめるかどうか。それだけが、会話に必要なことです。
       </p>
 
       <blockquote class="philosophy-quote">
-        <p>「全スクリプトを、追いかけることをやめていい。<br>聴こえた英語から、場面のイメージをつかめれば、それが正解。」</p>
+        <p>「全スクリプトを追いかけることを、やめていい。聴こえた英語から場面のイメージをつかめれば、それが正解。」</p>
       </blockquote>
 
       <p class="philosophy-body">
-        不安を感じる必要はない。焦る必要もない。<br>
-        頭の中で<strong>絵が浮かんだ瞬間</strong>、英語は自分のものになります。<br>
-        そしてその瞬間こそが、スピーキングへの扉が自然に開く瞬間です。
+        不安を感じる必要はない。焦る必要もない。頭の中で<strong>絵が浮かんだ瞬間</strong>、英語は自分のものになります。そしてその瞬間こそが、スピーキングへの扉が自然に開く瞬間です。
       </p>
 
       <div class="philosophy-conclusion">
         <p>日本人が長年、課題として抱えてきたこと。</p>
         <p>それは才能でも、努力でもなく、<strong>アプローチの問題</strong>だったのです。</p>
-        <p style="margin-top:20px; font-size:0.88em; color:rgba(255,255,255,.4);">ListenUpは、そのことに気づいたところから生まれました。</p>
+        <p class="philosophy-tagline">ListenUpは、そのことに気づいたところから生まれました。</p>
       </div>
 
     </div>
@@ -1522,12 +1528,12 @@
           </div>
           <div style="height:26px"></div>
           <ul class="plan-feats">
-            <li class="feat-ok">1日 3問まで体験可能</li>
-            <li class="feat-ok">初級レベルの問題</li>
-            <li class="feat-ng">詳細解説・キーフレーズ</li>
-            <li class="feat-ng">スクリプト確認機能</li>
-            <li class="feat-ng">中級・上級レベル</li>
-            <li class="feat-ng">進捗管理・ストリーク</li>
+            <li class="feat-ok">毎日5問まで無料体験</li>
+            <li class="feat-ok">全難易度（初級〜上級）</li>
+            <li class="feat-ok">解説・キーフレーズ確認</li>
+            <li class="feat-ok">スクリプト確認機能</li>
+            <li class="feat-ng">毎日15問（メール登録後）</li>
+            <li class="feat-ng">毎日 無制限（プレミアム）</li>
           </ul>
           <button class="plan-btn plan-btn-ghost" onclick="startFreeQuiz()">今日の練習を試す（無料）</button>
         </div>
@@ -1557,7 +1563,7 @@
       <div class="diff-select-wrap" id="diffSelectWrap">
         <div class="section-eyebrow" style="margin-top:48px;text-align:center">ADAPTIVE QUIZ</div>
         <h3 class="diff-select-h" style="text-align:center">あなたに合わせて自動調整</h3>
-        <p style="text-align:center;color:var(--text-2);margin-bottom:28px;font-size:14px;line-height:1.7">正解・不正解に応じて問題の難易度が自動で変わります<br>選択不要、そのままスタートできます</p>
+        <p style="text-align:center;color:var(--text-2);margin-bottom:28px;font-size:14px;line-height:1.7">正解・不正解に応じて問題の難易度が自動で変わります。選択不要、そのままスタートできます。</p>
         <button class="start-btn" onclick="startPremiumTrial()">7日間無料で始める →</button>
         <p style="text-align:center;font-size:12px;color:var(--text-3);margin-top:10px">クレジットカード不要</p>
       </div>
@@ -1574,7 +1580,7 @@
   </div>
 
   <div class="lp-footer">
-    © 2025 ListenUp · すべての機能は7日間無料でお試しいただけます
+    © 2026 ListenUp · 7日間の無料体験、クレジットカード不要
   </div>
 
 </div>
