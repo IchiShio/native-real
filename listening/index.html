@@ -642,6 +642,60 @@
       background: rgba(0,0,0,0.08);
       color: var(--text-1);
     }
+    /* Monitor plan (teal) */
+    .pricing-monitor {
+      border-color: #14B8A6;
+      background: rgba(20,184,166,0.05);
+      box-shadow: 0 0 48px rgba(20,184,166,0.12), 0 0 0 1px rgba(20,184,166,0.25);
+    }
+    .plan-rec-badge-teal {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #0D9488, #14B8A6);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .pricing-monitor .plan-price { color: #14B8A6; }
+    .plan-btn-teal {
+      background: linear-gradient(135deg, #0D9488 0%, #14B8A6 50%, #2DD4BF 100%);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(20,184,166,0.28);
+    }
+    .plan-btn-teal:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 36px rgba(20,184,166,0.45);
+      filter: brightness(1.05);
+    }
+    .spots-display {
+      margin: 14px 0 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-2);
+    }
+    .spots-num { color: #14B8A6; font-weight: 800; }
+    .spots-bar {
+      height: 4px;
+      background: rgba(0,0,0,0.08);
+      border-radius: 2px;
+      margin-top: 6px;
+      overflow: hidden;
+    }
+    .spots-fill {
+      height: 100%;
+      width: 85%;
+      background: linear-gradient(90deg, #0D9488, #14B8A6);
+      border-radius: 2px;
+    }
+    .feat-star { color: var(--text-1); font-weight: 600; }
+    .feat-star::before { content: '★'; color: #14B8A6; font-weight: 700; flex-shrink: 0; }
 
     /* ── DIFFICULTY SELECTION (within landing) ── */
     .diff-select-wrap {
@@ -1820,9 +1874,9 @@
       </div>
       <div class="hero-ctas">
         <button class="btn-primary-lg" id="freeTrialBtn" onclick="startFreeQuiz()">今日の練習を始める</button>
-        <button class="btn-ghost" onclick="openWaitlist()">ウェイトリストに登録 →</button>
+        <button class="btn-ghost" onclick="openWaitlist()">モニター募集（限定20名）→</button>
       </div>
-      <p class="hero-fine">毎日5問まで無料 · メール登録で20問＋進捗管理 · プレミアムは近日公開</p>
+      <p class="hero-fine">毎日5問まで無料 · メール登録で20問＋学習記録 · プレミアム モニター募集中</p>
     </div>
   </section>
 
@@ -1960,26 +2014,33 @@
             <li class="feat-ok">毎日5問（登録不要）</li>
             <li class="feat-ok">解説・キーフレーズ</li>
             <li class="feat-ok">メール登録で<strong>20問</strong>まで無料</li>
-            <li class="feat-ok">学習進捗管理（メール登録後）</li>
-            <li class="feat-ng">毎日 無制限（プレミアム）</li>
+            <li class="feat-ok">メール登録で学習記録あり</li>
+            <li class="feat-ng">苦手問題の自動復習</li>
+            <li class="feat-ng">新問題 毎週追加</li>
           </ul>
           <button class="plan-btn plan-btn-ghost" onclick="startFreeQuiz()">今日の練習を試す（無料）</button>
         </div>
 
-        <!-- Premium Plan -->
-        <div class="pricing-card pricing-featured reveal reveal-delay-2">
-          <div class="plan-rec-badge">近日公開</div>
-          <div class="plan-label">プレミアムプラン</div>
+        <!-- Monitor / Premium Plan -->
+        <div class="pricing-card pricing-monitor reveal reveal-delay-2">
+          <div class="plan-rec-badge-teal">モニター募集 · 限定20名</div>
+          <div class="plan-label">プレミアム モニタープラン</div>
           <div class="plan-price-wrap">
-            <span class="plan-price" style="font-size:22px;letter-spacing:0">近日公開</span>
+            <span class="plan-price" style="color:#14B8A6">¥0</span>
           </div>
-          <div class="plan-trial-text">ウェイトリスト受付中</div>
+          <div class="plan-trial-text" style="color:#14B8A6">モニター期間中は無料 · 正式版で特別価格</div>
+          <div class="spots-display">
+            残り <span class="spots-num">17</span> / 20名
+            <div class="spots-bar"><div class="spots-fill"></div></div>
+          </div>
           <ul class="plan-feats">
             <li class="feat-ok">毎日 <strong>無制限</strong></li>
-            <li class="feat-ok">進捗管理 & ストリーク</li>
+            <li class="feat-star">苦手問題の自動復習</li>
             <li class="feat-ok">新問題 毎週追加</li>
+            <li class="feat-ok">学習記録・進捗管理</li>
+            <li class="feat-ok">正式版リリース時の特別価格</li>
           </ul>
-          <button class="plan-btn plan-btn-gold" onclick="openWaitlist()">ウェイトリストに登録 →</button>
+          <button class="plan-btn plan-btn-teal" onclick="openWaitlist()">モニターに応募する →</button>
         </div>
       </div>
 
@@ -2019,7 +2080,7 @@
         <span class="dm-dot" id="dmDot4"></span>
       </span>
       今日 <span id="freeAnsweredCount">0</span>/20問
-      <a onclick="openWaitlist()">→ ウェイトリスト登録</a>
+      <a onclick="openWaitlist()">→ モニターに応募</a>
     </div>
 
     <!-- Question counter -->
@@ -2096,15 +2157,15 @@
     </p>
     <ul class="paywall-feats">
       <li>毎日 無制限に練習できる</li>
-      <li>全難易度（初級〜上級）が解放される</li>
-      <li>詳細解説 & キーフレーズが確認できる</li>
-      <li>スクリプト確認で英文をチェックできる</li>
-      <li>進捗管理 & ストリークで継続できる</li>
+      <li>苦手問題を自動で復習できる</li>
+      <li>新問題が毎週追加される</li>
+      <li>学習記録・進捗管理が使える</li>
+      <li>正式版リリース時の特別価格が適用される</li>
     </ul>
     <div class="paywall-price">
-      <span class="trial-note">近日公開予定 · ウェイトリスト受付中</span>
+      <span class="trial-note">モニター期間中は無料 · 残り17名</span>
     </div>
-    <button class="paywall-cta" onclick="openWaitlist()">ウェイトリストに登録 →</button>
+    <button class="paywall-cta" onclick="openWaitlist()">モニターに応募する →</button>
     <a class="paywall-skip" onclick="closePaywall()">デモ用：スキップして続ける（実際の製品では非表示）</a>
   </div>
 </div>
@@ -2126,7 +2187,7 @@
     </div>
     <div class="mission-week" id="missionWeek"></div>
     <button class="mission-btn-back" onclick="closeMissionComplete()">← TOPに戻る</button>
-    <button class="mission-btn-premium" onclick="openWaitlist()">ウェイトリストに登録 →</button>
+    <button class="mission-btn-premium" onclick="openWaitlist()">モニターに応募する →</button>
   </div>
 </div>
 
