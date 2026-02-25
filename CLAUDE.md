@@ -22,6 +22,7 @@
 - `CNAME` -- カスタムドメイン設定（`native-real.com`）
 - `sitemap.xml` / `robots.txt` -- SEO設定
 - `listening/` -- 英語リスニングクイズ（455問・464 MP3・適応型難易度アルゴリズム）
+- `privacy/index.html` -- プライバシーポリシーページ（特定電子メール法・個人情報保護法準拠、noindex）
 
 ## index.html の主な機能（2026-02-25更新）
 
@@ -52,8 +53,19 @@
 - **日本語仮訳**（2026-02-25実装）:
   - 各問題に `ja` フィールド追加（Claude Haiku で生成）
   - 回答後のトランスクリプト欄に英文スクリプトの下に表示
+- **メールゲート（Email Gate）**（2026-02-25実装）:
+  - 定数: `EG_TRIGGER=5`（5問後に表示）、`FREE_DAILY_LIMIT=15`（登録後1日15問）
+  - Beehiiv API: `https://api.beehiiv.com/v2/publications/pub_9b2ae59d-7a25-49f8-be58-793c82e4a498/subscriptions`
+  - 登録済み判定: `localStorage.getItem('eg_registered')` が `'1'` かどうか
+  - スキップ = その日の練習終了（`showMissionComplete()` を呼ぶ）
+  - 未登録ユーザーは `freeMode=false`（メールゲートに到達させる）、登録後は `freeMode=true`（15問制限）
+  - 同意文: `privacy/index.html` へのリンクを含む（特定電子メール法準拠）
+- **フィロソフィーセクション**（2026-02-25実装）:
+  - Steve Jobs スタイル、共感型セールスコピー（上から目線禁止）
+  - `max-width: 620px`、`text-wrap: balance` で行均等化
+  - クラス構成: `.philosophy-hook`（感情フック）→ `.philosophy-desc`（旧学習法の描写、薄色）→ `.philosophy-question`（大きな問いかけ）→ `.philosophy-insight`（洞察）→ `.philosophy-quote`（blockquote、ゴールドボーダー）→ `.philosophy-body` → `.philosophy-conclusion`
 
-## listening/ のCSS設計（2026-02-24更新）
+## listening/ のCSS設計（2026-02-25更新）
 
 - **ブレークポイント**: base(mobile) / 640px(tablet) / 1024px(desktop 2カラム)
 - **高さクエリ**: `@media (max-height: 700px)` — iPhone SE等の短い画面向け圧縮
