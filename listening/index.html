@@ -2520,7 +2520,9 @@ document.getElementById('egForm').addEventListener('submit', async function(e) {
 
 document.getElementById('egSkip').addEventListener('click', function() {
   localStorage.setItem(EG_SKIP_KEY, new Date().toDateString());
-  closeEmailGate(false); // スキップは続きをしない（無料制限内で継続）
+  document.getElementById('egOverlay').style.display = 'none';
+  document.body.style.overflow = '';
+  next(); // スキップ後はそのまま次の問題へ（ゲートをスルー）
 });
 
 // ─────────────────────────────────────────
