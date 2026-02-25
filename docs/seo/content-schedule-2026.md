@@ -178,11 +178,11 @@ SERPで「〇〇 vs △△」「〇〇 評判」を狙う。サービスペー�
 | 6 | english-coaching-individual | ✅ 公開済 | 2/26 |
 | 7 | senior-online-eikaiwa | ✅ 公開済 | 2/26 |
 | 8 | adult-online-eikaiwa-guide | ✅ 公開済 | 2/26 |
-| 9 | dmm-vs-nativecamp | ⬜ 未着手 | 4/3 |
-| 10 | rarejob-vs-dmm | ⬜ 未着手 | 4/7 |
-| 11 | cambly-review-article | ⬜ 未着手 | 4/14 |
-| 12 | bizmates-review-article | ⬜ 未着手 | 4/17 |
-| 13 | nativecamp-review-article | ⬜ 未着手 | 4/24 |
+| 9 | dmm-vs-nativecamp | ✅ 公開済 | 2/26 |
+| 10 | rarejob-vs-dmm | ✅ 公開済 | 2/26 |
+| 11 | cambly-review-article | ✅ 公開済 | 2/26 |
+| 12 | bizmates-review-article | ✅ 公開済 | 2/26 |
+| 13 | nativecamp-review-article | ✅ 公開済 | 2/26 |
 | 14 | english-self-study-vs-eikaiwa | ⬜ 未着手 | 5/7 |
 | 15 | english-listening-study-guide | ⬜ 未着手 | 5/14 |
 | 16 | english-habit-guide | ⬜ 未着手 | 5/21 |
