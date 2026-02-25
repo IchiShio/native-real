@@ -175,9 +175,9 @@ SERPで「〇〇 vs △△」「〇〇 評判」を狙う。サービスペー�
 | 3 | english-coaching-cheap | ✅ 公開済 | 2/26 |
 | 4 | junior-high-online-eikaiwa | ✅ 公開済 | 2/26 |
 | 5 | business-english-online-eikaiwa | ✅ 公開済 | 2/26 |
-| 6 | english-coaching-individual | ⬜ 未着手 | 3/20 |
-| 7 | senior-online-eikaiwa | ⬜ 未着手 | 3/24 |
-| 8 | adult-online-eikaiwa-guide | ⬜ 未着手 | 3/28 |
+| 6 | english-coaching-individual | ✅ 公開済 | 2/26 |
+| 7 | senior-online-eikaiwa | ✅ 公開済 | 2/26 |
+| 8 | adult-online-eikaiwa-guide | ✅ 公開済 | 2/26 |
 | 9 | dmm-vs-nativecamp | ⬜ 未着手 | 4/3 |
 | 10 | rarejob-vs-dmm | ⬜ 未着手 | 4/7 |
 | 11 | cambly-review-article | ⬜ 未着手 | 4/14 |
