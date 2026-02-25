@@ -62,19 +62,19 @@
     }
     .orb-1 {
       width: 700px; height: 700px;
-      background: radial-gradient(circle at center, rgba(59,91,219,0.06), transparent 70%);
+      background: radial-gradient(circle at center, rgba(59,91,219,0.10), transparent 70%);
       top: -250px; left: -200px;
       animation: float1 16s ease-in-out infinite;
     }
     .orb-2 {
       width: 500px; height: 500px;
-      background: radial-gradient(circle at center, rgba(245,166,35,0.10), transparent 70%);
+      background: radial-gradient(circle at center, rgba(245,166,35,0.16), transparent 70%);
       top: 25%; right: -150px;
       animation: float2 20s ease-in-out infinite;
     }
     .orb-3 {
       width: 450px; height: 450px;
-      background: radial-gradient(circle at center, rgba(124,58,237,0.05), transparent 70%);
+      background: radial-gradient(circle at center, rgba(124,58,237,0.08), transparent 70%);
       bottom: -100px; left: 15%;
       animation: float3 24s ease-in-out infinite;
     }
@@ -1352,6 +1352,100 @@
   .eg-skip{background:none;border:none;color:rgba(0,0,0,.38);font-size:.75rem;cursor:pointer;margin-top:14px;text-decoration:underline;transition:color .18s;display:block;width:100%;}
   .eg-skip:hover{color:rgba(0,0,0,.6);}
   @media(max-width:480px){.eg-card{padding:28px 20px 24px;}.eg-title{font-size:1.45rem;}}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.18s; }
+.reveal-delay-3 { transition-delay: 0.28s; }
+
+/* ── CURSOR SPOTLIGHT ── */
+#cursorSpot {
+  position: fixed;
+  width: 480px; height: 480px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle at center, rgba(245,166,35,0.07) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: left 0.06s linear, top 0.06s linear, opacity 0.4s;
+  opacity: 0;
+}
+
+/* ── HERO WAVEFORM DECORATION ── */
+.hero-wave-deco {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 48px;
+  margin: 28px auto 32px;
+  animation: fadeUp 0.6s 0.35s ease-out both;
+}
+.hero-wave-deco .hwb {
+  width: 4px;
+  border-radius: 2px;
+  background: var(--gold);
+  opacity: 0.55;
+  animation: hero-wave-anim 1.8s ease-in-out infinite;
+}
+.hero-wave-deco .hwb:nth-child(1)  { height: 12px; animation-delay: 0.00s; }
+.hero-wave-deco .hwb:nth-child(2)  { height: 20px; animation-delay: 0.12s; }
+.hero-wave-deco .hwb:nth-child(3)  { height: 32px; animation-delay: 0.22s; }
+.hero-wave-deco .hwb:nth-child(4)  { height: 44px; animation-delay: 0.08s; }
+.hero-wave-deco .hwb:nth-child(5)  { height: 36px; animation-delay: 0.18s; }
+.hero-wave-deco .hwb:nth-child(6)  { height: 48px; animation-delay: 0.30s; }
+.hero-wave-deco .hwb:nth-child(7)  { height: 40px; animation-delay: 0.10s; }
+.hero-wave-deco .hwb:nth-child(8)  { height: 48px; animation-delay: 0.20s; }
+.hero-wave-deco .hwb:nth-child(9)  { height: 36px; animation-delay: 0.05s; }
+.hero-wave-deco .hwb:nth-child(10) { height: 24px; animation-delay: 0.25s; }
+.hero-wave-deco .hwb:nth-child(11) { height: 14px; animation-delay: 0.15s; }
+@keyframes hero-wave-anim {
+  0%, 100% { transform: scaleY(0.3); opacity: 0.3; }
+  50%       { transform: scaleY(1);   opacity: 0.8; }
+}
+
+/* ── STEP CARD ENHANCED HOVER ── */
+.step-card:hover {
+  border-color: rgba(245,166,35,0.45) !important;
+  box-shadow: 0 12px 48px rgba(245,166,35,0.12), 0 0 0 1px rgba(245,166,35,0.2) !important;
+  transform: translateY(-6px) !important;
+}
+
+/* ── PRICING CARD ENHANCED HOVER ── */
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+.pricing-featured:hover {
+  box-shadow: 0 16px 56px rgba(245,166,35,0.22), 0 0 0 1px rgba(245,166,35,0.35) !important;
+}
+
+/* ── FEATURE ITEM HOVER ── */
+.feature-item {
+  transition: background 0.22s ease;
+  cursor: default;
+}
+.feature-item:hover {
+  background: rgba(245,166,35,0.04);
+}
+
+/* ── FLOATING BLOBS (additional) ── */
+.orb-4 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle at center, rgba(245,166,35,0.06), transparent 70%);
+  top: 60%; right: 5%;
+  animation: float2 28s ease-in-out infinite reverse;
+}
   </style>
 </head>
 <body>
@@ -1364,6 +1458,8 @@
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+<div id="cursorSpot"></div>
 
 <!-- Mockup Banner -->
 <div class="mockup-banner">
@@ -1412,6 +1508,19 @@
         <div class="wk-item"><div class="wk-label">土</div><div class="wk-dot" id="wkd5"></div></div>
         <div class="wk-item"><div class="wk-label">日</div><div class="wk-dot" id="wkd6"></div></div>
       </div>
+      <div class="hero-wave-deco">
+        <div class="hwb"></div>
+        <div class="hwb"></div>
+        <div class="hwb"></div>
+        <div class="hwb"></div>
+        <div class="hwb"></div>
+        <div class="hwb"></div>
+        <div class="hwb"></div>
+        <div class="hwb"></div>
+        <div class="hwb"></div>
+        <div class="hwb"></div>
+        <div class="hwb"></div>
+      </div>
       <div class="hero-ctas">
         <button class="btn-primary-lg" id="freeTrialBtn" onclick="startFreeQuiz()">今日の練習を始める</button>
         <button class="btn-ghost" onclick="openWaitlist()">ウェイトリストに登録 →</button>
@@ -1422,16 +1531,16 @@
 
 
   <!-- ── Feature Strip ── -->
-  <div class="feature-strip">
-    <div class="feature-item">
+  <div class="feature-strip reveal">
+    <div class="feature-item reveal reveal-delay-1">
       <span class="feature-icon">🎧</span>
       <div class="feature-text"><strong>ネイティブ音声</strong></div>
     </div>
-    <div class="feature-item">
+    <div class="feature-item reveal reveal-delay-2">
       <span class="feature-icon">📊</span>
       <div class="feature-text"><strong>全455問・3難易度</strong></div>
     </div>
-    <div class="feature-item">
+    <div class="feature-item reveal reveal-delay-3">
       <span class="feature-icon">✅</span>
       <div class="feature-text"><strong>即時フィードバック</strong></div>
     </div>
@@ -1442,7 +1551,7 @@
   </div>
 
   <!-- ── PHILOSOPHY ── -->
-  <section class="philosophy-section">
+  <section class="philosophy-section reveal">
     <div class="philosophy-wrap">
 
       <div class="philosophy-eyebrow">OUR PHILOSOPHY</div>
@@ -1474,26 +1583,26 @@
   </section>
 
   <!-- ── SECTION 3: How It Works ── -->
-  <section class="lp-section">
+  <section class="lp-section reveal">
     <div class="lp-wrap">
       <div class="section-eyebrow">HOW IT WORKS</div>
       <h2 class="section-h2">3ステップで<span class="text-gold">耳が変わる</span></h2>
       <div class="steps-row">
-        <div class="step-card">
+        <div class="step-card reveal reveal-delay-1">
           <div class="step-no">01</div>
           <div class="step-icon">🎧</div>
           <h3>聴く</h3>
           <p>ネイティブの自然な会話を、繰り返し聴く。</p>
         </div>
         <div class="step-connector">→</div>
-        <div class="step-card">
+        <div class="step-card reveal reveal-delay-2">
           <div class="step-no">02</div>
           <div class="step-icon">🧠</div>
           <h3>選ぶ</h3>
           <p>どんな場面か、5択で答える。</p>
         </div>
         <div class="step-connector">→</div>
-        <div class="step-card">
+        <div class="step-card reveal reveal-delay-3">
           <div class="step-no">03</div>
           <div class="step-icon">💡</div>
           <h3>掴む</h3>
@@ -1504,14 +1613,14 @@
   </section>
 
   <!-- ── SECTION 4: Pricing ── -->
-  <section class="lp-section-alt" id="pricingSection">
+  <section class="lp-section-alt reveal" id="pricingSection">
     <div class="lp-wrap">
       <div class="section-eyebrow">PRICING</div>
       <h2 class="section-h2">シンプルな料金プラン</h2>
 
       <div class="pricing-row">
         <!-- Free Plan -->
-        <div class="pricing-card">
+        <div class="pricing-card reveal reveal-delay-1">
           <div class="plan-label">無料プラン</div>
           <div class="plan-price-wrap">
             <span class="plan-price">¥0</span>
@@ -1527,7 +1636,7 @@
         </div>
 
         <!-- Premium Plan -->
-        <div class="pricing-card pricing-featured">
+        <div class="pricing-card pricing-featured reveal reveal-delay-2">
           <div class="plan-rec-badge">近日公開</div>
           <div class="plan-label">プレミアムプラン</div>
           <div class="plan-price-wrap">
@@ -1549,7 +1658,7 @@
   </section>
 
   <!-- ── SECTION 6: Bottom CTA ── -->
-  <div class="lp-bottom-cta">
+  <div class="lp-bottom-cta reveal">
     <div class="lp-wrap">
       <h2>今日から、始めよう。</h2>
       <button class="btn-primary-lg" id="bottomStartBtn" onclick="startFreeQuiz()">今日の練習を始める</button>
@@ -2882,6 +2991,34 @@ document.addEventListener('DOMContentLoaded', function() {
     showMissionComplete();
   });
 });
+
+// ── SCROLL REVEAL ──
+(function() {
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+})();
+
+// ── CURSOR SPOTLIGHT ──
+(function() {
+  const spot = document.getElementById('cursorSpot');
+  if (!spot || window.matchMedia('(hover: none)').matches) return; // skip on touch
+  let visible = false;
+  document.addEventListener('mousemove', (e) => {
+    spot.style.left = e.clientX + 'px';
+    spot.style.top  = e.clientY + 'px';
+    if (!visible) { spot.style.opacity = '1'; visible = true; }
+  });
+  document.addEventListener('mouseleave', () => {
+    spot.style.opacity = '0'; visible = false;
+  });
+})();
 
 </script>
 <canvas id="confettiCanvas" style="position:fixed;inset:0;pointer-events:none;z-index:9999;display:none"></canvas>
