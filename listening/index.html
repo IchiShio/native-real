@@ -300,6 +300,116 @@
       border-bottom: 1px solid var(--border);
     }
 
+    /* ── PHILOSOPHY ── */
+    .philosophy-section {
+      padding: 96px 0 104px;
+      background: linear-gradient(180deg, #070d1c 0%, #0a1428 60%, #070d1c 100%);
+      border-top: 1px solid rgba(251,191,36,.12);
+      border-bottom: 1px solid rgba(251,191,36,.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .philosophy-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(251,191,36,.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .philosophy-wrap {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .philosophy-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(251,191,36,.6);
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .philosophy-opener {
+      font-size: clamp(13px, 1.6vw, 15px);
+      color: rgba(255,255,255,.45);
+      line-height: 2;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .philosophy-question {
+      font-size: clamp(20px, 3vw, 26px);
+      font-weight: 700;
+      color: rgba(255,255,255,.9);
+      line-height: 1.6;
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .philosophy-question em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .philosophy-divider {
+      width: 1px;
+      height: 64px;
+      background: linear-gradient(to bottom, transparent, rgba(251,191,36,.35), transparent);
+      margin: 0 auto 56px;
+    }
+    .philosophy-revelation {
+      font-size: clamp(14px, 1.8vw, 16px);
+      color: rgba(255,255,255,.6);
+      line-height: 2;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .philosophy-revelation strong {
+      color: rgba(255,255,255,.9);
+      font-weight: 700;
+    }
+    .philosophy-quote {
+      border: none;
+      padding: 32px 24px;
+      margin: 0 0 48px;
+      background: rgba(251,191,36,.06);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 12px 12px 0;
+    }
+    .philosophy-quote p {
+      font-size: clamp(18px, 2.8vw, 24px);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1.65;
+      font-style: italic;
+    }
+    .philosophy-body {
+      font-size: clamp(14px, 1.8vw, 16px);
+      color: rgba(255,255,255,.55);
+      line-height: 2.1;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .philosophy-body strong {
+      color: rgba(255,255,255,.85);
+    }
+    .philosophy-conclusion {
+      margin-top: 56px;
+      padding: 36px 32px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(251,191,36,.18);
+      border-radius: 16px;
+      text-align: center;
+    }
+    .philosophy-conclusion p {
+      font-size: clamp(15px, 2vw, 18px);
+      color: rgba(255,255,255,.75);
+      line-height: 1.85;
+      margin-bottom: 8px;
+    }
+    .philosophy-conclusion p:last-child { margin-bottom: 0; }
+    .philosophy-conclusion strong {
+      color: var(--gold);
+    }
+
     .section-eyebrow {
       font-size: 10px;
       font-weight: 700;
@@ -1318,6 +1428,54 @@
       </div>
     </div>
   </div>
+
+  <!-- ── PHILOSOPHY ── -->
+  <section class="philosophy-section">
+    <div class="philosophy-wrap">
+
+      <div class="philosophy-eyebrow">OUR PHILOSOPHY</div>
+
+      <p class="philosophy-opener">
+        「全部聞き取れなかった…」「あの単語、わからなかった…」<br>
+        そんなプレッシャーを、ずっと感じてきませんでしたか。
+      </p>
+
+      <p class="philosophy-question">
+        何十年も変わらない、日本の英語学習のやり方があります。<br>
+        音声を聞き、スクリプトを確認し、<br>
+        聞き取れなかった単語をひとつずつ照合する。<br><br>
+        でも、正直に聞かせてください。<br>
+        それで、英語が<em>自由に話せる</em>ようになりましたか？
+      </p>
+
+      <div class="philosophy-divider"></div>
+
+      <p class="philosophy-revelation">
+        ネイティブスピーカーは、会話の中で<strong>一語一句を完璧に聞き取っているわけではありません。</strong><br>
+        言葉の「イメージ」を、瞬時にキャッチしているのです。<br><br>
+        その場面が頭の中に浮かぶかどうか。<br>
+        意味がつかめるかどうか。<br>
+        それだけが、会話に必要なことです。
+      </p>
+
+      <blockquote class="philosophy-quote">
+        <p>「全スクリプトを、追いかけることをやめていい。<br>聴こえた英語から、場面のイメージをつかめれば、それが正解。」</p>
+      </blockquote>
+
+      <p class="philosophy-body">
+        不安を感じる必要はない。焦る必要もない。<br>
+        頭の中で<strong>絵が浮かんだ瞬間</strong>、英語は自分のものになります。<br>
+        そしてその瞬間こそが、スピーキングへの扉が自然に開く瞬間です。
+      </p>
+
+      <div class="philosophy-conclusion">
+        <p>日本人が長年、課題として抱えてきたこと。</p>
+        <p>それは才能でも、努力でもなく、<strong>アプローチの問題</strong>だったのです。</p>
+        <p style="margin-top:20px; font-size:0.88em; color:rgba(255,255,255,.4);">ListenUpは、そのことに気づいたところから生まれました。</p>
+      </div>
+
+    </div>
+  </section>
 
   <!-- ── SECTION 3: How It Works ── -->
   <section class="lp-section">
