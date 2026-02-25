@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>プライバシーポリシー | 英語学習サービス比較ナビ</title>
+  <meta name="description" content="英語学習サービス比較ナビおよびListenUpリスニングクイズのプライバシーポリシー。個人情報の取り扱いについて説明します。">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --primary: #b85c45;
+  --primary-light: #d4735f;
+  --text: #2c2520;
+  --text-muted: #7a6e68;
+  --bg: #fffbf7;
+  --bg-gray: #fdf5ef;
+  --border: #e8d5c4;
+  --radius: 12px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--text);
+  background: var(--bg);
+}
+a { color: var(--primary); }
+a:hover { color: var(--primary-light); }
+.container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.site-header {
+  background: #2c2520;
+  color: white;
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+.site-header .container { display: flex; align-items: center; justify-content: space-between; }
+.site-header .logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+.site-header nav a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  margin-left: 24px;
+  font-size: 0.88rem;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.site-header nav a:hover { color: white; border-color: #f0a080; }
+
+/* Hamburger */
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; width: 36px; height: 36px; position: relative; z-index: 102; }
+.hamburger span { display: block; width: 22px; height: 2px; background: white; margin: 5px auto; border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-nav-overlay { display: none; position: fixed; inset: 0; background: rgba(44,37,32,0.95); z-index: 101; flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
+.mobile-nav-overlay.active { display: flex; }
+.mobile-nav-overlay a { color: white; text-decoration: none; font-size: 1.2rem; font-weight: 600; padding: 12px 24px; border-radius: var(--radius); transition: background 0.2s; }
+.mobile-nav-overlay a:hover { background: rgba(255,255,255,0.1); }
+
+/* Page hero */
+.page-hero {
+  background: var(--bg-gray);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 0 32px;
+}
+.page-hero h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text);
+}
+.page-hero p {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Main content */
+.policy-body {
+  padding: 48px 0 80px;
+}
+.policy-section {
+  margin-bottom: 40px;
+}
+.policy-section h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  border-left: 4px solid var(--primary);
+  padding-left: 12px;
+  margin-bottom: 14px;
+}
+.policy-section p {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.policy-section ul {
+  list-style: disc;
+  padding-left: 24px;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.policy-section ul li {
+  margin-bottom: 6px;
+}
+.policy-section .note {
+  background: var(--bg-gray);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 12px;
+}
+.updated {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+/* Footer */
+.site-footer {
+  background: #2c2520;
+  color: rgba(255,255,255,0.65);
+  padding: 48px 0 24px;
+  font-size: 0.88rem;
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.site-footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+.site-footer a:hover { color: #f0a080; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+}
+
+@media (max-width: 640px) {
+  .site-header nav { display: none; }
+  .hamburger { display: block; }
+  .page-hero h1 { font-size: 1.3rem; }
+}
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="logo">英語学習サービス比較ナビ</a>
+    <nav>
+      <a href="/">ランキング</a>
+      <a href="/articles/">学習コラム</a>
+      <a href="/listening/">リスニングクイズ</a>
+    </nav>
+    <button class="hamburger" aria-label="メニューを開く" onclick="document.querySelector('.hamburger').classList.toggle('active');document.querySelector('.mobile-nav-overlay').classList.toggle('active');document.body.style.overflow=document.querySelector('.mobile-nav-overlay').classList.contains('active')?'hidden':'';">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="mobile-nav-overlay" onclick="if(event.target===this||event.target.tagName==='A'){this.classList.remove('active');document.querySelector('.hamburger').classList.remove('active');document.body.style.overflow='';}">
+  <a href="/">ランキング</a>
+  <a href="/articles/">学習コラム</a>
+  <a href="/listening/">リスニングクイズ</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>プライバシーポリシー</h1>
+    <p>個人情報の取り扱いおよびメールマガジンの配信に関するポリシーです</p>
+  </div>
+</section>
+
+<main class="policy-body">
+  <div class="container">
+    <p class="updated">最終更新日：2026年2月25日</p>
+
+    <div class="policy-section">
+      <h2>1. 運営者情報</h2>
+      <p>本サービス（英語学習サービス比較ナビ / ListenUp英語リスニングクイズ）は、以下の者が運営しています。</p>
+      <ul>
+        <li>運営者名：いち英語</li>
+        <li>お問い合わせ：<a href="mailto:ichieigo7@gmail.com">ichieigo7@gmail.com</a></li>
+        <li>サイトURL：<a href="https://native-real.com">https://native-real.com</a></li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>2. 収集する個人情報</h2>
+      <p>本サービスでは、以下の個人情報を収集することがあります。</p>
+      <ul>
+        <li>メールアドレス（ニュースレター登録時）</li>
+        <li>クイズの学習履歴（ブラウザのローカルストレージに保存。サーバーへの送信なし）</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>3. 利用目的</h2>
+      <p>収集したメールアドレスは、以下の目的のみに使用します。</p>
+      <ul>
+        <li>英語学習に関するニュースレター・学習コンテンツの配信</li>
+        <li>サービスに関する重要なお知らせの送信</li>
+      </ul>
+      <p>取得した個人情報は、上記の目的以外には使用しません。</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>4. 第三者提供・外部サービスへの委託</h2>
+      <p>メールマガジンの配信には、米国 Beehiiv, Inc.（<a href="https://www.beehiiv.com" target="_blank" rel="noopener">beehiiv.com</a>）が提供するサービスを利用しています。登録されたメールアドレスは、配信目的のためBeehiivのサーバーに保存されます。</p>
+      <p>Beehiivのプライバシーポリシーは <a href="https://www.beehiiv.com/privacy" target="_blank" rel="noopener">こちら</a> をご確認ください。</p>
+      <p>上記以外の第三者に個人情報を提供することはありません（法令に基づく場合を除く）。</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>5. メールマガジンの配信停止</h2>
+      <p>ニュースレターの受信を停止したい場合は、配信メールの最下部にある「配信停止」リンクからいつでも解除できます。また、<a href="mailto:ichieigo7@gmail.com">ichieigo7@gmail.com</a> へご連絡いただいても対応いたします。</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>6. Cookieおよびアクセス解析</h2>
+      <p>本サイトでは、以下の目的でCookieおよび類似技術を使用することがあります。</p>
+      <ul>
+        <li>Google Analytics（アクセス解析）：サイトの利用状況を把握するために使用します。収集されるデータは匿名化されており、個人を特定するものではありません。</li>
+        <li>アフィリエイトプログラム（A8.net 等）：成果計測のためのトラッキングCookieが使用される場合があります。</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>7. 個人情報の開示・訂正・削除</h2>
+      <p>ご自身の個人情報の開示、訂正、または削除を希望される方は、<a href="mailto:ichieigo7@gmail.com">ichieigo7@gmail.com</a> までご連絡ください。本人確認のうえ、合理的な期間内に対応いたします。</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>8. 個人情報の安全管理</h2>
+      <p>収集した個人情報の漏えい・滅失・毀損を防ぐため、適切な安全管理措置を講じます。</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>9. ポリシーの変更</h2>
+      <p>本ポリシーは、法令改正やサービス変更に伴い予告なく変更する場合があります。変更後のポリシーはこのページに掲載した時点で効力を生じます。</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>10. お問い合わせ</h2>
+      <p>本ポリシーに関するお問い合わせは、下記までご連絡ください。</p>
+      <ul>
+        <li>運営者：いち英語</li>
+        <li>メール：<a href="mailto:ichieigo7@gmail.com">ichieigo7@gmail.com</a></li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="/">ランキング</a>
+      <a href="/articles/">学習コラム</a>
+      <a href="/listening/">リスニングクイズ</a>
+      <a href="/privacy/">プライバシーポリシー</a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 英語学習サービス比較ナビ. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

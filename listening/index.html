@@ -1211,6 +1211,9 @@
   .eg-submit{width:100%;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:#1a1000;font-weight:800;font-size:1rem;padding:15px;border:none;border-radius:12px;cursor:pointer;box-shadow:0 4px 20px rgba(251,191,36,.35);transition:transform .18s,box-shadow .18s;min-height:48px;}
   .eg-submit:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(251,191,36,.5);}
   .eg-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+  .eg-consent{font-size:.72rem;color:rgba(255,255,255,.32);line-height:1.65;margin-top:10px;text-align:center;}
+  .eg-consent a{color:rgba(255,255,255,.45);text-decoration:underline;}
+  .eg-consent a:hover{color:rgba(255,255,255,.7);}
   .eg-error{color:#F87171;font-size:.78rem;margin-top:6px;display:none;}
   .eg-skip{background:none;border:none;color:rgba(255,255,255,.28);font-size:.75rem;cursor:pointer;margin-top:14px;text-decoration:underline;transition:color .18s;display:block;width:100%;}
   .eg-skip:hover{color:rgba(255,255,255,.55);}
@@ -2758,6 +2761,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <input type="email" id="egInput" class="eg-input" placeholder="your@email.com" autocomplete="email" required>
         <button type="submit" class="eg-submit" id="egSubmit">登録して続ける →</button>
       </form>
+      <p class="eg-consent">「登録して続ける」を押すことで、いち英語が運営する英語学習ニュースレターの受信に同意したものとみなします。配信停止はいつでも可能です。<a href="/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a></p>
       <p class="eg-error" id="egError"></p>
       <button class="eg-skip" id="egSkip">今日はここまで（明日また5問練習できます）</button>
     </div>
