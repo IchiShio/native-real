@@ -47,6 +47,7 @@
 
     body {
       font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
       background: var(--bg);
       background-image: radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px);
       background-size: 28px 28px;
@@ -54,7 +55,7 @@
       -webkit-font-smoothing: antialiased;
       font-feature-settings: 'palt';
       letter-spacing: 0.01em;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     /* ── BACKGROUND ORBS ── */
@@ -130,11 +131,11 @@
       z-index: 100;
     }
     .header-logo {
-      font-size: 15px; font-weight: 700; letter-spacing: -0.3px;
-      display: flex; align-items: center; gap: 8px;
-      background: linear-gradient(120deg, rgba(0,0,0,0.88) 0%, var(--gold) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      font-size: 17px; font-weight: 800; letter-spacing: -0.5px;
+      display: flex; align-items: center; gap: 10px;
+      color: var(--text-1);
     }
+    .header-logo svg { width: 22px; height: 22px; color: var(--gold); flex-shrink: 0; }
     .header-right { display: flex; align-items: center; gap: 14px; }
     .score-wrap { font-size: 13px; color: var(--text-3); }
     .score-num { font-size: 19px; font-weight: 800; color: var(--gold); display: inline-block; }
@@ -169,7 +170,7 @@
       text-align: center;
       padding: 64px 20px 80px;
     }
-    .lp-hero-inner { max-width: 680px; margin: 0 auto; }
+    .lp-hero-inner { max-width: 720px; margin: 0 auto; }
 
     .hero-eyebadge {
       display: inline-flex;
@@ -205,10 +206,10 @@
     }
 
     .hero-sub {
-      font-size: clamp(15px, 2.2vw, 18px);
+      font-size: clamp(17px, 2.4vw, 21px);
       color: var(--text-2);
-      line-height: 1.8;
-      margin-bottom: 36px;
+      line-height: 1.85;
+      margin-bottom: 40px;
       animation: fadeUp 0.6s 0.2s ease-out both;
     }
 
@@ -226,10 +227,10 @@
     }
 
     .btn-primary-lg {
-      display: inline-flex; align-items: center; gap: 6px;
+      display: inline-flex; align-items: center; gap: 8px;
       background: linear-gradient(135deg, #E09520 0%, #F5A623 50%, #F8C347 100%);
-      color: #000; font-weight: 800; font-size: 16px;
-      border: none; border-radius: 50px; padding: 16px 28px;
+      color: #000; font-weight: 800; font-size: 17px;
+      border: none; border-radius: 50px; padding: 18px 32px;
       cursor: pointer; transition: all var(--t);
       box-shadow: 0 4px 24px rgba(245,166,35,0.3);
       white-space: nowrap;
@@ -242,10 +243,10 @@
     .btn-primary-lg:active { transform: translateY(0); }
 
     .btn-ghost {
-      display: inline-flex; align-items: center; gap: 6px;
+      display: inline-flex; align-items: center; gap: 8px;
       background: rgba(0,0,0,0.04);
-      color: var(--text-2); font-weight: 600; font-size: 15px;
-      border: 1px solid var(--border); border-radius: 50px; padding: 16px 24px;
+      color: var(--text-2); font-weight: 600; font-size: 16px;
+      border: 1px solid var(--border); border-radius: 50px; padding: 18px 28px;
       cursor: pointer; transition: all var(--t);
       white-space: nowrap;
     }
@@ -256,8 +257,9 @@
     }
 
     .hero-fine {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-3);
+      letter-spacing: 0.01em;
       animation: fadeUp 0.6s 0.4s ease-out both;
     }
 
@@ -281,8 +283,8 @@
     .feature-item {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 20px 32px;
+      gap: 16px;
+      padding: 24px 36px;
       border-right: 1px solid var(--border);
     }
     .feature-item:last-child { border-right: none; }
@@ -357,9 +359,9 @@
     }
     /* 感情的フック — 中サイズ、中央揃え */
     .philosophy-hook {
-      font-size: clamp(16px, 2.2vw, 19px);
+      font-size: clamp(18px, 2.4vw, 22px);
       color: rgba(0,0,0,.55);
-      line-height: 1.9;
+      line-height: 1.85;
       text-align: center;
       text-wrap: balance;
       margin-bottom: 20px;
@@ -393,10 +395,10 @@
     }
     /* 洞察テキスト — 左揃え */
     .philosophy-insight {
-      font-size: clamp(14px, 1.8vw, 15px);
+      font-size: clamp(15px, 1.9vw, 16px);
       color: rgba(0,0,0,.55);
-      line-height: 2.1;
-      margin-bottom: 16px;
+      line-height: 2.0;
+      margin-bottom: 20px;
     }
     .philosophy-insight:last-of-type { margin-bottom: 44px; }
     .philosophy-insight strong { color: rgba(0,0,0,.85); font-weight: 700; }
@@ -450,12 +452,12 @@
     }
 
     .section-eyebrow {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
     .section-h2 {
       font-size: clamp(28px, 4.5vw, 44px);
@@ -498,9 +500,9 @@
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 0 8px;
+      padding: 0 12px;
       color: var(--text-3);
-      font-size: 20px;
+      font-size: 22px;
       flex-shrink: 0;
     }
     @media (min-width: 700px) { .step-connector { display: flex; } }
@@ -522,8 +524,8 @@
       color: var(--gold);
     }
     .step-icon svg { width: 28px; height: 28px; }
-    .step-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.2px; }
-    .step-card p  { font-size: 14px; color: var(--text-2); line-height: 1.7; }
+    .step-card h3 { font-size: 20px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.3px; }
+    .step-card p  { font-size: 15px; color: var(--text-2); line-height: 1.75; }
 
     /* ── PRICING ── */
     .pricing-row {
@@ -572,12 +574,12 @@
     }
 
     .plan-label {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--text-3);
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .plan-price-wrap {
       display: flex;
@@ -616,7 +618,8 @@
       font-size: 15px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      line-height: 1.5;
     }
     .feat-ok { color: var(--text-1); }
     .feat-ng { color: var(--text-3); text-decoration: line-through; }
@@ -729,20 +732,21 @@
 
     /* ── BOTTOM CTA ── */
     .lp-bottom-cta {
-      padding: 100px 20px;
+      padding: 112px 20px;
       text-align: center;
       border-top: 1px solid var(--border);
     }
     .lp-bottom-cta h2 {
-      font-size: clamp(24px, 4vw, 36px);
+      font-size: clamp(28px, 4.5vw, 44px);
       font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 12px;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-bottom: 16px;
     }
     .lp-bottom-cta p {
-      font-size: 15px;
+      font-size: 16px;
       color: var(--text-2);
-      margin-bottom: 32px;
+      margin-bottom: 36px;
     }
 
     /* ── LP FOOTER ── */
@@ -1640,12 +1644,12 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .lp-nav-logo {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 15px; font-weight: 800; letter-spacing: -0.4px;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 18px; font-weight: 800; letter-spacing: -0.5px;
       color: var(--text-1);
       text-decoration: none;
     }
-    .lp-nav-logo svg { width: 20px; height: 20px; color: var(--gold); }
+    .lp-nav-logo svg { width: 24px; height: 24px; color: var(--gold); }
     .lp-nav-right { display: flex; align-items: center; gap: 20px; }
     .lp-nav-link {
       font-size: 13px; font-weight: 600;
@@ -1704,10 +1708,11 @@
       background-clip: text;
     }
     .stat-label {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       color: var(--text-2);
       letter-spacing: 0.02em;
+      margin-top: 4px;
     }
     .stat-unit {
       font-size: 20px;
@@ -1755,7 +1760,10 @@
 
 <!-- Quiz Header (hidden on start screen) -->
 <header class="app-header" id="appHeader">
-  <div class="header-logo">🎧 ListenUp</div>
+  <div class="header-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+    ListenUp
+  </div>
   <div class="header-right">
     <div class="streak-badge zero" id="streakBadge">🔥 <span id="streakVal">0</span></div>
     <div class="progress-wrap">
