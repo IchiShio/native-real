@@ -3089,6 +3089,14 @@ function choose(selected) {
   updateScore();
   if (freeMode) { updateFreeRemaining(); updateMissionDots(); }
 
+  // GA4: クイズ回答イベント
+  const LEVELS = ['beginner', 'intermediate', 'advanced'];
+  gtag('event', 'quiz_answer', {
+    answer_correct: ok,
+    question_number: total,
+    difficulty: LEVELS[currentLevel]
+  });
+
   document.querySelectorAll('.opt-btn').forEach((btn) => {
     btn.disabled = true;
     const text = btn.querySelector('.opt-text').textContent;
@@ -3172,6 +3180,9 @@ function showEmailGate() {
   document.getElementById('egOverlay').style.display = 'flex';
   document.body.style.overflow = 'hidden';
   setTimeout(() => document.getElementById('egInput').focus(), 100);
+
+  // GA4: メールゲート表示イベント
+  gtag('event', 'email_gate_view', { questions_answered: total });
 }
 
 function closeEmailGate(continuePlay) {
@@ -3411,6 +3422,8 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     } catch (_) { /* サイレントフェイル */ }
     localStorage.setItem(EG_REG_KEY, email);
+    // GA4: メールゲート登録完了イベント
+    gtag('event', 'email_gate_register');
     btn.textContent = '✓ 登録完了！続きをどうぞ';
     setTimeout(() => closeEmailGate(true), 900);
   });
@@ -3419,6 +3432,8 @@ document.addEventListener('DOMContentLoaded', function() {
     localStorage.setItem(EG_SKIP_KEY, new Date().toDateString());
     document.getElementById('egOverlay').style.display = 'none';
     document.body.style.overflow = '';
+    // GA4: メールゲートスキップイベント
+    gtag('event', 'email_gate_skip');
     // 案B: スキップ = 今日はここで終了（有料誘導を表示）
     showMissionComplete();
   });
