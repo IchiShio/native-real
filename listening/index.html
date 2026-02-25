@@ -1279,7 +1279,7 @@
         <button class="btn-primary-lg" onclick="startPremiumTrial()">7日間 無料で試す →</button>
         <button class="btn-ghost" id="freeTrialBtn" onclick="startFreeQuiz()">今日の練習を始める</button>
       </div>
-      <p class="hero-fine">メール登録で1日15問まで無料 · クレジットカード不要</p>
+      <p class="hero-fine">毎日5問まで無料 · メール登録で無制限 · クレジットカード不要</p>
     </div>
   </section>
 
@@ -2471,7 +2471,7 @@ function toggleTranscript() {
 // ─────────────────────────────────────────
 // EMAIL GATE
 // ─────────────────────────────────────────
-const EG_TRIGGER   = 10;
+const EG_TRIGGER   = 5;
 const EG_REG_KEY   = 'listenup_registered';
 const EG_SKIP_KEY  = 'listenup_gate_skipped';
 // ★ BeehiivパブリケーションID（設定が必要）
@@ -2502,7 +2502,7 @@ function closeEmailGate(continuePlay) {
 // ─────────────────────────────────────────
 function next() {
   // メール登録ゲート（10問後・未登録・本日未スキップ）
-  if (total === EG_TRIGGER && !isRegistered()) {
+  if (total >= EG_TRIGGER && !isRegistered()) {
     const skippedToday = localStorage.getItem(EG_SKIP_KEY) === new Date().toDateString();
     if (!skippedToday) {
       showEmailGate();
@@ -2735,7 +2735,8 @@ document.addEventListener('DOMContentLoaded', function() {
     localStorage.setItem(EG_SKIP_KEY, new Date().toDateString());
     document.getElementById('egOverlay').style.display = 'none';
     document.body.style.overflow = '';
-    next();
+    // 案B: スキップ = 今日はここで終了（有料誘導を表示）
+    showMissionComplete();
   });
 });
 
@@ -2749,7 +2750,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="eg-orb-2"></div>
     <div class="eg-body">
       <div class="eg-emoji">🎉</div>
-      <h2 class="eg-title">10問クリア！</h2>
+      <h2 class="eg-title">5問クリア！</h2>
       <p class="eg-sub">続きは<span class="eg-gold">メール登録</span>で無制限に</p>
       <p class="eg-desc">英語リスニングのコツや学習法を定期的にお届けします。<br>登録は無料・いつでも解除できます。</p>
       <div class="eg-stats" id="egStats"></div>
@@ -2758,7 +2759,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <button type="submit" class="eg-submit" id="egSubmit">登録して続ける →</button>
       </form>
       <p class="eg-error" id="egError"></p>
-      <button class="eg-skip" id="egSkip">今はスキップ（本日はあと少しだけ続けられます）</button>
+      <button class="eg-skip" id="egSkip">今日はここまで（明日また5問練習できます）</button>
     </div>
   </div>
 </div>
