@@ -1413,10 +1413,10 @@
         <div class="wk-item"><div class="wk-label">日</div><div class="wk-dot" id="wkd6"></div></div>
       </div>
       <div class="hero-ctas">
-        <button class="btn-primary-lg" onclick="startPremiumTrial()">7日間 無料で試す →</button>
+        <button class="btn-primary-lg" onclick="openWaitlist()">ウェイトリストに登録 →</button>
         <button class="btn-ghost" id="freeTrialBtn" onclick="startFreeQuiz()">今日の練習を始める</button>
       </div>
-      <p class="hero-fine">毎日5問まで無料 · メール登録で無制限 · クレジットカード不要</p>
+      <p class="hero-fine">毎日5問まで無料 · メール登録で15問まで · プレミアムは近日公開</p>
     </div>
   </section>
 
@@ -1554,13 +1554,13 @@
 
         <!-- Premium Plan -->
         <div class="pricing-card pricing-featured">
-          <div class="plan-rec-badge">おすすめ</div>
+          <div class="plan-rec-badge">近日公開</div>
           <div class="plan-label">プレミアムプラン</div>
           <div class="plan-price-wrap">
             <span class="plan-price">¥490</span>
             <span class="plan-per">/月</span>
           </div>
-          <div class="plan-trial-text">最初の7日間は完全無料</div>
+          <div class="plan-trial-text">ウェイトリスト受付中</div>
           <ul class="plan-feats">
             <li class="feat-ok">毎日 <strong>無制限</strong>に練習</li>
             <li class="feat-ok">全難易度（初級〜上級）</li>
@@ -1569,7 +1569,7 @@
             <li class="feat-ok">進捗管理 & ストリーク</li>
             <li class="feat-ok">新問題 毎週追加</li>
           </ul>
-          <button class="plan-btn plan-btn-gold" onclick="scrollToDiff()">7日間 無料で試す →</button>
+          <button class="plan-btn plan-btn-gold" onclick="openWaitlist()">ウェイトリストに登録 →</button>
         </div>
       </div>
 
@@ -1578,8 +1578,8 @@
         <div class="section-eyebrow" style="margin-top:48px;text-align:center">ADAPTIVE QUIZ</div>
         <h3 class="diff-select-h" style="text-align:center">あなたに合わせて自動調整</h3>
         <p style="text-align:center;color:var(--text-2);margin-bottom:28px;font-size:14px;line-height:1.7">正解・不正解に応じて問題の難易度が自動で変わります。選択不要、そのままスタートできます。</p>
-        <button class="start-btn" onclick="startPremiumTrial()">7日間無料で始める →</button>
-        <p style="text-align:center;font-size:12px;color:var(--text-3);margin-top:10px">クレジットカード不要</p>
+        <button class="start-btn" onclick="startFreeQuiz()">無料で練習を始める →</button>
+        <p style="text-align:center;font-size:12px;color:var(--text-3);margin-top:10px">登録不要・クレジットカード不要</p>
       </div>
     </div>
   </section>
@@ -1588,13 +1588,13 @@
   <div class="lp-bottom-cta">
     <div class="lp-wrap">
       <h2>今すぐ、英語リスニングを変えよう</h2>
-      <p>7日間の無料体験から始めてください。クレジットカード不要。</p>
-      <button class="btn-primary-lg" onclick="scrollToDiff()">7日間 無料で試す →</button>
+      <p>まずは無料で試してみましょう。プレミアムプランのウェイトリスト受付中。</p>
+      <button class="btn-primary-lg" onclick="openWaitlist()">ウェイトリストに登録 →</button>
     </div>
   </div>
 
   <div class="lp-footer">
-    © 2026 ListenUp · 7日間の無料体験、クレジットカード不要
+    © 2026 ListenUp · 毎日5問まで無料
   </div>
 
 </div>
@@ -1613,7 +1613,7 @@
         <span class="dm-dot" id="dmDot4"></span>
       </span>
       今日 <span id="freeAnsweredCount">0</span>/15問
-      <a onclick="scrollToDiffAndUpgrade()">→ プレミアムで続ける</a>
+      <a onclick="openWaitlist()">→ ウェイトリスト登録</a>
     </div>
 
     <!-- Question counter -->
@@ -1697,9 +1697,9 @@
     </ul>
     <div class="paywall-price">
       <strong>¥490</strong><span>/月</span>
-      <span class="trial-note">最初の7日間は完全無料 · いつでもキャンセル可</span>
+      <span class="trial-note">近日公開予定 · ウェイトリスト受付中</span>
     </div>
-    <button class="paywall-cta" onclick="upgradeToPremium()">7日間 無料で試す →</button>
+    <button class="paywall-cta" onclick="openWaitlist()">ウェイトリストに登録 →</button>
     <a class="paywall-skip" onclick="closePaywall()">デモ用：スキップして続ける（実際の製品では非表示）</a>
   </div>
 </div>
@@ -1721,7 +1721,7 @@
     </div>
     <div class="mission-week" id="missionWeek"></div>
     <button class="mission-btn-back" onclick="closeMissionComplete()">← TOPに戻る</button>
-    <button class="mission-btn-premium" onclick="upgradeToPremium()">プレミアムで続ける →</button>
+    <button class="mission-btn-premium" onclick="openWaitlist()">ウェイトリストに登録 →</button>
   </div>
 </div>
 
@@ -2378,8 +2378,11 @@ function startFreeQuiz() {
 }
 
 function startPremiumTrial() {
-  freeMode = false;
-  beginQuiz();
+  openWaitlist();
+}
+
+function openWaitlist() {
+  window.open('https://forms.gle/Fe2jehKqhjL59YuQ8', '_blank');
 }
 
 function beginQuiz() {
@@ -2442,11 +2445,7 @@ function closePaywall() {
 }
 
 function upgradeToPremium() {
-  freeMode = false;
-  closePaywall();
-  document.getElementById('freeBanner').classList.remove('show');
-  // Continue with current state (in real app: go to Stripe)
-  loadQ();
+  openWaitlist();
 }
 
 function updateFreeRemaining() {
