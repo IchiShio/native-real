@@ -102,18 +102,6 @@
 
     .screen, .app-header, .mockup-banner { position: relative; z-index: 1; }
 
-    /* ── MOCKUP BANNER ── */
-    .mockup-banner {
-      background: rgba(245,166,35,0.07);
-      border-bottom: 1px solid rgba(245,166,35,0.18);
-      color: rgba(245,166,35,0.75);
-      text-align: center;
-      padding: 7px 16px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.2px;
-      backdrop-filter: blur(8px);
-    }
 
     /* ── HEADER ── */
     .app-header {
@@ -179,7 +167,7 @@
       background: rgba(245,166,35,0.09);
       border: 1px solid rgba(245,166,35,0.22);
       color: var(--gold);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 1.2px;
       text-transform: uppercase;
@@ -451,7 +439,7 @@
     }
 
     .section-eyebrow {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -826,7 +814,7 @@
       box-shadow: 0 0 36px rgba(245,166,35,0.12), inset 0 0 60px rgba(245,166,35,0.04);
     }
     .audio-label {
-      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
       text-transform: uppercase; color: var(--text-3); margin-bottom: 8px;
     }
     .accent-badge {
@@ -983,12 +971,12 @@
     }
     .transcript.show { display: block; animation: slideUp 0.22s ease-out; }
     .transcript-label {
-      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
       text-transform: uppercase; color: var(--text-3); margin-bottom: 10px;
     }
     .transcript-text { font-size: 15px; line-height: 1.85; color: var(--text-1); font-style: italic; }
     .transcript-ja-label {
-      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
       text-transform: uppercase; color: var(--text-3); margin-top: 12px; margin-bottom: 6px;
     }
     .transcript-ja {
@@ -1361,10 +1349,10 @@
   .eg-body{position:relative;z-index:1;text-align:center;}
   .eg-emoji{font-size:3rem;margin-bottom:10px;}
   .eg-title{font-size:1.75rem;font-weight:900;color:rgba(0,0,0,.88);margin-bottom:6px;}
-  .eg-sub{font-size:.95rem;color:rgba(0,0,0,.55);margin-bottom:6px;}
+  .eg-sub{font-size:.95rem;color:rgba(0,0,0,.68);margin-bottom:6px;}
   .eg-gold{color:#F5A623;font-weight:700;}
-  .eg-desc{font-size:.78rem;color:rgba(0,0,0,.45);line-height:1.75;margin-bottom:18px;}
-  .eg-stats{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:11px 16px;margin-bottom:22px;font-size:.85rem;color:rgba(0,0,0,.6);}
+  .eg-desc{font-size:.83rem;color:rgba(0,0,0,.60);line-height:1.75;margin-bottom:18px;}
+  .eg-stats{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:11px 16px;margin-bottom:22px;font-size:.85rem;color:rgba(0,0,0,.68);}
   .eg-form{display:flex;flex-direction:column;gap:10px;}
   .eg-input{width:100%;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.15);border-radius:12px;padding:14px 18px;color:rgba(0,0,0,.88);font-size:1rem;outline:none;transition:border-color .18s;}
   .eg-input:focus{border-color:rgba(245,166,35,.55);}
@@ -1372,12 +1360,12 @@
   .eg-submit{width:100%;background:linear-gradient(135deg,#E09520,#F5A623);color:#1a1000;font-weight:800;font-size:1rem;padding:15px;border:none;border-radius:12px;cursor:pointer;box-shadow:0 4px 20px rgba(245,166,35,.35);transition:transform .18s,box-shadow .18s;min-height:48px;}
   .eg-submit:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,166,35,.5);}
   .eg-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
-  .eg-consent{font-size:.72rem;color:rgba(0,0,0,.45);line-height:1.65;margin-top:10px;text-align:center;}
-  .eg-consent a{color:rgba(0,0,0,.55);text-decoration:underline;}
-  .eg-consent a:hover{color:rgba(0,0,0,.75);}
+  .eg-consent{font-size:.76rem;color:rgba(0,0,0,.58);line-height:1.65;margin-top:10px;text-align:center;}
+  .eg-consent a{color:rgba(0,0,0,.68);text-decoration:underline;}
+  .eg-consent a:hover{color:rgba(0,0,0,.82);}
   .eg-error{color:var(--error);font-size:.78rem;margin-top:6px;display:none;}
-  .eg-skip{background:none;border:none;color:rgba(0,0,0,.38);font-size:.75rem;cursor:pointer;margin-top:14px;text-decoration:underline;transition:color .18s;display:block;width:100%;}
-  .eg-skip:hover{color:rgba(0,0,0,.6);}
+  .eg-skip{background:none;border:none;color:rgba(0,0,0,.50);font-size:.78rem;cursor:pointer;margin-top:14px;text-decoration:underline;transition:color .18s;display:block;width:100%;}
+  .eg-skip:hover{color:rgba(0,0,0,.70);}
   @media(max-width:480px){.eg-card{padding:28px 20px 24px;}.eg-title{font-size:1.45rem;}}
 
 /* ── SCROLL REVEAL ── */
@@ -1610,7 +1598,7 @@
       margin-bottom: 16px;
     }
     .cd-label {
-      font-size: 10px;
+      font-size: 11px;
       color: var(--text-3);
       font-weight: 600;
       text-transform: uppercase;
@@ -1752,10 +1740,6 @@
     <div class="orb orb-4"></div>
 <div id="cursorSpot"></div>
 
-<!-- Mockup Banner -->
-<div class="mockup-banner">
-  ✦ Mockup — Claude API 未接続・ハードコードされた問題で動作確認中
-</div>
 
 <!-- Quiz Header (hidden on start screen) -->
 <header class="app-header" id="appHeader">
