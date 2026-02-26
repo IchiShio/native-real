@@ -2949,15 +2949,17 @@ function scrollToDiffAndUpgrade() {
 function startFreeQuiz() {
   // 未登録ユーザー: freeMode制限なし → 10問でメールゲート
   if (!isRegistered()) {
+    console.log('[DBG start] 未登録ユーザー: freeMode=false');
     freeMode = false;
     beginQuiz();
     return;
   }
-  // メール登録済みユーザー: 1日15問の制限を適用
+  // メール登録済みユーザー: 1日20問の制限を適用
   freeMode = true;
   const p    = loadProgress();
   const today = getToday();
   dailyFreeAnswered = (p.todayDate === today) ? p.todayAnswered : 0;
+  console.log('[DBG start] 登録済みユーザー: todayDate='+p.todayDate+' today='+today+' dailyFreeAnswered='+dailyFreeAnswered+'/'+FREE_DAILY_LIMIT);
   if (dailyFreeAnswered >= FREE_DAILY_LIMIT) {
     showPaywall('daily');
     return;
@@ -3060,6 +3062,7 @@ function initPools() {
 // ─────────────────────────────────────────
 function loadQ() {
   answered = false;
+  console.log('[DBG loadQ] called: currentLevel='+currentLevel+' poolLen='+(pools[currentLevel]?pools[currentLevel].length:'undefined'));
   audioEl.pause();
   audioEl.currentTime = 0;
 
@@ -3072,14 +3075,20 @@ function loadQ() {
   document.getElementById('nextBtn').classList.remove('show');
 
   setTimeout(() => {
-    if (!pools[currentLevel] || !pools[currentLevel].length) {
-      pools[currentLevel] = shuffle(DATA.filter(q => q.diff === LEVELS[currentLevel]));
+    try {
+      if (!pools[currentLevel] || !pools[currentLevel].length) {
+        pools[currentLevel] = shuffle(DATA.filter(q => q.diff === LEVELS[currentLevel]));
+        console.log('[DBG loadQ] pool refilled: len='+pools[currentLevel].length+' level='+LEVELS[currentLevel]);
+      }
+      current = pools[currentLevel].shift();
+      console.log('[DBG loadQ] current='+(current?current.id:'undefined'));
+      playCount = 0;
+      render();
+      document.getElementById('loadingView').classList.remove('show');
+      document.getElementById('questionView').classList.add('show');
+    } catch(e) {
+      console.error('[DBG loadQ] ERROR:', e);
     }
-    current = pools[currentLevel].shift();
-    playCount = 0;
-    render();
-    document.getElementById('loadingView').classList.remove('show');
-    document.getElementById('questionView').classList.add('show');
     // 自動再生なし — ▶ボタンで再生
   }, 400);
 }
@@ -3312,14 +3321,17 @@ function closeEmailGate(continuePlay) {
 // ─────────────────────────────────────────
 function next() {
   // メール登録ゲート（10問後・未登録・本日未スキップ）
+  console.log('[DBG next] total='+total+' EG_TRIGGER='+EG_TRIGGER+' isReg='+isRegistered()+' freeMode='+freeMode+' dailyFreeAnswered='+dailyFreeAnswered+' FREE_DAILY_LIMIT='+FREE_DAILY_LIMIT);
   if (total >= EG_TRIGGER && !isRegistered()) {
     const skippedToday = localStorage.getItem(EG_SKIP_KEY) === new Date().toDateString();
+    console.log('[DBG next] gate check: skippedToday='+skippedToday);
     if (!skippedToday) {
       showEmailGate();
       return;
     }
   }
   if (freeMode && dailyFreeAnswered >= FREE_DAILY_LIMIT) {
+    console.log('[DBG next] mission complete triggered');
     showMissionComplete();
     return;
   }
