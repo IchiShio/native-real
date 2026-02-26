@@ -183,7 +183,7 @@ SERPで「〇〇 vs △△」「〇〇 評判」を狙う。サービスペー�
 | 11 | cambly-review-article | ✅ 公開済 | 2/26 |
 | 12 | bizmates-review-article | ✅ 公開済 | 2/26 |
 | 13 | nativecamp-review-article | ✅ 公開済 | 2/26 |
-| 14 | english-self-study-vs-eikaiwa | ⬜ 未着手 | 5/7 |
-| 15 | english-listening-study-guide | ⬜ 未着手 | 5/14 |
-| 16 | english-habit-guide | ⬜ 未着手 | 5/21 |
-| 17 | toeic-short-intensive | ⬜ 未着手 | 5/28 |
+| 14 | english-self-study-vs-eikaiwa | ✅ 公開済 | 2/26 |
+| 15 | english-listening-study-guide | ✅ 公開済 | 2/26 |
+| 16 | english-habit-guide | ✅ 公開済 | 2/26 |
+| 17 | toeic-short-intensive | ✅ 公開済 | 2/26 |
