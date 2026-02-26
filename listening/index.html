@@ -1953,9 +1953,8 @@
       </div>
       <div class="hero-ctas">
         <button class="btn-primary-lg" id="freeTrialBtn" onclick="startFreeQuiz()">今日の練習を始める</button>
-        <button class="btn-ghost" onclick="openWaitlist()">モニター募集（限定20名）→</button>
       </div>
-      <p class="hero-fine">毎日5問まで無料 · メール登録で15問＋学習記録 · プレミアム モニター募集中</p>
+      <p class="hero-fine">毎日5問まで無料 · メール登録で10問＋学習記録</p>
     </div>
   </section>
 
@@ -2100,7 +2099,7 @@
           <ul class="plan-feats">
             <li class="feat-ok">毎日5問（登録不要）</li>
             <li class="feat-ok">解説・キーフレーズ</li>
-            <li class="feat-ok">メール登録で<strong>20問</strong>まで無料</li>
+            <li class="feat-ok">メール登録で<strong>10問</strong>まで無料</li>
             <li class="feat-ok">メール登録で学習記録あり</li>
             <li class="feat-ng">苦手問題の自動復習</li>
             <li class="feat-ng">新問題 毎週追加</li>
@@ -2108,27 +2107,7 @@
           <button class="plan-btn plan-btn-ghost" onclick="startFreeQuiz()">今日の練習を試す（無料）</button>
         </div>
 
-        <!-- Monitor / Premium Plan -->
-        <div class="pricing-card pricing-monitor reveal reveal-delay-2">
-          <div class="plan-rec-badge-teal">モニター募集 · 限定20名</div>
-          <div class="plan-label">プレミアム モニタープラン</div>
-          <div class="plan-price-wrap">
-            <span class="plan-price" style="color:#14B8A6">¥0</span>
-          </div>
-          <div class="plan-trial-text" style="color:#14B8A6">モニター期間中は無料 · 正式版で特別価格</div>
-          <div class="spots-display">
-            残り <span class="spots-num">17</span> / 20名
-            <div class="spots-bar"><div class="spots-fill"></div></div>
-          </div>
-          <ul class="plan-feats">
-            <li class="feat-ok">毎日 <strong>無制限</strong></li>
-            <li class="feat-star">苦手問題の自動復習</li>
-            <li class="feat-ok">新問題 毎週追加</li>
-            <li class="feat-ok">学習記録・進捗管理</li>
-            <li class="feat-ok">正式版リリース時の特別価格</li>
-          </ul>
-          <button class="plan-btn plan-btn-teal" onclick="openWaitlist()">モニターに応募する →</button>
-        </div>
+        <!-- Monitor / Premium Plan (hidden) -->
       </div>
 
       <div class="diff-select-wrap" id="diffSelectWrap"></div>
@@ -2192,8 +2171,7 @@
         <span class="dm-dot" id="dmDot3"></span>
         <span class="dm-dot" id="dmDot4"></span>
       </span>
-      今日 <span id="freeAnsweredCount">0</span>/20問
-      <a onclick="openWaitlist()">→ モニターに応募</a>
+      今日 <span id="freeAnsweredCount">0</span>/10問
     </div>
 
     <!-- Question counter -->
@@ -2262,24 +2240,13 @@
 <!-- ═══════════════ PAYWALL MODAL ═══════════════ -->
 <div class="paywall-overlay" id="paywallOverlay">
   <div class="paywall-modal">
-    <div class="paywall-crown">👑</div>
+    <div class="paywall-crown">🎯</div>
     <h2 class="paywall-title" id="paywallTitle">今日の練習が終わりました</h2>
     <p class="paywall-sub" id="paywallSub">
-      今日の20問が完了しました。<br>
+      今日の10問が完了しました。<br>
       毎日続けることが上達への近道です。明日また練習しましょう。
     </p>
-    <ul class="paywall-feats">
-      <li>毎日 無制限に練習できる</li>
-      <li>苦手問題を自動で復習できる</li>
-      <li>新問題が毎週追加される</li>
-      <li>学習記録・進捗管理が使える</li>
-      <li>正式版リリース時の特別価格が適用される</li>
-    </ul>
-    <div class="paywall-price">
-      <span class="trial-note">モニター期間中は無料 · 残り17名</span>
-    </div>
-    <button class="paywall-cta" onclick="openWaitlist()">モニターに応募する →</button>
-    <a class="paywall-skip" onclick="closePaywall()">デモ用：スキップして続ける（実際の製品では非表示）</a>
+    <button class="mission-btn-back" onclick="closePaywall()">← TOPに戻る</button>
   </div>
 </div>
 
@@ -2306,7 +2273,6 @@
       <a class="mission-article-link" href="/articles/online-eikaiwa-frequency-guide/">英会話は週何回受けると効果が出る？科学的根拠から解説</a>
     </div>
     <button class="mission-btn-back" onclick="closeMissionComplete()">← TOPに戻る</button>
-    <button class="mission-btn-premium" onclick="openWaitlist()">モニターに応募する →</button>
   </div>
 </div>
 
@@ -2791,7 +2757,7 @@ const DIFF_META = {
 };
 
 const FREE_LIMIT = 3; // legacy (未使用)
-const FREE_DAILY_LIMIT = 20; // メール登録済みユーザーの1日上限
+const FREE_DAILY_LIMIT = 10; // メール登録済みユーザーの1日上限
 
 // ─────────────────────────────────────────
 // LOCAL STORAGE
@@ -2949,7 +2915,6 @@ function scrollToDiffAndUpgrade() {
 function startFreeQuiz() {
   // 未登録ユーザー: freeMode制限なし → 10問でメールゲート
   if (!isRegistered()) {
-    console.log('[DBG start] 未登録ユーザー: freeMode=false');
     freeMode = false;
     beginQuiz();
     return;
@@ -2959,7 +2924,6 @@ function startFreeQuiz() {
   const p    = loadProgress();
   const today = getToday();
   dailyFreeAnswered = (p.todayDate === today) ? p.todayAnswered : 0;
-  console.log('[DBG start] 登録済みユーザー: todayDate='+p.todayDate+' today='+today+' dailyFreeAnswered='+dailyFreeAnswered+'/'+FREE_DAILY_LIMIT);
   if (dailyFreeAnswered >= FREE_DAILY_LIMIT) {
     showPaywall('daily');
     return;
@@ -3022,7 +2986,7 @@ function showPaywall(reason) {
   if (reason === 'daily') {
     document.getElementById('paywallTitle').textContent = '今日の練習が終わりました';
     document.getElementById('paywallSub').innerHTML =
-      '今日の20問が完了しました。<br>毎日続けることが上達への近道です。明日また練習しましょう。';
+      '今日の10問が完了しました。<br>毎日続けることが上達への近道です。明日また練習しましょう。';
   } else {
     document.getElementById('paywallTitle').textContent = '無制限で練習したい方へ';
     document.getElementById('paywallSub').innerHTML =
@@ -3062,7 +3026,6 @@ function initPools() {
 // ─────────────────────────────────────────
 function loadQ() {
   answered = false;
-  console.log('[DBG loadQ] called: currentLevel='+currentLevel+' poolLen='+(pools[currentLevel]?pools[currentLevel].length:'undefined'));
   audioEl.pause();
   audioEl.currentTime = 0;
 
@@ -3075,20 +3038,14 @@ function loadQ() {
   document.getElementById('nextBtn').classList.remove('show');
 
   setTimeout(() => {
-    try {
-      if (!pools[currentLevel] || !pools[currentLevel].length) {
-        pools[currentLevel] = shuffle(DATA.filter(q => q.diff === LEVELS[currentLevel]));
-        console.log('[DBG loadQ] pool refilled: len='+pools[currentLevel].length+' level='+LEVELS[currentLevel]);
-      }
-      current = pools[currentLevel].shift();
-      console.log('[DBG loadQ] current='+(current?current.id:'undefined'));
-      playCount = 0;
-      render();
-      document.getElementById('loadingView').classList.remove('show');
-      document.getElementById('questionView').classList.add('show');
-    } catch(e) {
-      console.error('[DBG loadQ] ERROR:', e);
+    if (!pools[currentLevel] || !pools[currentLevel].length) {
+      pools[currentLevel] = shuffle(DATA.filter(q => q.diff === LEVELS[currentLevel]));
     }
+    current = pools[currentLevel].shift();
+    playCount = 0;
+    render();
+    document.getElementById('loadingView').classList.remove('show');
+    document.getElementById('questionView').classList.add('show');
     // 自動再生なし — ▶ボタンで再生
   }, 400);
 }
@@ -3151,7 +3108,6 @@ function render() {
 // ANSWER
 // ─────────────────────────────────────────
 function choose(selected) {
-  console.log('[DBG choose] called: answered='+answered+' selected='+selected);
   if (answered) return;
   answered = true;
   total++;
@@ -3211,14 +3167,10 @@ function choose(selected) {
     }
     saveProgress(p);
   }
-  console.log('[DBG choose] updateScore呼び出し中');
   updateScore();
-  console.log('[DBG choose] updateScore完了 freeMode='+freeMode);
   if (freeMode) { updateFreeRemaining(); updateMissionDots(); }
-  console.log('[DBG choose] UI更新完了');
 
   // GA4: クイズ回答イベント
-  console.log('[DBG choose] gtag check: typeof gtag='+typeof gtag);
   try {
     gtag('event', 'quiz_answer', {
       answer_correct: ok,
@@ -3226,11 +3178,8 @@ function choose(selected) {
       difficulty: LEVELS[currentLevel],
       play_count: playCount
     });
-  } catch(e) {
-    console.error('[DBG choose] gtag error:', e);
-  }
+  } catch(e) { /* gtag未定義の場合は無視 */ }
 
-  console.log('[DBG choose] ボタン着色開始');
   document.querySelectorAll('.opt-btn').forEach((btn) => {
     btn.disabled = true;
     const text = btn.querySelector('.opt-text').textContent;
@@ -3245,7 +3194,6 @@ function choose(selected) {
 
   if (ok) launchConfetti();
 
-  console.log('[DBG choose] 解説表示開始');
   const el = document.getElementById('explEl');
   document.getElementById('explVerdict').className = 'expl-verdict ' + (ok ? 'ok' : 'ng');
   document.getElementById('explVerdict').textContent = ok ? '✅ 正解！' : '❌ 不正解... 🔁 あとで再出題します';
@@ -3331,18 +3279,15 @@ function closeEmailGate(continuePlay) {
 // NEXT
 // ─────────────────────────────────────────
 function next() {
-  // メール登録ゲート（10問後・未登録・本日未スキップ）
-  console.log('[DBG next] total='+total+' EG_TRIGGER='+EG_TRIGGER+' isReg='+isRegistered()+' freeMode='+freeMode+' dailyFreeAnswered='+dailyFreeAnswered+' FREE_DAILY_LIMIT='+FREE_DAILY_LIMIT);
+  // メール登録ゲート（5問後・未登録・本日未スキップ）
   if (total >= EG_TRIGGER && !isRegistered()) {
     const skippedToday = localStorage.getItem(EG_SKIP_KEY) === new Date().toDateString();
-    console.log('[DBG next] gate check: skippedToday='+skippedToday);
     if (!skippedToday) {
       showEmailGate();
       return;
     }
   }
   if (freeMode && dailyFreeAnswered >= FREE_DAILY_LIMIT) {
-    console.log('[DBG next] mission complete triggered');
     showMissionComplete();
     return;
   }
@@ -3683,7 +3628,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="eg-body">
       <div class="eg-emoji">🎉</div>
       <h2 class="eg-title">5問クリア！</h2>
-      <p class="eg-sub">登録で<span class="eg-gold">20問＋進捗管理</span>が無料で使える</p>
+      <p class="eg-sub">登録で<span class="eg-gold">10問＋進捗管理</span>が無料で使える</p>
       <p class="eg-desc">英語リスニングのコツや学習法を定期的にお届けします。<br>登録は無料・いつでも解除できます。</p>
       <div class="eg-stats" id="egStats"></div>
       <form class="eg-form" id="egForm" novalidate>
