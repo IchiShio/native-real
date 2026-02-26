@@ -138,14 +138,14 @@ SERPで「〇〇 vs △△」「〇〇 評判」を狙う。サービスペー�
 
 随時追加。成果の出た記事クラスターを優先拡充。
 
-| 記事候補 | KW | 備考 |
-|----------|-----|------|
-| Kimini英会話 評判・口コミ | kimini 英会話 評判 | 競合不在ニッチ |
-| QQ English 評判・口コミ | QQ English 評判 | 格安英会話層 |
-| オンライン英会話 無料 おすすめ | オンライン英会話 無料 | 月500+Vol |
-| 英語 発音 矯正 おすすめ | 英語 発音 矯正 | pronunciation記事と内部リンク |
-| オンライン英会話 週1回 効果 | オンライン英会話 週1 | frequency-guide記事と内部リンク |
-| 英語コーチング 3ヶ月 効果 | 英語コーチング 3ヶ月 | phase1記事と内部リンク |
+| # | 記事 | URL slug | KW | 公開日 |
+|---|------|----------|----|--------|
+| 18 | Kimini英会話 評判・口コミ | `kimini-eikaiwa-review` | kimini 英会話 評判 | 2/26 |
+| 19 | QQ English 評判・口コミ | `qq-english-review` | QQ English 評判 | 2/26 |
+| 20 | 無料・格安オンライン英会話おすすめ | `free-online-eikaiwa-guide` | オンライン英会話 無料 | 2/26 |
+| 21 | 英語の発音矯正におすすめの方法 | `english-pronunciation-correction` | 英語 発音 矯正 | 2/26 |
+| 22 | オンライン英会話 週1回 効果 | `online-eikaiwa-once-a-week` | オンライン英会話 週1 | 2/26 |
+| 23 | 英語コーチング 3ヶ月 効果 | `english-coaching-3months` | 英語コーチング 3ヶ月 | 2/26 |
 
 ---
 
@@ -187,3 +187,9 @@ SERPで「〇〇 vs △△」「〇〇 評判」を狙う。サービスペー�
 | 15 | english-listening-study-guide | ✅ 公開済 | 2/26 |
 | 16 | english-habit-guide | ✅ 公開済 | 2/26 |
 | 17 | toeic-short-intensive | ✅ 公開済 | 2/26 |
+| 18 | kimini-eikaiwa-review | ✅ 公開済 | 2/26 |
+| 19 | qq-english-review | ✅ 公開済 | 2/26 |
+| 20 | free-online-eikaiwa-guide | ✅ 公開済 | 2/26 |
+| 21 | english-pronunciation-correction | ✅ 公開済 | 2/26 |
+| 22 | online-eikaiwa-once-a-week | ✅ 公開済 | 2/26 |
+| 23 | english-coaching-3months | ✅ 公開済 | 2/26 |
