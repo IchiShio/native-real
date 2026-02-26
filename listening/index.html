@@ -577,26 +577,6 @@
       display: flex;
       flex-direction: column;
     }
-    .pricing-featured {
-      border-color: var(--gold);
-      background: rgba(245,166,35,0.05);
-      box-shadow: 0 0 48px rgba(245,166,35,0.12), 0 0 0 1px rgba(245,166,35,0.25);
-    }
-
-    .plan-rec-badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, #E09520, #F5A623);
-      color: #000;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      padding: 4px 14px;
-      border-radius: 20px;
-    }
 
     .plan-label {
       font-size: 14px;
@@ -618,7 +598,7 @@
       letter-spacing: -2px;
       color: var(--text-1);
     }
-    .pricing-featured .plan-price { color: var(--gold); }
+    
     .plan-per {
       font-size: 15px;
       color: var(--text-2);
@@ -778,568 +758,6 @@
     .compare-mark-mid { color: var(--text-3);  font-weight: 600; }
     .compare-price-self { color: var(--gold); font-weight: 800; font-size: 15px; }
 
-    /* ── PREMIUM TEASER / AI PREVIEW ── */
-    .premium-teaser {
-      background: linear-gradient(135deg, rgba(245,166,35,0.06) 0%, rgba(245,166,35,0.02) 100%);
-      border: 1px solid rgba(245,166,35,0.25);
-      border-radius: 20px;
-      padding: 28px 24px;
-      margin-top: 28px;
-      position: relative;
-      overflow: hidden;
-    }
-    .premium-teaser::before {
-      content: '';
-      position: absolute; top: 0; right: 0; width: 120px; height: 120px;
-      background: radial-gradient(circle, rgba(245,166,35,0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .pt-eyebrow {
-      font-size: 10px; font-weight: 800; letter-spacing: 1.2px;
-      color: var(--gold); text-transform: uppercase; margin-bottom: 6px;
-    }
-    .pt-title {
-      font-size: 18px; font-weight: 800; letter-spacing: -0.3px;
-      color: var(--text-1); margin-bottom: 16px;
-    }
-    .pt-mockup {
-      background: #fff; border: 1px solid var(--border); border-radius: 14px;
-      padding: 16px 18px; margin-bottom: 14px; position: relative;
-    }
-    .pt-mockup-title {
-      font-size: 12px; font-weight: 700; color: var(--text-3);
-      letter-spacing: 0.6px; text-transform: uppercase; margin-bottom: 12px;
-    }
-    .pt-stat-row {
-      display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px;
-    }
-    .pt-stat {
-      flex: 1; min-width: 80px;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 10px; padding: 10px 12px; text-align: center;
-    }
-    .pt-stat-val { font-size: 20px; font-weight: 900; letter-spacing: -0.5px; }
-    .pt-stat-val.weak  { color: var(--error); }
-    .pt-stat-val.ok    { color: var(--success); }
-    .pt-stat-val.mid   { color: var(--gold); }
-    .pt-stat-lbl { font-size: 10px; color: var(--text-3); margin-top: 2px; }
-    .pt-kw-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-    .pt-kw {
-      background: rgba(220,38,38,0.08); border: 1px solid rgba(220,38,38,0.2);
-      color: var(--error); font-size: 12px; font-weight: 600;
-      padding: 3px 10px; border-radius: 20px;
-    }
-    .pt-lock {
-      position: absolute; inset: 0; background: rgba(255,255,255,0.82);
-      backdrop-filter: blur(4px); border-radius: 14px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 6px;
-    }
-    .pt-lock-icon { font-size: 28px; }
-    .pt-lock-text { font-size: 13px; font-weight: 700; color: var(--text-2); }
-    .pt-cta {
-      width: 100%;
-      background: linear-gradient(135deg, #E09520 0%, #F5A623 50%, #F8C347 100%);
-      color: #000; border: none; border-radius: 12px;
-      padding: 14px; font-size: 15px; font-weight: 800;
-      cursor: pointer; transition: all var(--t);
-      box-shadow: 0 4px 20px rgba(245,166,35,0.3);
-    }
-    .pt-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(245,166,35,0.5); }
-    .pt-note { font-size: 11px; color: var(--text-3); text-align: center; margin-top: 8px; }
-
-    /* ── DIFFICULTY SELECTION (within landing) ── */
-    .diff-select-wrap {
-      max-width: 560px;
-      margin: 0 auto;
-      text-align: left;
-    }
-    .diff-select-h {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      margin-top: 12px;
-    }
-
-    .diff-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .diff-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px 18px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      cursor: pointer;
-      transition: all 0.22s ease;
-      text-align: left;
-      width: 100%;
-      backdrop-filter: blur(10px);
-    }
-    .diff-card:hover {
-      border-color: rgba(245,166,35,0.38);
-      background: rgba(245,166,35,0.05);
-      transform: translateY(-2px);
-    }
-    .diff-card.active {
-      border-color: var(--gold);
-      background: rgba(245,166,35,0.07);
-      box-shadow: 0 0 0 1px rgba(245,166,35,0.28), 0 8px 28px rgba(245,166,35,0.1);
-    }
-    .diff-icon { font-size: 28px; width: 44px; text-align: center; flex-shrink: 0; }
-    .diff-info { flex: 1; }
-    .diff-name { font-size: 15px; font-weight: 700; }
-    .diff-sub  { font-size: 12px; color: var(--text-2); margin-top: 2px; }
-    .diff-radio {
-      width: 22px; height: 22px; border-radius: 50%;
-      border: 2px solid rgba(0,0,0,0.2);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; transition: all var(--t);
-    }
-    .diff-card.active .diff-radio { background: var(--gold); border-color: var(--gold); }
-    .diff-radio::after {
-      content: ''; width: 8px; height: 8px; border-radius: 50%;
-      background: var(--bg); display: none;
-    }
-    .diff-card.active .diff-radio::after { display: block; }
-
-    .start-btn {
-      width: 100%;
-      background: linear-gradient(135deg, #E09520 0%, #F5A623 50%, #F8C347 100%);
-      color: #000; border: none; border-radius: 50px;
-      padding: 18px; font-size: 17px; font-weight: 800;
-      cursor: pointer; transition: all var(--t);
-      box-shadow: 0 4px 20px rgba(245,166,35,0.28);
-    }
-    .start-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 36px rgba(245,166,35,0.45);
-    }
-    .start-btn:active { transform: translateY(0); }
-
-    /* ── BOTTOM CTA ── */
-    .lp-bottom-cta {
-      padding: 112px 20px;
-      text-align: center;
-      border-top: 1px solid var(--border);
-    }
-    .lp-bottom-cta h2 {
-      font-size: clamp(28px, 4.5vw, 44px);
-      font-weight: 800;
-      letter-spacing: -1px;
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-    .lp-bottom-cta p {
-      font-size: 16px;
-      color: var(--text-2);
-      margin-bottom: 36px;
-    }
-
-    /* ── LP FOOTER ── */
-    .lp-footer {
-      padding: 24px 20px;
-      text-align: center;
-      font-size: 12px;
-      color: var(--text-3);
-      border-top: 1px solid var(--border);
-    }
-
-    /* ═══════════════════════════════════════════
-       QUIZ SCREEN
-    ═══════════════════════════════════════════ */
-
-    .content {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 12px 14px 16px;
-    }
-
-    /* Free mode banner */
-    .free-banner {
-      display: none;
-      background: rgba(245,166,35,0.08);
-      border: 1px solid rgba(245,166,35,0.2);
-      border-radius: 10px;
-      padding: 10px 16px;
-      margin-bottom: 16px;
-      text-align: center;
-      font-size: 13px;
-      color: var(--gold);
-      font-weight: 600;
-    }
-    .free-banner.show { display: block; }
-    .free-banner a {
-      color: var(--gold);
-      text-decoration: underline;
-      cursor: pointer;
-      margin-left: 6px;
-    }
-
-    /* ── QUIZ META ── */
-    .quiz-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-    .diff-pills { display: flex; gap: 6px; }
-    .diff-pill {
-      display: inline-flex; align-items: center; gap: 4px;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 20px; padding: 5px 11px;
-      font-size: 12px; font-weight: 600; color: var(--text-2);
-      cursor: pointer; transition: all var(--t); backdrop-filter: blur(8px);
-    }
-    .diff-pill:hover { border-color: rgba(245,166,35,0.38); color: var(--gold); background: rgba(245,166,35,0.05); }
-    .diff-pill.active { background: rgba(245,166,35,0.1); border-color: var(--gold); color: var(--gold); }
-    .q-counter { font-size: 12px; color: var(--text-3); font-weight: 500; }
-
-    /* ── AUDIO CARD ── */
-    .audio-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); padding: 16px 20px 14px;
-      text-align: center; margin-bottom: 12px;
-      position: relative; overflow: hidden;
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      transition: border-color 0.4s, box-shadow 0.4s;
-    }
-    .audio-card::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 70% 20%, rgba(59,91,219,0.05) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .audio-card.is-playing {
-      border-color: rgba(245,166,35,0.45);
-      box-shadow: 0 0 36px rgba(245,166,35,0.12), inset 0 0 60px rgba(245,166,35,0.04);
-    }
-    .audio-label {
-      font-size: 11px; font-weight: 700; letter-spacing: 1px;
-      text-transform: uppercase; color: var(--text-3); margin-bottom: 8px;
-    }
-    .accent-badge {
-      display: inline-flex; align-items: center; gap: 4px;
-      background: rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.12);
-      border-radius: 20px; padding: 3px 10px;
-      font-size: 12px; color: rgba(0,0,0,0.6); margin-bottom: 10px;
-    }
-
-    .waveform {
-      display: flex; align-items: center; justify-content: center;
-      gap: 5px; height: 36px; margin-bottom: 10px;
-    }
-    .bar {
-      width: 4px; border-radius: 2px;
-      background: rgba(0,0,0,0.12); height: 8px;
-      transition: height 0.12s, background 0.12s;
-    }
-    .waveform.playing .bar {
-      background: var(--gold); animation: wave 1.4s ease-in-out infinite;
-      box-shadow: 0 0 10px rgba(245,166,35,0.55);
-    }
-    @keyframes wave {
-      0%, 100% { height: 6px; opacity: 0.5; }
-      50%       { height: 38px; opacity: 1; }
-    }
-    .waveform.playing .bar:nth-child(1)  { animation-delay: 0.00s; }
-    .waveform.playing .bar:nth-child(2)  { animation-delay: 0.10s; }
-    .waveform.playing .bar:nth-child(3)  { animation-delay: 0.20s; }
-    .waveform.playing .bar:nth-child(4)  { animation-delay: 0.08s; }
-    .waveform.playing .bar:nth-child(5)  { animation-delay: 0.16s; }
-    .waveform.playing .bar:nth-child(6)  { animation-delay: 0.24s; }
-    .waveform.playing .bar:nth-child(7)  { animation-delay: 0.05s; }
-    .waveform.playing .bar:nth-child(8)  { animation-delay: 0.14s; }
-    .waveform.playing .bar:nth-child(9)  { animation-delay: 0.22s; }
-    .waveform.playing .bar:nth-child(10) { animation-delay: 0.11s; }
-
-    .play-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,0,0,0.05); color: var(--text-1);
-      border: 1px solid var(--border); border-radius: 50px;
-      padding: 14px 28px; font-size: 14px; font-weight: 600;
-      cursor: pointer; transition: all var(--t);
-      min-height: 48px;
-    }
-    .play-btn:hover { background: rgba(0,0,0,0.08); border-color: rgba(0,0,0,0.15); }
-    .play-btn:active { transform: scale(0.97); }
-    .play-btn.playing {
-      background: rgba(245,166,35,0.1); border-color: rgba(245,166,35,0.38); color: var(--gold);
-    }
-
-    /* ── OPTIONS ── */
-    .question-label {
-      font-size: 14px; font-weight: 600; color: var(--text-2);
-      text-align: center; margin-bottom: 14px;
-    }
-    .options-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
-    .opt-btn {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 12px 14px;
-      display: flex; align-items: center; gap: 10px;
-      cursor: pointer; transition: all var(--t); text-align: left;
-      width: 100%; font-size: 14px; font-weight: 500; color: var(--text-1);
-      backdrop-filter: blur(8px);
-      min-height: 44px;
-    }
-    .opt-btn:not(:disabled):hover {
-      border-color: rgba(245,166,35,0.42); background: rgba(245,166,35,0.05);
-      transform: translateX(6px);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 0 0 1px rgba(245,166,35,0.18);
-    }
-    .opt-btn:not(:disabled):active {
-      transform: scale(0.98);
-      background: rgba(245,166,35,0.08);
-      border-color: rgba(245,166,35,0.5);
-    }
-    .opt-btn:disabled { cursor: default; }
-    .opt-btn.correct {
-      border-color: var(--success) !important; background: var(--success-bg) !important;
-      box-shadow: 0 0 24px rgba(52,211,153,0.15) !important;
-    }
-    .opt-btn.wrong {
-      border-color: var(--error) !important; background: var(--error-bg) !important;
-      box-shadow: 0 0 24px rgba(248,113,113,0.15) !important;
-    }
-    .opt-num {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: rgba(0,0,0,0.07);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 700; flex-shrink: 0;
-      color: var(--text-2); transition: all var(--t);
-    }
-    .opt-btn:not(:disabled):hover .opt-num { background: var(--gold); color: #000; }
-    .opt-btn.correct .opt-num { background: var(--success); color: #000; }
-    .opt-btn.wrong   .opt-num { background: var(--error);   color: #fff; }
-    .opt-text { flex: 1; line-height: 1.4; }
-
-    /* ── EXPLANATION ── */
-    .explanation {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px;
-      backdrop-filter: blur(8px); display: none;
-    }
-    .explanation.show { display: block; animation: slideUp 0.25s ease-out; }
-
-    /* ── HINT PANEL ── */
-    .hint-panel {
-      background: #fffbeb; border: 1px solid #fcd34d;
-      border-radius: var(--radius); padding: 14px 16px; margin-bottom: 14px;
-      display: none;
-    }
-    .hint-panel.show { display: block; animation: slideUp 0.25s ease-out; }
-    .hint-label { font-size: 12px; font-weight: 700; color: #b45309; margin-bottom: 8px; letter-spacing: 0.03em; }
-    .hint-kp { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
-    .hint-kp:empty { display: none; }
-    .hint-expl { font-size: 13px; color: #78350f; line-height: 1.7; }
-    .hint-expl:empty { display: none; }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .expl-verdict { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-    .expl-verdict.ok  { color: var(--success); }
-    .expl-verdict.ng  { color: var(--error); }
-    .expl-text { font-size: 13px; color: var(--text-2); line-height: 1.75; margin-bottom: 12px; }
-    .key-phrases { display: flex; flex-wrap: wrap; gap: 6px; }
-    .kp {
-      background: rgba(245,166,35,0.09); color: var(--gold);
-      border: 1px solid rgba(245,166,35,0.2); border-radius: 6px;
-      padding: 4px 10px; font-size: 12px; font-weight: 700;
-      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-    }
-
-    /* ── TRANSCRIPT ── */
-    .transcript-toggle {
-      display: none; background: none;
-      border: 1px dashed rgba(0,0,0,0.2); border-radius: 10px;
-      color: var(--text-3); font-size: 12px; font-weight: 600;
-      letter-spacing: 0.3px; cursor: pointer; padding: 12px 16px;
-      width: 100%; margin-top: 10px; transition: all var(--t);
-      min-height: 44px;
-    }
-    .transcript-toggle.show { display: block; }
-    .transcript-toggle:hover {
-      border-color: rgba(245,166,35,0.32); color: var(--gold-dim);
-      background: rgba(245,166,35,0.04);
-    }
-    .transcript {
-      display: none; margin-top: 10px; padding: 18px 20px;
-      background: var(--surface); border-radius: var(--radius);
-      border: 1px solid var(--border); backdrop-filter: blur(8px);
-    }
-    .transcript.show { display: block; animation: slideUp 0.22s ease-out; }
-    .transcript-label {
-      font-size: 11px; font-weight: 700; letter-spacing: 1px;
-      text-transform: uppercase; color: var(--text-3); margin-bottom: 10px;
-    }
-    .transcript-text { font-size: 15px; line-height: 1.85; color: var(--text-1); font-style: italic; }
-    .transcript-ja-label {
-      font-size: 11px; font-weight: 700; letter-spacing: 1px;
-      text-transform: uppercase; color: var(--text-3); margin-top: 12px; margin-bottom: 6px;
-    }
-    .transcript-ja {
-      font-size: 14px; line-height: 1.8; color: var(--text-2);
-    }
-    .transcript-ja:empty { display: none; }
-
-    /* ── NEXT BUTTON ── */
-    .next-btn {
-      width: 100%;
-      background: linear-gradient(135deg, #E09520 0%, #F5A623 50%, #F8C347 100%);
-      color: #000; border: none; border-radius: var(--radius);
-      padding: 14px; font-size: 15px; font-weight: 800;
-      cursor: pointer; transition: all var(--t);
-      display: none; letter-spacing: -0.2px;
-      box-shadow: 0 4px 20px rgba(245,166,35,0.22); margin-top: 8px;
-      min-height: 44px;
-    }
-    .next-btn.show { display: block; animation: slideUp 0.25s ease-out; }
-    .next-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(245,166,35,0.42); filter: brightness(1.05); }
-    .next-btn:active { transform: translateY(0); }
-
-    /* ── LOADING ── */
-    .loading-view { text-align: center; padding: 64px 20px; display: none; }
-    .loading-view.show { display: block; }
-    .spinner {
-      width: 42px; height: 42px; border: 3px solid rgba(0,0,0,0.1);
-      border-top-color: var(--gold); border-radius: 50%;
-      animation: spin 0.75s linear infinite; margin: 0 auto 16px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .loading-text { font-size: 14px; color: var(--text-2); font-weight: 500; }
-
-    /* ── QUESTION VIEW ── */
-    .question-view { display: none; }
-    .question-view.show { display: block; animation: fadeIn 0.28s ease-out; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    /* ── KINETIC ANIMATIONS ── */
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      15%       { transform: translateX(-10px); }
-      30%       { transform: translateX(10px); }
-      45%       { transform: translateX(-7px); }
-      60%       { transform: translateX(7px); }
-      75%       { transform: translateX(-4px); }
-      90%       { transform: translateX(4px); }
-    }
-    @keyframes pop {
-      0%   { transform: scale(1); }
-      35%  { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    @keyframes score-bump {
-      0%   { transform: scale(1); }
-      40%  { transform: scale(1.4); }
-      100% { transform: scale(1); }
-    }
-    .opt-btn.anim-shake { animation: shake 0.45s ease-out; }
-    .opt-btn.anim-pop   { animation: pop   0.35s ease-out; }
-
-    /* ── STREAK & PROGRESS ── */
-    .streak-badge {
-      display: flex; align-items: center; gap: 3px;
-      font-size: 13px; font-weight: 800; color: var(--gold);
-      min-width: 42px; transition: color 0.2s;
-    }
-    .streak-badge.zero { color: var(--text-3); }
-    .progress-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
-    .progress-track {
-      width: 72px; height: 4px; background: rgba(0,0,0,0.1);
-      border-radius: 2px; overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--gold), #F8C347);
-      border-radius: 2px; width: 0%;
-      transition: width 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .score-num { display: inline-block; }
-    .score-num.bump { animation: score-bump 0.3s ease-out; }
-
-    /* ── PAYWALL MODAL ── */
-    .paywall-overlay {
-      display: none;
-      position: fixed; inset: 0; z-index: 500;
-      background: rgba(0,0,0,0.45);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      animation: fadeIn 0.25s ease-out;
-    }
-    .paywall-overlay.show { display: flex; }
-
-    .paywall-modal {
-      background: #FFFFFF;
-      border: 1px solid rgba(245,166,35,0.35);
-      border-radius: 24px;
-      padding: 40px 32px 32px;
-      max-width: 420px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.15);
-      animation: slideUp 0.3s ease-out;
-      backdrop-filter: blur(20px);
-    }
-
-    .paywall-crown { font-size: 42px; margin-bottom: 16px; }
-    .paywall-title {
-      font-size: 22px; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 8px;
-    }
-    .paywall-sub { font-size: 14px; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
-
-    .paywall-feats {
-      list-style: none; text-align: left;
-      background: var(--surface);
-      border: 1px solid var(--border); border-radius: 14px;
-      padding: 16px 20px; margin-bottom: 24px;
-      display: flex; flex-direction: column; gap: 8px;
-    }
-    .paywall-feats li {
-      font-size: 14px; display: flex; align-items: center; gap: 8px; color: var(--text-1);
-    }
-    .paywall-feats li::before { content: '✓'; color: var(--success); font-weight: 700; }
-
-    .paywall-price {
-      margin-bottom: 20px;
-    }
-    .paywall-price strong {
-      font-size: 36px; font-weight: 900; letter-spacing: -1px; color: var(--gold);
-    }
-    .paywall-price span {
-      font-size: 14px; color: var(--text-2);
-    }
-    .paywall-price .trial-note {
-      display: block; font-size: 12px; color: var(--success); font-weight: 600; margin-top: 2px;
-    }
-
-    .paywall-cta {
-      width: 100%;
-      background: linear-gradient(135deg, #E09520 0%, #F5A623 50%, #F8C347 100%);
-      color: #000; border: none; border-radius: 14px;
-      padding: 16px; font-size: 16px; font-weight: 800;
-      cursor: pointer; transition: all var(--t); margin-bottom: 14px;
-      box-shadow: 0 4px 20px rgba(245,166,35,0.3);
-    }
-    .paywall-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 36px rgba(245,166,35,0.5);
-    }
-    .paywall-skip {
-      font-size: 12px; color: var(--text-3); text-decoration: underline;
-      cursor: pointer; display: block; transition: color 0.15s;
-    }
-    .paywall-skip:hover { color: var(--text-2); }
-
     /* ── RETURNING STATS PANEL ── */
     .returning-stats {
       display: none;
@@ -1444,15 +862,6 @@
       margin-bottom: 10px; min-height: 44px;
     }
     .mission-btn-back:hover { background: rgba(0,0,0,0.08); color: var(--text-1); }
-    .mission-btn-premium {
-      width: 100%;
-      background: linear-gradient(135deg, #E09520 0%, #F5A623 50%, #F8C347 100%);
-      color: #000; border: none; border-radius: 12px;
-      padding: 13px; font-size: 14px; font-weight: 800;
-      cursor: pointer; transition: all var(--t);
-      box-shadow: 0 4px 20px rgba(245,166,35,0.3); min-height: 44px;
-    }
-    .mission-btn-premium:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(245,166,35,0.5); }
 
     /* ── MISSION: ARTICLE LINKS ── */
     .mission-articles {
@@ -1612,6 +1021,16 @@
   .eg-error{color:var(--error);font-size:.78rem;margin-top:6px;display:none;}
   .eg-skip{background:none;border:none;color:rgba(0,0,0,.50);font-size:.78rem;cursor:pointer;margin-top:14px;text-decoration:underline;transition:color .18s;display:block;width:100%;}
   .eg-skip:hover{color:rgba(0,0,0,.70);}
+.eg-field-group{margin-bottom:12px;text-align:left;}
+.eg-field-label{font-size:.78rem;font-weight:700;color:rgba(0,0,0,.62);margin-bottom:6px;}
+.eg-radio-row{display:flex;flex-wrap:wrap;gap:6px;}
+.eg-radio-btn{cursor:pointer;}
+.eg-radio-btn input{display:none;}
+.eg-radio-btn span{display:inline-block;padding:5px 10px;border:1px solid rgba(0,0,0,.18);border-radius:20px;font-size:.78rem;font-weight:600;color:rgba(0,0,0,.62);transition:all .15s;}
+.eg-radio-btn input:checked+span{background:rgba(245,166,35,.15);border-color:#F5A623;color:#000;}
+.eg-radio-btn:hover span{border-color:rgba(245,166,35,.5);}
+.eg-select{width:100%;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.15);border-radius:12px;padding:12px 16px;font-size:.88rem;color:rgba(0,0,0,.75);outline:none;transition:border-color .18s;cursor:pointer;-webkit-appearance:none;}
+.eg-select:focus{border-color:rgba(245,166,35,.55);}
   @media(max-width:480px){.eg-card{padding:28px 20px 24px;}.eg-title{font-size:1.45rem;}}
 
 /* ── SCROLL REVEAL ── */
@@ -1686,9 +1105,6 @@
   transform: translateY(-4px);
   box-shadow: 0 16px 48px rgba(0,0,0,0.08);
   transition: transform 0.28s ease, box-shadow 0.28s ease;
-}
-.pricing-featured:hover {
-  box-shadow: 0 16px 56px rgba(245,166,35,0.22), 0 0 0 1px rgba(245,166,35,0.35) !important;
 }
 
 /* ── FEATURE ITEM HOVER ── */
@@ -1793,62 +1209,6 @@
       background: rgba(14,165,233,0.08);
       color: var(--teal);
       font-weight: 700;
-    }
-
-    /* ── COUNTDOWN TIMER ── */
-    .countdown-wrap {
-      text-align: center;
-      margin-bottom: 32px;
-      padding: 20px 24px;
-      background: rgba(14,165,233,0.05);
-      border: 1px solid rgba(14,165,233,0.15);
-      border-radius: 16px;
-    }
-    .countdown-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 12px;
-    }
-    .countdown-dials {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .cd-unit {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-    }
-    .cd-num {
-      font-size: 32px;
-      font-weight: 900;
-      letter-spacing: -1px;
-      color: rgba(0,0,0,0.85);
-      min-width: 52px;
-      text-align: center;
-      background: #fff;
-      border: 1px solid rgba(0,0,0,0.09);
-      border-radius: 10px;
-      padding: 6px 4px;
-      line-height: 1;
-    }
-    .cd-sep {
-      font-size: 24px;
-      font-weight: 900;
-      color: rgba(0,0,0,0.25);
-      margin-bottom: 16px;
-    }
-    .cd-label {
-      font-size: 11px;
-      color: var(--text-3);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
 
     /* ── LP STICKY NAV ── */
@@ -2067,7 +1427,7 @@
       <div class="hero-ctas">
         <button class="btn-primary-lg" id="freeTrialBtn" onclick="startFreeQuiz()">今日の練習を始める</button>
       </div>
-      <p class="hero-fine">毎日5問まで無料 · メール登録で10問</p>
+      <p class="hero-fine">455問すべて無料 · メール登録で無制限</p>
     </div>
   </section>
 
@@ -2096,7 +1456,7 @@
       <span class="feature-icon" style="background:rgba(245,166,35,0.08);border-color:rgba(245,166,35,0.16);color:var(--gold)">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
       </span>
-      <div class="feature-text"><strong>毎日5問 無料</strong></div>
+      <div class="feature-text"><strong>455問 完全無料</strong></div>
     </div>
   </div>
 
@@ -2208,7 +1568,7 @@
           <thead>
             <tr>
               <th style="text-align:left">項目</th>
-              <th class="col-self">Native-real<br><small style="font-size:10px;font-weight:600">プレミアム（予定）</small></th>
+              <th class="col-self">Native-real<br><small style="font-size:10px;font-weight:600">完全無料</small></th>
               <th>スタサプ<br><small style="font-size:10px;font-weight:400">ENGLISH</small></th>
               <th>Cake<br><small style="font-size:10px;font-weight:400">Plus</small></th>
               <th>シャドテン</th>
@@ -2217,7 +1577,7 @@
           <tbody>
             <tr>
               <td class="col-label">月額（税込）</td>
-              <td class="col-self"><span class="compare-price-self">¥1,500</span></td>
+              <td class="col-self"><span class="compare-price-self">¥0</span></td>
               <td>¥2,178〜</td>
               <td>¥1,500</td>
               <td>¥21,780</td>
@@ -2259,79 +1619,22 @@
       <div class="pricing-row">
         <!-- Free Plan -->
         <div class="pricing-card reveal reveal-delay-1">
-          <div class="plan-label">無料プラン</div>
+          <div class="plan-label">完全無料</div>
           <div class="plan-price-wrap">
             <span class="plan-price">¥0</span>
           </div>
           <div style="height:26px"></div>
           <ul class="plan-feats">
-            <li class="feat-ok">毎日5問（登録不要）</li>
-            <li class="feat-ok">解説・キーフレーズ</li>
-            <li class="feat-ok">メール登録で<strong>10問</strong>まで無料</li>
-            <li class="feat-ng">クロスデバイス同期（近日公開）</li>
-            <li class="feat-ng">苦手問題の自動復習</li>
-            <li class="feat-ng">新問題 毎週追加</li>
+            <li class="feat-ok">455問すべて無制限で練習</li>
+            <li class="feat-ok">3難易度・適応型アルゴリズム</li>
+            <li class="feat-ok">解説・キーフレーズ付き</li>
+            <li class="feat-ok">連続学習ストリーク記録</li>
           </ul>
-          <button class="plan-btn plan-btn-ghost" onclick="startFreeQuiz()">今日の練習を試す（無料）</button>
+          <button class="plan-btn plan-btn-ghost" onclick="startFreeQuiz()">今日の練習を始める（無料）</button>
         </div>
 
-        <!-- Premium Plan -->
-        <div class="pricing-card pricing-featured reveal reveal-delay-2">
-          <div class="plan-rec-badge">おすすめ</div>
-          <div class="plan-label">プレミアム</div>
-          <div class="plan-price-wrap">
-            <span class="plan-price">¥1,500</span>
-            <span class="plan-per">/月</span>
-          </div>
-          <div class="plan-trial-text">年払い ¥12,000（月833円・44%お得）</div>
-          <ul class="plan-feats">
-            <li class="feat-ok">全455問＋<strong>毎週新10問</strong>追加</li>
-            <li class="feat-ok">3難易度すべて開放</li>
-            <li class="feat-ok">AI弱点診断（単語・速度・文型）近日公開</li>
-            <li class="feat-ok">苦手問題の自動復習</li>
-            <li class="feat-ok">進捗ダッシュボード（近日公開）</li>
-            <li class="feat-ok">クロスデバイス同期（近日公開）</li>
-          </ul>
-          <button class="plan-btn plan-btn-gold" onclick="openWaitlist()">Waitlist登録（優先案内）→</button>
-          <p style="font-size:11px;color:var(--text-3);text-align:center;margin-top:10px">解約はいつでも1クリック</p>
-        </div>
       </div>
 
-      <!-- AI診断ティザー -->
-      <div class="premium-teaser reveal">
-        <div class="pt-eyebrow">🔬 COMING SOON — 開発中のプレミアム機能</div>
-        <div class="pt-title">AI弱点診断で「聞き取れない理由」がわかるようにします</div>
-        <div class="pt-mockup">
-          <div class="pt-mockup-title">📊 今日のリスニング診断レポート</div>
-          <div class="pt-stat-row">
-            <div class="pt-stat">
-              <div class="pt-stat-val weak">62%</div>
-              <div class="pt-stat-lbl">速い音声 正答率</div>
-            </div>
-            <div class="pt-stat">
-              <div class="pt-stat-val ok">91%</div>
-              <div class="pt-stat-lbl">ゆっくり音声</div>
-            </div>
-            <div class="pt-stat">
-              <div class="pt-stat-val mid">74%</div>
-              <div class="pt-stat-lbl">全体正答率</div>
-            </div>
-          </div>
-          <div style="font-size:12px;color:var(--text-3);margin-bottom:8px;font-weight:600">聞き取れなかったキーフレーズ</div>
-          <div class="pt-kw-row">
-            <span class="pt-kw">been standing here</span>
-            <span class="pt-kw">on hold for</span>
-            <span class="pt-kw">gone bad</span>
-            <span class="pt-kw">over asking price</span>
-          </div>
-          <div class="pt-lock">
-            <div class="pt-lock-icon">🔒</div>
-            <div class="pt-lock-text">プレミアムで解放</div>
-          </div>
-        </div>
-        <button class="pt-cta" onclick="openWaitlist()">Waitlist登録でAI診断を一番先に使う →</button>
-        <p class="pt-note">公開時にメールでお知らせします。登録は無料・解除可能。</p>
-      </div>
 
       <div class="diff-select-wrap" id="diffSelectWrap"></div>
     </div>
@@ -2340,7 +1643,7 @@
   <!-- ── SECTION 6: Bottom CTA ── -->
   <div class="lp-bottom-cta reveal">
     <div class="lp-wrap">
-      <h2>耳が変わる実感を、<br><span class="text-gold">今日の5問</span>で。</h2>
+      <h2>耳が変わる実感を、<br><span class="text-gold">今日の練習</span>で。</h2>
       <button class="btn-primary-lg" id="bottomStartBtn" onclick="startFreeQuiz()">今日の練習を始める</button>
     </div>
   </div>
@@ -2376,7 +1679,7 @@
       <a href="/privacy/" style="color:var(--text-3);text-decoration:none;margin:0 10px;font-size:12px;transition:color 0.18s" onmouseover="this.style.color='var(--text-2)'" onmouseout="this.style.color='var(--text-3)'">プライバシーポリシー</a>
       <a href="https://native-real.com/" style="color:var(--text-3);text-decoration:none;margin:0 10px;font-size:12px;transition:color 0.18s" onmouseover="this.style.color='var(--text-2)'" onmouseout="this.style.color='var(--text-3)'">英会話サービス比較</a>
     </div>
-    © 2026 ListenUp · 毎日5問まで無料
+    © 2026 ListenUp · 455問無料
   </div>
 
 </div>
@@ -2384,18 +1687,6 @@
 <!-- ═══════════════ QUIZ SCREEN ═══════════════ -->
 <div class="screen" id="quizScreen">
   <div class="content">
-
-    <!-- Free mode notice -->
-    <div class="free-banner" id="freeBanner">
-      <span class="dm-dots-wrap">
-        <span class="dm-dot" id="dmDot0"></span>
-        <span class="dm-dot" id="dmDot1"></span>
-        <span class="dm-dot" id="dmDot2"></span>
-        <span class="dm-dot" id="dmDot3"></span>
-        <span class="dm-dot" id="dmDot4"></span>
-      </span>
-      今日 <span id="freeAnsweredCount">0</span>/10問
-    </div>
 
     <!-- Question counter -->
     <div class="quiz-meta">
@@ -2460,19 +1751,6 @@
   </div>
 </div>
 
-<!-- ═══════════════ PAYWALL MODAL ═══════════════ -->
-<div class="paywall-overlay" id="paywallOverlay">
-  <div class="paywall-modal">
-    <div class="paywall-crown">🎯</div>
-    <h2 class="paywall-title" id="paywallTitle">今日の練習が終わりました</h2>
-    <p class="paywall-sub" id="paywallSub">
-      今日の10問が完了しました。<br>
-      毎日続けることが上達への近道です。明日また練習しましょう。
-    </p>
-    <button class="mission-btn-back" onclick="closePaywall()">← TOPに戻る</button>
-  </div>
-</div>
-
 <!-- ═══════════════ MISSION COMPLETE MODAL ═══════════════ -->
 <div class="mission-overlay" id="missionOverlay">
   <div class="mission-modal">
@@ -2495,7 +1773,6 @@
       <a class="mission-article-link" href="/articles/english-habit-guide/">社会人が英語を習慣化する方法【挫折しない7つのコツ】</a>
       <a class="mission-article-link" href="/articles/online-eikaiwa-frequency-guide/">英会話は週何回受けると効果が出る？科学的根拠から解説</a>
     </div>
-    <button class="mission-btn-premium" onclick="openWaitlist()">🚀 無制限＋AI診断 → Waitlist登録</button>
     <button class="mission-btn-back" onclick="closeMissionComplete()">← TOPに戻る</button>
   </div>
 </div>
@@ -2980,8 +2257,6 @@ const DIFF_META = {
   advanced:     { icon: '🌳', label: '上級',  rate: 1.00 },
 };
 
-const FREE_LIMIT = 3; // legacy (未使用)
-const FREE_DAILY_LIMIT = 10; // メール登録済みユーザーの1日上限
 
 // ─────────────────────────────────────────
 // LOCAL STORAGE
@@ -3047,9 +2322,8 @@ function showReturningStats() {
 
   const today          = getToday();
   const todayAnswered  = (p.todayDate === today) ? p.todayAnswered : 0;
-  const remaining      = Math.max(0, FREE_DAILY_LIMIT - todayAnswered);
   const acc            = p.totalAnswered > 0 ? Math.round(p.totalCorrect / p.totalAnswered * 100) : 0;
-  const practicedToday = todayAnswered >= FREE_DAILY_LIMIT;
+  const practicedToday = todayAnswered > 0;
 
   // 累計スタッツ
   document.getElementById('rsTotalAnswered').textContent = p.totalAnswered.toLocaleString();
@@ -3086,19 +2360,6 @@ function showReturningStats() {
       else if (d.done)                             dot.className += ' done';
     });
   }
-
-  // 練習開始ボタン
-  const btn = document.getElementById('freeTrialBtn');
-  if (btn) {
-    if (remaining === 0) {
-      btn.textContent   = '今日は完了 · また明日';
-      btn.disabled      = true;
-      btn.style.opacity = '0.45';
-      btn.style.cursor  = 'default';
-    } else {
-      btn.textContent = `今日の練習（残り${remaining}問）`;
-    }
-  }
 }
 
 // ─────────────────────────────────────────
@@ -3117,8 +2378,6 @@ let total     = 0;
 let streak    = 0;
 let answered           = false;
 let isPlaying          = false;
-let freeMode           = false;
-let dailyFreeAnswered  = 0; // 今日の無料モード回答数（localStorage連動）
 
 // ─────────────────────────────────────────
 // NAVIGATION
@@ -3128,7 +2387,6 @@ function scrollToDiff() {
 }
 
 function scrollToDiffAndUpgrade() {
-  closePaywall();
   goToStart();
   setTimeout(() => scrollToDiff(), 150);
 }
@@ -3137,30 +2395,7 @@ function scrollToDiffAndUpgrade() {
 // START
 // ─────────────────────────────────────────
 function startFreeQuiz() {
-  // 未登録ユーザー: freeMode制限なし → 10問でメールゲート
-  if (!isRegistered()) {
-    freeMode = false;
-    beginQuiz();
-    return;
-  }
-  // メール登録済みユーザー: 1日20問の制限を適用
-  freeMode = true;
-  const p    = loadProgress();
-  const today = getToday();
-  dailyFreeAnswered = (p.todayDate === today) ? p.todayAnswered : 0;
-  if (dailyFreeAnswered >= FREE_DAILY_LIMIT) {
-    showPaywall('daily');
-    return;
-  }
   beginQuiz();
-}
-
-function startPremiumTrial() {
-  openWaitlist();
-}
-
-function openWaitlist() {
-  window.open('https://forms.gle/Fe2jehKqhjL59YuQ8', '_blank');
 }
 
 function beginQuiz() {
@@ -3177,16 +2412,6 @@ function beginQuiz() {
   document.getElementById('quizScreen').classList.add('active');
   document.getElementById('appHeader').style.display = 'flex';
 
-  // Free mode banner
-  const banner = document.getElementById('freeBanner');
-  if (freeMode) {
-    banner.classList.add('show');
-    updateFreeRemaining();
-    updateMissionDots();
-  } else {
-    banner.classList.remove('show');
-  }
-
   updateScore();
   loadQ();
 }
@@ -3194,42 +2419,24 @@ function beginQuiz() {
 function goToStart() {
   audioEl.pause();
   audioEl.currentTime = 0;
-  freeMode = false;
   document.getElementById('quizScreen').classList.remove('active');
   document.getElementById('startScreen').classList.add('active');
   document.getElementById('appHeader').style.display = 'none';
-  document.getElementById('freeBanner').classList.remove('show');
   window.scrollTo({ top: 0 });
-  showReturningStats();
-}
-
-// ─────────────────────────────────────────
-// PAYWALL
-// ─────────────────────────────────────────
-function showPaywall(reason) {
-  if (reason === 'daily') {
-    document.getElementById('paywallTitle').textContent = '今日の練習が終わりました';
-    document.getElementById('paywallSub').innerHTML =
-      '今日の10問が完了しました。<br>毎日続けることが上達への近道です。明日また練習しましょう。';
-  } else {
-    document.getElementById('paywallTitle').textContent = '無制限で練習したい方へ';
-    document.getElementById('paywallSub').innerHTML =
-      'プレミアムプランで毎日無制限に練習できます。<br>最初の7日間は完全無料です。';
+  // GA4: セッション完了イベント
+  if (total > 0) {
+    try {
+      const p = loadProgress();
+      gtag('event', 'quiz_session_complete', {
+        session_questions: total,
+        session_correct: score,
+        session_accuracy: total > 0 ? Math.round(score / total * 100) : 0,
+        lifetime_questions: p.totalAnswered,
+        daily_streak: p.dailyStreak
+      });
+    } catch(e) {}
   }
-  document.getElementById('paywallOverlay').classList.add('show');
-}
-
-function closePaywall() {
-  document.getElementById('paywallOverlay').classList.remove('show');
-}
-
-function upgradeToPremium() {
-  openWaitlist();
-}
-
-function updateFreeRemaining() {
-  const el = document.getElementById('freeAnsweredCount');
-  if (el) el.textContent = dailyFreeAnswered;
+  showReturningStats();
 }
 
 // ─────────────────────────────────────────
@@ -3278,9 +2485,7 @@ function loadQ() {
 // RENDER
 // ─────────────────────────────────────────
 function render() {
-  const qLabel = freeMode
-    ? `${total + 1}問目（今日 ${dailyFreeAnswered + 1}/${FREE_DAILY_LIMIT}）`
-    : `${total + 1}問目`;
+  const qLabel = `${total + 1}問目`;
   document.getElementById('qCounter').textContent = qLabel;
   audioEl.src = '';
   setPlayBtn(false);
@@ -3381,26 +2586,29 @@ function choose(selected) {
     const today = getToday();
     p.totalAnswered++;
     if (ok) p.totalCorrect++;
-    if (freeMode) {
-      dailyFreeAnswered++;
-      if (p.todayDate !== today) { p.todayAnswered = 0; p.todayCorrect = 0; }
-      p.todayAnswered = dailyFreeAnswered;
-      p.todayDate     = today;
-      if (!p.todayCorrect) p.todayCorrect = 0;
-      if (ok) p.todayCorrect++;
-    }
+    if (p.todayDate !== today) { p.todayAnswered = 0; p.todayCorrect = 0; p.todayDate = today; }
+    p.todayAnswered++;
+    if (ok) p.todayCorrect++;
     saveProgress(p);
   }
   updateScore();
-  if (freeMode) { updateFreeRemaining(); updateMissionDots(); }
 
   // GA4: クイズ回答イベント
   try {
+    const _p = loadProgress();
+    const _sessAcc = total > 0 ? Math.round(score / total * 100) : 0;
+    const _lifeAcc = _p.totalAnswered > 0 ? Math.round(_p.totalCorrect / _p.totalAnswered * 100) : 0;
     gtag('event', 'quiz_answer', {
       answer_correct: ok,
       question_number: total,
       difficulty: LEVELS[currentLevel],
-      play_count: playCount
+      play_count: playCount,
+      session_accuracy: _sessAcc,
+      max_level_reached: LEVELS[currentLevel],
+      lifetime_questions: _p.totalAnswered,
+      lifetime_accuracy: _lifeAcc,
+      daily_streak: _p.dailyStreak,
+      is_registered: isRegistered() ? 'true' : 'false'
     });
   } catch(e) { /* gtag未定義の場合は無視 */ }
 
@@ -3445,11 +2653,6 @@ function choose(selected) {
 
   const nextBtn = document.getElementById('nextBtn');
   nextBtn.classList.add('show');
-
-  // Change next button label in free mode when limit reached
-  if (freeMode && dailyFreeAnswered >= FREE_DAILY_LIMIT) {
-    nextBtn.textContent = '今日の練習が終わりました →';
-  }
 
   // 次へボタンが見えるように自動スクロール
   setTimeout(() => {
@@ -3503,16 +2706,9 @@ function closeEmailGate(continuePlay) {
 // NEXT
 // ─────────────────────────────────────────
 function next() {
-  // メール登録ゲート（5問後・未登録・本日未スキップ）
+  // メール登録ゲート（5問後・未登録）
   if (total >= EG_TRIGGER && !isRegistered()) {
-    const skippedToday = localStorage.getItem(EG_SKIP_KEY) === new Date().toDateString();
-    if (!skippedToday) {
-      showEmailGate();
-      return;
-    }
-  }
-  if (freeMode && dailyFreeAnswered >= FREE_DAILY_LIMIT) {
-    showMissionComplete();
+    showEmailGate();
     return;
   }
   loadQ();
@@ -3650,12 +2846,13 @@ function getWeekData(visitDates) {
 }
 
 function updateMissionDots() {
-  for (let i = 0; i < FREE_DAILY_LIMIT; i++) {
+  const todayAnswered = loadProgress().todayAnswered || 0;
+  for (let i = 0; i < 10; i++) {
     const dot = document.getElementById('dmDot' + i);
     if (!dot) continue;
     dot.className = 'dm-dot';
-    if (i < dailyFreeAnswered) {
-      dot.className += i === dailyFreeAnswered - 1 ? ' filled filled-recent' : ' filled';
+    if (i < todayAnswered) {
+      dot.className += i === todayAnswered - 1 ? ' filled filled-recent' : ' filled';
     }
   }
 }
@@ -3663,7 +2860,7 @@ function updateMissionDots() {
 function showMissionComplete() {
   const p       = loadProgress();
   const todayC  = p.todayCorrect  || 0;
-  const todayA  = p.todayAnswered || FREE_DAILY_LIMIT;
+  const todayA  = p.todayAnswered || 0;
   const acc     = todayA > 0 ? Math.round(todayC / todayA * 100) : 0;
 
   document.getElementById('missionScore').textContent    = todayC + '/' + todayA;
@@ -3709,13 +2906,38 @@ function shuffle(arr) {
 document.addEventListener('DOMContentLoaded', function() {
   showReturningStats();
 
+  // GA4: 訪問タイプイベント
+  try {
+    const _p = loadProgress();
+    if (_p.totalAnswered === 0) {
+      gtag('event', 'first_visit_quiz');
+    } else {
+      gtag('event', 'returning_user', {
+        lifetime_questions: _p.totalAnswered,
+        daily_streak: _p.dailyStreak
+      });
+    }
+  } catch(e) {}
+
   document.getElementById('egForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const email   = document.getElementById('egInput').value.trim();
-    const btn     = document.getElementById('egSubmit');
-    const errorEl = document.getElementById('egError');
+    const email      = document.getElementById('egInput').value.trim();
+    const ageGroup   = document.querySelector('input[name="egAgeGroup"]:checked')?.value || '';
+    const toeicScore = document.getElementById('egToeicScore')?.value || '';
+    const btn        = document.getElementById('egSubmit');
+    const errorEl    = document.getElementById('egError');
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       errorEl.textContent = '有効なメールアドレスを入力してください';
+      errorEl.style.display = 'block';
+      return;
+    }
+    if (!ageGroup) {
+      errorEl.textContent = '年代を選択してください';
+      errorEl.style.display = 'block';
+      return;
+    }
+    if (!toeicScore) {
+      errorEl.textContent = 'TOEICスコアを選択してください';
       errorEl.style.display = 'block';
       return;
     }
@@ -3726,12 +2948,40 @@ document.addEventListener('DOMContentLoaded', function() {
       await fetch(`https://app.beehiiv.com/api/v1/publications/${BEEHIIV_PUB_ID}/subscriptions`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, referring_site: 'native-real.com/listening' })
+        body: JSON.stringify({
+          email,
+          referring_site: 'native-real.com/listening',
+          custom_fields: [
+            { name: 'age_group', value: ageGroup },
+            { name: 'toeic_score', value: toeicScore }
+          ]
+        })
       });
     } catch (_) { /* サイレントフェイル */ }
     localStorage.setItem(EG_REG_KEY, email);
+    // プロフィールをlocalStorageに保存
+    try {
+      const _p = loadProgress();
+      const profile = {
+        age_group: ageGroup,
+        toeic_score: toeicScore,
+        registration_accuracy: _p.totalAnswered > 0 ? Math.round(_p.totalCorrect / _p.totalAnswered * 100) : 0,
+        registration_questions: _p.totalAnswered,
+        registration_streak: _p.dailyStreak
+      };
+      localStorage.setItem('listenup_profile', JSON.stringify(profile));
+      // GA4 ユーザープロパティ設定
+      gtag('set', 'user_properties', {
+        registered_user: 'true',
+        age_group: ageGroup,
+        toeic_score: toeicScore,
+        registration_accuracy: profile.registration_accuracy,
+        registration_questions: profile.registration_questions,
+        registration_streak: profile.registration_streak
+      });
+    } catch(_) {}
     // GA4: メールゲート登録完了イベント
-    gtag('event', 'email_gate_register');
+    gtag('event', 'email_gate_register', { age_group: ageGroup, toeic_score: toeicScore });
     btn.textContent = '✓ 登録完了！続きをどうぞ';
     setTimeout(() => closeEmailGate(true), 900);
   });
@@ -3774,31 +3024,6 @@ document.addEventListener('DOMContentLoaded', function() {
     spot.style.opacity = '0'; visible = false;
   });
 })();
-
-  // ── COUNTDOWN TIMER ──
-  (function() {
-    const target = new Date('2026-04-01T00:00:00+09:00').getTime();
-    function tick() {
-      const now = Date.now();
-      const diff = target - now;
-      if (diff <= 0) {
-        ['cdDays','cdHours','cdMins','cdSecs'].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.textContent = '00';
-        });
-        return;
-      }
-      const d = Math.floor(diff / 86400000);
-      const h = Math.floor((diff % 86400000) / 3600000);
-      const m = Math.floor((diff % 3600000) / 60000);
-      const s = Math.floor((diff % 60000) / 1000);
-      const pad = n => String(n).padStart(2, '0');
-      const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = pad(v); };
-      set('cdDays', d); set('cdHours', h); set('cdMins', m); set('cdSecs', s);
-    }
-    tick();
-    setInterval(tick, 1000);
-  })();
 
   // ── LP STICKY NAV ──
   (function() {
@@ -3852,16 +3077,40 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="eg-body">
       <div class="eg-emoji">🎉</div>
       <h2 class="eg-title">5問クリア！</h2>
-      <p class="eg-sub">登録で<span class="eg-gold">10問＋進捗管理</span>が無料で使える</p>
+      <p class="eg-sub">メール登録で<span class="eg-gold">制限なし</span>で続けられます</p>
       <p class="eg-desc">英語リスニングのコツや学習法を定期的にお届けします。<br>登録は無料・いつでも解除できます。</p>
       <div class="eg-stats" id="egStats"></div>
       <form class="eg-form" id="egForm" novalidate>
         <input type="email" id="egInput" class="eg-input" placeholder="your@email.com" autocomplete="email" required>
+        <div class="eg-field-group">
+          <div class="eg-field-label">年代</div>
+          <div class="eg-radio-row">
+            <label class="eg-radio-btn"><input type="radio" name="egAgeGroup" value="10代"><span>10代</span></label>
+            <label class="eg-radio-btn"><input type="radio" name="egAgeGroup" value="20代"><span>20代</span></label>
+            <label class="eg-radio-btn"><input type="radio" name="egAgeGroup" value="30代"><span>30代</span></label>
+            <label class="eg-radio-btn"><input type="radio" name="egAgeGroup" value="40代"><span>40代</span></label>
+            <label class="eg-radio-btn"><input type="radio" name="egAgeGroup" value="50代"><span>50代</span></label>
+            <label class="eg-radio-btn"><input type="radio" name="egAgeGroup" value="60代以上"><span>60代+</span></label>
+          </div>
+        </div>
+        <div class="eg-field-group">
+          <div class="eg-field-label">TOEICスコア</div>
+          <select id="egToeicScore" class="eg-select">
+            <option value="">選択してください</option>
+            <option value="〜499点">〜499点</option>
+            <option value="500〜599点">500〜599点</option>
+            <option value="600〜699点">600〜699点</option>
+            <option value="700〜799点">700〜799点</option>
+            <option value="800〜899点">800〜899点</option>
+            <option value="900〜990点">900〜990点</option>
+            <option value="未受験">未受験</option>
+          </select>
+        </div>
         <button type="submit" class="eg-submit" id="egSubmit">登録して続ける →</button>
       </form>
-      <p class="eg-consent">「登録して続ける」を押すことで、いち英語が運営する英語学習ニュースレターの受信に同意したものとみなします。配信停止はいつでも可能です。<a href="/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a></p>
+      <p class="eg-consent">「登録して続ける」を押すと、以下すべてに同意したものとみなします：<br>• 英語学習ニュースレターの受信（配信停止はいつでも可能）<br>• 学習データ（正解率・難易度進捗など）の統計的な分析・活用<br>• 匿名化・統計処理した学習傾向データの第三者提供（個人を特定する情報は含みません）<br><a href="/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a> · <a href="/privacy/#third-party" target="_blank" rel="noopener">第三者提供について</a></p>
       <p class="eg-error" id="egError"></p>
-      <button class="eg-skip" id="egSkip">今日はここまで（明日また5問練習できます）</button>
+      <button class="eg-skip" id="egSkip">今日はここまで（登録なしで続けるには明日また来てください）</button>
     </div>
   </div>
 </div>
