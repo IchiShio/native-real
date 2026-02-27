@@ -6,6 +6,10 @@ generate_questions.py - Claude API で問題を自動生成 → staging.json に
   python3 generate_questions.py --count 100
   python3 generate_questions.py --count 100 --model claude-sonnet-4-6
 
+axis 指定モード（特定の axis だけ集中生成）:
+  python3 generate_questions.py --count 100 --axis-only speed,reduction
+  python3 generate_questions.py --count 50 --axis-only speed
+
 Batch モード（24時間以内・50%オフ）:
   python3 generate_questions.py --count 100 --batch
   python3 generate_questions.py --count 100 --batch --model claude-sonnet-4-6
@@ -60,8 +64,31 @@ def load_existing_texts():
     return texts
 
 
-def build_prompt(count, lv1, lv2, lv3, lv4, lv5, existing_texts):
+AXIS_DESCRIPTIONS = {
+    "speed":      'speed    : 発話が速い・詰まった話し方（"Didja hear that?" "Gonna hafta leave." 等）',
+    "reduction":  "reduction: gonna/wanna/kinda/dunno/lemme 等の音変化・リンキング・脱落",
+    "vocab":      "vocab    : 低頻度語・イディオム・スラング・比喩表現",
+    "context":    "context  : 前後の文脈・話者のトーン・感情から正解を推論する必要がある",
+    "distractor": "distractor: 誤答が非常に紛らわしく、表面的な理解では正解できない",
+}
+
+
+def build_prompt(count, lv1, lv2, lv3, lv4, lv5, existing_texts, axis_only=None):
     existing_list = json.dumps(existing_texts, ensure_ascii=False, indent=2)
+
+    if axis_only:
+        per = count // len(axis_only)
+        axis_lines = "\n".join(f"- {AXIS_DESCRIPTIONS[a]}" for a in axis_only)
+        axis_instruction = (
+            f"各問題に以下の axis のいずれかを割り当て、{count}問全体で均等に分散させること"
+            f"（各約{per}問）：\n{axis_lines}"
+        )
+    else:
+        axis_lines = "\n".join(f"- {d}" for d in AXIS_DESCRIPTIONS.values())
+        axis_instruction = (
+            f"各問題に以下のいずれかを1つ割り当て、{count}問全体で均等に分散させること（各約{count//5}問）：\n{axis_lines}"
+        )
+
     return f"""以下のJSON形式でリスニングクイズの問題を{count}問生成してください。
 
 ## 難易度の内訳
@@ -72,12 +99,7 @@ def build_prompt(count, lv1, lv2, lv3, lv4, lv5, existing_texts):
 - lv5（非常に難しい・速い/崩れた英語）: {lv5}問
 
 ## 難易度の微差（axis フィールド）
-各問題に以下のいずれかを1つ割り当て、{count}問全体で均等に分散させること（各約{count//5}問）：
-- speed    : 発話が速い・詰まった話し方（"Didja hear that?" "Gonna hafta leave." 等）
-- reduction: gonna/wanna/kinda/dunno/lemme 等の音変化・リンキング・脱落
-- vocab    : 低頻度語・イディオム・スラング・比喩表現
-- context  : 前後の文脈・話者のトーン・感情から正解を推論する必要がある
-- distractor: 誤答が非常に紛らわしく、表面的な理解では正解できない
+{axis_instruction}
 
 ## 出力形式（JSONのみ出力、他の文章は不要）
 [
@@ -152,7 +174,7 @@ def split_levels(total_lv, remaining, batch_count):
     return batch
 
 
-def run_normal(client, model, count, lv, existing_texts):
+def run_normal(client, model, count, lv, existing_texts, axis_only=None):
     """通常モード: 即時実行"""
     all_questions = []
     remaining_lv = list(lv)
@@ -169,7 +191,7 @@ def run_normal(client, model, count, lv, existing_texts):
               f"(lv1:{bl1} lv2:{bl2} lv3:{bl3} lv4:{bl4} lv5:{bl5}) 生成中...")
 
         exclude = existing_texts + [q["text"] for q in all_questions]
-        prompt = build_prompt(batch_count, bl1, bl2, bl3, bl4, bl5, exclude)
+        prompt = build_prompt(batch_count, bl1, bl2, bl3, bl4, bl5, exclude, axis_only=axis_only)
 
         try:
             resp = client.messages.create(
@@ -194,7 +216,7 @@ def run_normal(client, model, count, lv, existing_texts):
     return all_questions
 
 
-def run_batch(client, model, count, lv, existing_texts):
+def run_batch(client, model, count, lv, existing_texts, axis_only=None):
     """Batch モード: ジョブ投入のみ（結果は check_batch.py で取得）"""
     if BATCH_STATE.exists():
         state = json.loads(BATCH_STATE.read_text())
@@ -213,7 +235,7 @@ def run_batch(client, model, count, lv, existing_texts):
         bl = split_levels(remaining_lv, remaining, batch_count)
         bl1, bl2, bl3, bl4, bl5 = bl
 
-        prompt = build_prompt(batch_count, bl1, bl2, bl3, bl4, bl5, existing_texts)
+        prompt = build_prompt(batch_count, bl1, bl2, bl3, bl4, bl5, existing_texts, axis_only=axis_only)
         requests.append({
             "custom_id": f"req-{req_idx}",
             "params": {
@@ -271,7 +293,19 @@ def main():
                         help="Batch API を使用（24時間以内・50%%オフ）")
     parser.add_argument("--model", default=DEFAULT_MODEL,
                         help=f"使用モデル（デフォルト: {DEFAULT_MODEL}）")
+    parser.add_argument("--axis-only", default=None,
+                        help="生成する axis をカンマ区切りで指定（例: speed,reduction）")
     args = parser.parse_args()
+
+    VALID_AXES = {"speed", "reduction", "vocab", "context", "distractor"}
+    axis_only = None
+    if args.axis_only:
+        axis_only = [a.strip() for a in args.axis_only.split(",")]
+        invalid = [a for a in axis_only if a not in VALID_AXES]
+        if invalid:
+            print(f"ERROR: 無効な axis: {invalid}")
+            print(f"  有効な値: {sorted(VALID_AXES)}")
+            sys.exit(1)
 
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
@@ -291,6 +325,8 @@ def main():
     mode = "Batch（50%オフ・24時間）" if args.batch else "通常（即時）"
     print(f"生成設定: {count}問 (lv1:{lv1} lv2:{lv2} lv3:{lv3} lv4:{lv4} lv5:{lv5})")
     print(f"モデル: {args.model}  モード: {mode}")
+    if axis_only:
+        print(f"axis 指定: {axis_only}（これらのみ生成）")
 
     existing_texts = load_existing_texts()
     print(f"既存問題数: {len(existing_texts)} 問")
@@ -298,9 +334,9 @@ def main():
     client = anthropic.Anthropic(api_key=api_key)
 
     if args.batch:
-        run_batch(client, args.model, count, lv, existing_texts)
+        run_batch(client, args.model, count, lv, existing_texts, axis_only=axis_only)
     else:
-        all_questions = run_normal(client, args.model, count, lv, existing_texts)
+        all_questions = run_normal(client, args.model, count, lv, existing_texts, axis_only=axis_only)
         if not all_questions:
             print("ERROR: 問題を1問も生成できませんでした", file=sys.stderr)
             sys.exit(1)
