@@ -1,0 +1,155 @@
+{
+  "topics": [
+    {
+      "id": "claude-prompt-english-learning",
+      "title": "Claude AIで英語学習を加速する厳選プロンプト10選【2026年版】",
+      "slug": "claude-prompt-english-learning",
+      "target_keyword": "Claude プロンプト 英語学習",
+      "target_reader": "AIを使って英語学習を効率化したい社会人",
+      "h2_topics": [
+        "なぜClaudeは英語学習に向いているのか",
+        "スピーキング練習プロンプト3選",
+        "ライティング添削プロンプト3選",
+        "単語・表現習得プロンプト2選",
+        "ビジネス英語特化プロンプト2選",
+        "プロンプト活用時の注意点"
+      ],
+      "category": "AIプロンプト活用"
+    },
+    {
+      "id": "ai-english-conversation-practice",
+      "title": "AIと英会話練習する方法【Claude・ChatGPT徹底比較】",
+      "slug": "ai-english-conversation-practice",
+      "target_keyword": "AI 英会話練習 Claude ChatGPT",
+      "target_reader": "オンライン英会話に通う前にAIで練習したい初心者",
+      "h2_topics": [
+        "AIで英会話練習するメリット・デメリット",
+        "ClaudeとChatGPTの英会話練習比較",
+        "効果的なAI英会話練習の進め方",
+        "AIと人間講師の組み合わせ方",
+        "初心者でも使えるAI英会話プロンプト集"
+      ],
+      "category": "AIプロンプト活用"
+    },
+    {
+      "id": "english-resume-prompt",
+      "title": "英文履歴書・職務経歴書をClaudeで作る方法【転職者向けプロンプト】",
+      "slug": "english-resume-prompt",
+      "target_keyword": "英文履歴書 Claude プロンプト 転職",
+      "target_reader": "外資系・グローバル企業に転職したい30代",
+      "h2_topics": [
+        "英文履歴書の基本構成と日本語との違い",
+        "職務経歴を英語に変換するプロンプト",
+        "アピールポイントを引き出すプロンプト",
+        "英文カバーレターのプロンプト",
+        "Claudeの出力をブラッシュアップするコツ"
+      ],
+      "category": "転職・キャリア×英語"
+    },
+    {
+      "id": "english-job-interview-prep",
+      "title": "外資系面接の英語対策【よく聞かれる質問と模範回答例】",
+      "slug": "english-job-interview-prep",
+      "target_keyword": "外資系 英語 面接 対策",
+      "target_reader": "外資系企業への転職を考えている30〜40代社会人",
+      "h2_topics": [
+        "外資系面接で英語が求められるレベル",
+        "必ず聞かれる10の質問と回答フレーム",
+        "Tell me about yourselfの組み立て方",
+        "弱みの答え方・強みの伝え方",
+        "英語面接の前日・当日にやること"
+      ],
+      "category": "転職・キャリア×英語"
+    },
+    {
+      "id": "salary-up-english",
+      "title": "英語ができると年収はいくら上がる？データで見るリターン",
+      "slug": "salary-up-english",
+      "target_keyword": "英語 年収 上がる データ",
+      "target_reader": "英語学習に投資する価値があるか迷っている20〜30代",
+      "h2_topics": [
+        "英語スキルと年収の関係（政府統計・企業調査）",
+        "TOEICスコア別の年収差",
+        "英語を活かせる職種・業界ランキング",
+        "英語学習コストと回収期間の試算",
+        "年収アップに直結する英語の身につけ方"
+      ],
+      "category": "転職・キャリア×英語"
+    },
+    {
+      "id": "english-habit-morning-routine",
+      "title": "朝10分の英語習慣で3ヶ月後に変わること【継続率80%のルーティン】",
+      "slug": "english-habit-morning-routine",
+      "target_keyword": "英語 朝 習慣 継続",
+      "target_reader": "忙しくて英語学習が続かない社会人",
+      "h2_topics": [
+        "朝10分が最強の英語時間である理由",
+        "レベル別・朝の英語ルーティン設計",
+        "3ヶ月後に実感できる変化のリアル",
+        "続けられない人がやりがちな3つの失敗",
+        "習慣化を助けるアプリ・ツール"
+      ],
+      "category": "英語学習コラム"
+    },
+    {
+      "id": "english-speaking-fear",
+      "title": "英語を話すのが怖い人へ【心理的ブロックの外し方】",
+      "slug": "english-speaking-fear",
+      "target_keyword": "英語 話すのが怖い 克服",
+      "target_reader": "読める・書けるのに話せない、スピーキングに苦手意識がある人",
+      "h2_topics": [
+        "なぜ日本人は英語を話すのが怖いのか",
+        "心理的ブロックの正体と解消法",
+        "ひとりで練習できるスピーキング習慣",
+        "失敗しても大丈夫と思えるマインドセット",
+        "話せるようになった人に共通するたった一つの行動"
+      ],
+      "category": "英語学習コラム"
+    },
+    {
+      "id": "toeic-900-study-plan",
+      "title": "TOEIC900点を取るための6ヶ月学習プラン【700点台から逆算】",
+      "slug": "toeic-900-study-plan",
+      "target_keyword": "TOEIC 900点 勉強法 6ヶ月",
+      "target_reader": "現在TOEIC700〜800点で900点を目指している社会人",
+      "h2_topics": [
+        "TOEIC900点に必要な本当のスキル",
+        "700点台・800点台別の弱点分析と対策",
+        "6ヶ月間の週次スケジュール",
+        "Part別の高得点戦略（L・R各パート）",
+        "900点取得者が口をそろえて言うこと"
+      ],
+      "category": "英語学習コラム"
+    },
+    {
+      "id": "global-remote-work-english",
+      "title": "リモートワークで英語を使う場面と実践的な乗り越え方",
+      "slug": "global-remote-work-english",
+      "target_keyword": "リモートワーク 英語 グローバル",
+      "target_reader": "英語でのオンライン会議・Slackコミュニケーションに不安がある人",
+      "h2_topics": [
+        "グローバルリモートワークで求められる英語力",
+        "英語会議で発言できるようになるコツ",
+        "SlackやメールでのビジネスEnglish定型文集",
+        "聞き取れなかったときの切り抜け方",
+        "3ヶ月でグローバル環境に慣れるためのロードマップ"
+      ],
+      "category": "転職・キャリア×英語"
+    },
+    {
+      "id": "english-learning-cost-comparison",
+      "title": "英語学習にかかる年間コスト比較【オンライン英会話・アプリ・コーチング】",
+      "slug": "english-learning-cost-comparison",
+      "target_keyword": "英語学習 費用 コスト 比較",
+      "target_reader": "英語学習に毎月いくら使うべきか迷っている社会人",
+      "h2_topics": [
+        "英語学習サービス別の年間コスト一覧",
+        "オンライン英会話の本当のコスパ",
+        "英語コーチングは高い？費用対効果の検証",
+        "アプリだけで上達できるのか",
+        "予算別・最適な英語学習の組み合わせ方"
+      ],
+      "category": "英語学習サービス比較・レビュー"
+    }
+  ]
+}

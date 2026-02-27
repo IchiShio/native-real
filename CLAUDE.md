@@ -288,9 +288,10 @@ affiliate-forge の `content_gen.py`（Claude API）が生成するコンテン�
 ### 記事作成・publish フロー（2026-02-27 確定版）
 
 ```
-[1] 生成
-    cd ~/projects/claude/affiliate-forge
-    python3 main.py
+[1] 生成（native-real に直接書き出し）
+    cd ~/projects/claude/native-real
+    python3 generate_articles.py --count 5   # 5件生成
+    python3 generate_articles.py --list      # 未生成トピック一覧確認
 
 [2] 統計チェック（必須・publishの前に必ず実行）
     python3 check_stats.py
@@ -300,11 +301,18 @@ affiliate-forge の `content_gen.py`（Claude API）が生成するコンテン�
     → 再実行して残件が許容範囲か確認
 
 [3] publish
-    eikaiwa-hikaku/articles/ に配置 → sitemap.xml 更新 → git push
+    git add articles/ sitemap.xml && git commit -m "add: 記事X件追加" && git push
 
 [4] X投稿（任意）
     x-scheduler の reply_url に記事URL設定 → 「要約を生成」→ 翌朝自動投稿
 ```
+
+### 記事トピック管理
+
+- トピック定義: `data/article_topics.json`（10件・4カテゴリ）
+- Claude API ラッパー: `tools/content_gen.py`（claude-sonnet-4-6 使用）
+- APIキー: `.env` の `ANTHROPIC_API_KEY`（ソースコードに書かない）
+- 生成先: `articles/{slug}/index.html`（sitemap.xml も自動更新）
 
 **check_stats.py の許容済み残件（スルーしてOK）**
 - Zoltán Dörnyei・Patricia Kuhl・Carol Dweck・DeKeyser・Hartshorne et al.（全て実在の著名研究者）
