@@ -44,12 +44,20 @@ BATCH_SIZE = 30
 VALID_FIELDS = {"diff", "text", "ja", "answer", "choices", "expl", "kp"}
 VALID_DIFFS = {"lv1", "lv2", "lv3", "lv4", "lv5"}
 
+# exclude リストの上限（プロンプトサイズを 200K トークン以下に抑えるため）
+# 1問 ≈ 25 tokens、200K / 25 ≈ 8,000問が限界。余裕をもって 3,000 問に制限。
+EXCLUDE_LIMIT = 3000
+
 
 def load_existing_texts():
     if not QUESTIONS_JS.exists():
         return []
     content = QUESTIONS_JS.read_text(encoding="utf-8")
-    return re.findall(r'\btext:\s*"((?:[^"\\]|\\.)*)"', content)
+    texts = re.findall(r'\btext:\s*"((?:[^"\\]|\\.)*)"', content)
+    # 直近 EXCLUDE_LIMIT 問のみ渡す（プロンプトサイズ抑制）
+    if len(texts) > EXCLUDE_LIMIT:
+        texts = texts[-EXCLUDE_LIMIT:]
+    return texts
 
 
 def build_prompt(count, lv1, lv2, lv3, lv4, lv5, existing_texts):
