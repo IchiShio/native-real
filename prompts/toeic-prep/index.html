@@ -154,13 +154,17 @@ h2.section-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 20px; }
 <div class="content-body">
   <div class="container">
 
+    <div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:0.88rem;color:#92400e;">
+      <strong>⚠️ 注意：</strong> Part 1〜4はリスニング（音声）問題のため、テキストAIでの練習には対応していません。このプロンプトは <strong>Part 5・6・7（文法・語彙・読解）</strong> でご使用ください。
+    </div>
     <div class="section-label">プロンプト</div>
     <div class="prompt-block">
       <div class="prompt-block-header">
         <span>toeic-prep.txt</span>
         <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">コピーする</button>
       </div>
-      <pre class="prompt-text" id="promptText">TOEICの{Part番号（例：Part 5、Part 7）}の対策練習をお願いします。
+      <pre class="prompt-text" id="promptText">TOEICの{Part番号（Part 5・6・7のいずれか）}の対策練習をお願いします。
+※ Part 1〜4はリスニング問題のためテキストAIでは対応できません。
 
 私の現在のスコア：{スコア}点（または「未受験」）
 目標スコア：{目標}点
