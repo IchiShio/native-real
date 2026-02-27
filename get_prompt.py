@@ -49,10 +49,19 @@ def build_prompt(count, lv1, lv2, lv3, lv4, lv5, existing_texts):
 - lv4（難しい）: {lv4}問
 - lv5（非常に難しい・速い/崩れた英語）: {lv5}問
 
+## 難易度の微差（axis フィールド）
+各問題に以下のいずれかを1つ割り当て、{count}問全体で均等に分散させること（各約{count//5}問）：
+- speed    : 発話が速い・詰まった話し方（"Didja hear that?" "Gonna hafta leave." 等）
+- reduction: gonna/wanna/kinda/dunno/lemme 等の音変化・リンキング・脱落
+- vocab    : 低頻度語・イディオム・スラング・比喩表現
+- context  : 前後の文脈・話者のトーン・感情から正解を推論する必要がある
+- distractor: 誤答が非常に紛らわしく、表面的な理解では正解できない
+
 ## 出力形式（JSONのみ出力、他の文章は不要）
 [
   {{
     "diff": "lv1〜lv5のいずれか",
+    "axis": "speed | reduction | vocab | context | distractor のいずれか",
     "text": "英語音声スクリプト（ネイティブの自然な発話）",
     "ja": "日本語仮訳（短く自然に）",
     "answer": "何をしている/言っている場面かの日本語説明（15〜25字）",
@@ -64,6 +73,7 @@ def build_prompt(count, lv1, lv2, lv3, lv4, lv5, existing_texts):
 
 ## 制約
 - text はネイティブが実際に使う自然な英語（略語・短縮形OK）
+- axis の特性を text と choices の両方に反映させること
 - choices は正解が1つ、残り4つは紛らわしい誤答
 - choices の順序はランダムに（正解を先頭にしない）
 - 既存テーマとの重複を避けてください（テーマ例: 交通・飲食店・職場・家庭・天気・ショッピング・健康）

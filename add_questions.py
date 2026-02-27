@@ -111,22 +111,19 @@ def generate_audio(text, voice, output_path):
 
 def format_question_js(q):
     """問題オブジェクトを questions.js 形式の1行文字列に変換"""
-    # choices を JSON エスケープして配列形式に
     choices_str = json.dumps(q["choices"], ensure_ascii=False)
     kp_str = json.dumps(q["kp"], ensure_ascii=False)
 
-    # 各フィールドをエスケープ
-    text_esc = q["text"].replace("\\", "\\\\").replace('"', '\\"')
-    ja_esc = q["ja"].replace("\\", "\\\\").replace('"', '\\"')
-    answer_esc = q["answer"].replace("\\", "\\\\").replace('"', '\\"')
-    expl_esc = q["expl"].replace("\\", "\\\\").replace('"', '\\"')
-    audio_esc = q["audio"].replace("\\", "\\\\").replace('"', '\\"')
+    def esc(s):
+        return s.replace("\\", "\\\\").replace('"', '\\"')
+
+    axis_part = f', axis: "{esc(q["axis"])}"' if q.get("axis") else ""
 
     return (
-        f'  {{ diff: "{q["diff"]}", text: "{text_esc}", ja: "{ja_esc}", '
-        f'answer: "{answer_esc}", choices: {choices_str}, '
-        f'audio: "{audio_esc}", '
-        f'expl: "{expl_esc}", kp: {kp_str} }}'
+        f'  {{ diff: "{q["diff"]}"{axis_part}, text: "{esc(q["text"])}", ja: "{esc(q["ja"])}", '
+        f'answer: "{esc(q["answer"])}", choices: {choices_str}, '
+        f'audio: "{esc(q["audio"])}", '
+        f'expl: "{esc(q["expl"])}", kp: {kp_str} }}'
     )
 
 
