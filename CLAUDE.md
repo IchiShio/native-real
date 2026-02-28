@@ -21,7 +21,7 @@
 - `assets/ogp.png` -- OGP画像（1200×630px、Pillowで生成）
 - `CNAME` -- カスタムドメイン設定（`native-real.com`）
 - `sitemap.xml` / `robots.txt` -- SEO設定
-- `listening/` -- 英語リスニングクイズ（455問・464 MP3・適応型難易度アルゴリズム）
+- `listening/` -- 英語リスニングクイズ（732問・464+ MP3・適応型難易度アルゴリズム）
 - `privacy/index.html` -- プライバシーポリシーページ（特定電子メール法・個人情報保護法準拠、noindex）
 
 ## index.html の主な機能（2026-02-25更新）
@@ -38,7 +38,7 @@
 
 ## listening/ の構成
 
-- 455問（beginner: 155 / intermediate: 139 / advanced: 161）
+- 732問（2026-02-28時点、diff lv1〜lv5の5段階構成）
 - 464 MP3ファイル（`audio/q001.mp3`〜）、5種音声ローテーション（AriaNeural/SoniaNeural/GuyNeural/NatashaNeural/RyanNeural）
 - **適応型難易度アルゴリズム**（2026-02-24実装）:
   - intermediate（中級）からスタート
