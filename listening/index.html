@@ -2018,7 +2018,8 @@
             <option value="未受験">未受験</option>
           </select>
         </div>
-        <button type="submit" class="lp-bcta-submit" id="lpEmailSubmit" disabled>登録して練習を始める →</button>
+        <button type="submit" class="lp-bcta-submit" id="lpEmailSubmit">登録して練習を始める →</button>
+        <p class="lp-bcta-error" id="lpEmailError" style="display:none;color:#ffb347;font-size:.85rem;margin-top:4px;text-align:center"></p>
         <p class="lp-bcta-consent">登録することで<a href="/privacy/">プライバシーポリシー</a>・<a href="/privacy/#third-party">第三者提供について</a>に同意したものとみなします</p>
       </form>
       <button class="lp-bcta-skip" onclick="startFreeQuiz()">先に5問だけ試す（登録は後でOK）</button>
@@ -2963,6 +2964,16 @@ document.addEventListener('DOMContentLoaded', function() {
       errorEl.style.display = 'block';
       return;
     }
+    if (!ageGroup) {
+      errorEl.textContent = '年代を選択してください';
+      errorEl.style.display = 'block';
+      return;
+    }
+    if (!toeicScore) {
+      errorEl.textContent = 'TOEICスコアを選択してください';
+      errorEl.style.display = 'block';
+      return;
+    }
     btn.disabled = true;
     btn.textContent = '登録中...';
     errorEl.style.display = 'none';
@@ -3018,22 +3029,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const toeicSel  = document.getElementById('lpToeicScore');
     if (!form) return;
 
-    function checkLpFormReady() {
-      const email    = emailIn.value.trim();
-      const age      = document.querySelector('input[name="lpAge"]:checked');
-      const toeic    = toeicSel.value;
-      const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      submitBtn.disabled = !validEmail;
-    }
-    emailIn.addEventListener('input', checkLpFormReady);
-    form.querySelectorAll('input[name="lpAge"]').forEach(r => r.addEventListener('change', checkLpFormReady));
-    toeicSel.addEventListener('change', checkLpFormReady);
+    const errorEl = document.getElementById('lpEmailError');
 
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
-      const email    = emailIn.value.trim();
-      const ageGroup = document.querySelector('input[name="lpAge"]:checked')?.value || '';
+      const email      = emailIn.value.trim();
+      const age        = document.querySelector('input[name="lpAge"]:checked');
+      const ageGroup   = age?.value || '';
       const toeicScore = toeicSel.value;
+      const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (!validEmail) {
+        errorEl.textContent = '有効なメールアドレスを入力してください';
+        errorEl.style.display = 'block';
+        return;
+      }
+      if (!ageGroup) {
+        errorEl.textContent = '年代を選択してください';
+        errorEl.style.display = 'block';
+        return;
+      }
+      if (!toeicScore) {
+        errorEl.textContent = 'TOEICスコアを選択してください';
+        errorEl.style.display = 'block';
+        return;
+      }
+      errorEl.style.display = 'none';
       submitBtn.disabled = true;
       submitBtn.textContent = '登録中...';
       try {
