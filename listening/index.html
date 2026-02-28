@@ -2930,7 +2930,7 @@ function shuffle(arr) {
 // ─────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
   // 問題総数を動的にセット（QUESTIONS配列の長さを使う）
-  const totalQ = QUESTIONS.length;
+  const totalQ = DATA.length;
   document.querySelectorAll('.js-total-q').forEach(el => {
     el.textContent = totalQ + '問';
   });
@@ -3144,7 +3144,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // ── ANIMATED STATS COUNTER ──
   (function() {
-    const targets = { statQ: QUESTIONS.length, statV: 5, statL: 5 };
+    const targets = { statQ: DATA.length, statV: 5, statL: 5 };
     const suffixes = { statQ: '問', statV: '種', statL: '段階' };
     let started = false;
     function animateCount(el, target, suffix) {
