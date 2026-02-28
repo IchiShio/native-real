@@ -16,6 +16,7 @@ import argparse
 import json
 import os
 import re
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
@@ -398,6 +399,21 @@ def get_pending_topics(topics: list[dict]) -> list[dict]:
     return [t for t in topics if not (ARTICLES_DIR / t["slug"] / "index.html").exists()]
 
 
+# ─── 引用リンク付与 ───────────────────────────────────────────────────────────
+def _apply_citations(html_path: Path) -> None:
+    """生成した記事に add_citations.py で引用リンクを自動付与する"""
+    result = subprocess.run(
+        [sys.executable, str(Path(__file__).parent / "add_citations.py"), str(html_path.parent)],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        print(f"  ⚠ add_citations エラー: {result.stderr[:200]}")
+    elif result.stdout.strip():
+        for line in result.stdout.strip().splitlines():
+            print(f"  {line}")
+
+
 # ─── メイン ──────────────────────────────────────────────────────────────────
 def main() -> None:
     parser = argparse.ArgumentParser(description="記事を生成してarticles/に書き出す")
@@ -435,13 +451,16 @@ def main() -> None:
             # sitemap更新
             update_sitemap(article["slug"])
 
+            # 引用リンク自動付与
+            _apply_citations(out_dir / "index.html")
+
             print(f"  ✅ articles/{article['slug']}/index.html を生成しました")
         except Exception as e:
             print(f"  ❌ 生成失敗: {e}")
 
     print(f"\n=== 完了 ===")
     print("次のステップ:")
-    print("  1. python3 check_stats.py  # 統計・引用のチェック")
+    print("  1. python3 check_stats.py  # 統計・引用のチェック（引用リンク確認含む）")
     print("  2. git add articles/ sitemap.xml && git commit -m 'add: 記事X件追加' && git push")
 
 

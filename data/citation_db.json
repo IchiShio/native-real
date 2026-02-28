@@ -1,0 +1,103 @@
+{
+  "_readme": "引用元URLデータベース。add_citations.py が参照する。URLを追加・変更した際は verified_at を更新すること。PDFへの直リンクは禁止（年次更新で消えるため）。",
+  "_verified_policy": "インデックスページ・トップページのみ登録。個別年度PDF直リンクは登録しない。",
+
+  "kokuzeicho_kyuyo": {
+    "url": "https://www.nta.go.jp/publication/statistics/kokuzeicho/minkan/top.htm",
+    "label": "国税庁「民間給与実態統計調査」",
+    "verified_at": "2026-02-28",
+    "keywords": [
+      "国税庁「民間給与実態統計調査」",
+      "国税庁.*民間給与実態統計調査"
+    ],
+    "notes": "平均年収458万円（令和4年）。インデックスページ（年次更新対応済み）。"
+  },
+
+  "mhlw_chingin": {
+    "url": "https://www.mhlw.go.jp/toukei/list/chinginkouzou.html",
+    "label": "厚生労働省「賃金構造基本統計調査」",
+    "verified_at": "2026-02-28",
+    "keywords": [
+      "賃金構造基本統計調査"
+    ],
+    "notes": "職種別・業種別賃金データ。"
+  },
+
+  "mhlw_kyoiku_kyufu": {
+    "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/kyouiku.html",
+    "label": "厚生労働省「教育訓練給付金」",
+    "verified_at": "2026-02-28",
+    "keywords": [
+      "一般教育訓練給付金",
+      "教育訓練給付金"
+    ],
+    "notes": "一般教育訓練給付金：受講料の20%・上限10万円。ページ上で確認済み。"
+  },
+
+  "iibc_toeic_data": {
+    "url": "https://www.iibc-global.org/toeic/official_data.html",
+    "label": "IIBC「TOEIC Program 公式データ・資料」",
+    "verified_at": "2026-02-28",
+    "keywords": [
+      "TOEIC公式が公表している",
+      "IIBCが公表",
+      "IIBC.*公表した.*データ",
+      "TOEIC.*公式.*企業データ"
+    ],
+    "notes": "IIBCのスコア分布・企業調査データ一覧ページ。"
+  },
+
+  "ef_epi": {
+    "url": "https://www.ef.com/wwen/epi/",
+    "label": "EF「EF English Proficiency Index」",
+    "verified_at": "2026-02-28",
+    "keywords": [
+      "EF EPI",
+      "EF Education First.*英語"
+    ],
+    "notes": "毎年更新の英語能力国際比較指数。トップページにリンク（年度不問）。"
+  },
+
+  "hartshorne_2018": {
+    "url": "https://news.mit.edu/2018/cognitive-scientists-define-critical-period-learning-language-0501",
+    "label": "Hartshorne et al.（2018）言語習得の臨界期研究（MIT News）",
+    "verified_at": "2026-02-28",
+    "keywords": [
+      "Hartshorne et al",
+      "Hartshorne.*Tenenbaum.*Pinker"
+    ],
+    "notes": "67万人調査。文法習得能力は17〜18歳まで維持。MITニュース（安定URL）。"
+  },
+
+  "lally_2009": {
+    "url": "https://www.ucl.ac.uk/news/2009/aug/how-long-does-it-take-form-habit",
+    "label": "Lally et al.（2009）習慣形成研究（UCL News）",
+    "verified_at": "2026-02-28",
+    "keywords": [
+      "Lally et al",
+      "Lally.*2009"
+    ],
+    "notes": "習慣形成には平均66日（18〜254日）。European Journal of Social Psychology。UCLニュース（安定URL）。"
+  },
+
+  "world_english_online_taikai": {
+    "url": "https://www.sma-world.com/world-english-online/online-frustration/",
+    "label": "World English Online「オンライン英会話をやめた理由」調査",
+    "verified_at": "2026-02-28",
+    "keywords": [
+      "World English Online"
+    ],
+    "notes": "100人調査・81%が半年以内に退会。民間メディアの自社調査。"
+  },
+
+  "mext_eigo_jisshi": {
+    "url": "https://www.mext.go.jp/a_menu/kokusai/gaikokugo/1415043_00005.htm",
+    "label": "文部科学省「英語教育実施状況調査」（令和5年度）",
+    "verified_at": "2026-02-28",
+    "keywords": [
+      "英語教育実施状況調査",
+      "文部科学省.*英語教育.*調査"
+    ],
+    "notes": "令和5年度版（2024年公表）。URLは年度ごとに末尾番号が変わるため定期確認要。"
+  }
+}
