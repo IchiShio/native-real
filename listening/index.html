@@ -2977,20 +2977,13 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.disabled = true;
     btn.textContent = '登録中...';
     errorEl.style.display = 'none';
-    try {
-      await fetch(`https://app.beehiiv.com/api/v1/publications/${BEEHIIV_PUB_ID}/subscriptions`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          referring_site: 'native-real.com/listening',
-          custom_fields: [
-            { name: 'age_group', value: ageGroup },
-            { name: 'toeic_score', value: toeicScore }
-          ]
-        })
-      });
-    } catch (_) { /* サイレントフェイル */ }
+    // Beehiiv: fire-and-forget（応答を待たない）
+    { const _c = new AbortController(); setTimeout(() => _c.abort(), 8000);
+      fetch(`https://api.beehiiv.com/v2/publications/${BEEHIIV_PUB_ID}/subscriptions`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: _c.signal,
+        body: JSON.stringify({ email, referring_site: 'native-real.com/listening',
+          custom_fields: [{ name: 'age_group', value: ageGroup }, { name: 'toeic_score', value: toeicScore }] })
+      }).catch(() => {}); }
     localStorage.setItem(EG_REG_KEY, email);
     // プロフィールをlocalStorageに保存
     try {
@@ -3056,20 +3049,13 @@ document.addEventListener('DOMContentLoaded', function() {
       errorEl.style.display = 'none';
       submitBtn.disabled = true;
       submitBtn.textContent = '登録中...';
-      try {
-        await fetch(`https://app.beehiiv.com/api/v1/publications/${BEEHIIV_PUB_ID}/subscriptions`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email,
-            referring_site: 'native-real.com/listening/lp',
-            custom_fields: [
-              { name: 'age_group',    value: ageGroup   },
-              { name: 'toeic_score',  value: toeicScore }
-            ]
-          })
-        });
-      } catch (_) {}
+      // Beehiiv: fire-and-forget（応答を待たない）
+      { const _c = new AbortController(); setTimeout(() => _c.abort(), 8000);
+        fetch(`https://api.beehiiv.com/v2/publications/${BEEHIIV_PUB_ID}/subscriptions`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: _c.signal,
+          body: JSON.stringify({ email, referring_site: 'native-real.com/listening/lp',
+            custom_fields: [{ name: 'age_group', value: ageGroup }, { name: 'toeic_score', value: toeicScore }] })
+        }).catch(() => {}); }
       localStorage.setItem(EG_REG_KEY, email);
       try {
         const _p = loadProgress();
