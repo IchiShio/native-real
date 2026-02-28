@@ -2264,6 +2264,7 @@ async function saveUserToFirestore(email) {
     totalCorrect:  p.totalCorrect  || 0,
     axisStats:     axisStats,
     weakestAxis:   weakestAxis,
+    srsItems:      srsItems,
   };
   if (email) data.email = email;
   try {
@@ -2430,6 +2431,7 @@ let score     = 0;
 let total     = 0;
 let streak    = 0;
 let answered           = false;
+let srsItems           = {}; // { "q042": { interval, reps, dueDate } }
 let isPlaying          = false;
 
 // ─────────────────────────────────────────
@@ -2456,6 +2458,7 @@ function beginQuiz() {
   score = 0; total = 0; streak = 0;
   currentLevel = 2; correctStreak = 0;
   recoveryMode = false; postRecoveryLevel = -1; playCount = 0;
+  srsItems = loadSrs(); // localStorage から復元（Step3でFirestoreに差し替え）
   initPools();
   document.getElementById('startScreen').classList.remove('active');
   document.getElementById('quizScreen').classList.add('active');
@@ -2676,6 +2679,20 @@ function choose(selected) {
     if (ok) p.axisStats[ax].c++;
   }
   saveProgress(p);
+
+  // SRS 更新（セッション内即再出題の isRetry は除外）
+  const srsId = getSrsId(current);
+  if (srsId && !current.isRetry) {
+    const updated = updateSrsItem(srsItems[srsId], ok);
+    if (updated.reps >= 5) {
+      delete srsItems[srsId]; // 5回連続正解で卒業
+    } else if (!ok || srsItems[srsId]) {
+      srsItems[srsId] = updated; // 不正解 or 既存SRS問題は更新
+    }
+    saveSrs();
+    scheduleSave();
+  }
+
   updateScore();
 
   // GA4: クイズ回答イベント
@@ -3055,6 +3072,50 @@ function showMissionComplete() {
 function closeMissionComplete() {
   document.getElementById('missionOverlay').classList.remove('show');
   goToStart();
+}
+
+// ─────────────────────────────────────────
+// SRS (Spaced Repetition System)
+// ─────────────────────────────────────────
+const SRS_KEY = 'listenup_srs';
+
+function loadSrs() {
+  try {
+    return JSON.parse(localStorage.getItem(SRS_KEY) || '{}');
+  } catch { return {}; }
+}
+
+function saveSrs() {
+  try { localStorage.setItem(SRS_KEY, JSON.stringify(srsItems)); } catch {}
+}
+
+function addDays(n) {
+  const d = new Date();
+  d.setDate(d.getDate() + n);
+  return d.toISOString().slice(0, 10);
+}
+
+function getSrsId(q) {
+  return (q.audio || '').match(/q(\d+)\.mp3/)?.[1] || null;
+}
+
+function updateSrsItem(item, correct) {
+  if (!correct) {
+    return { interval: 1, reps: 0, dueDate: addDays(1) };
+  }
+  const reps = (item?.reps || 0) + 1;
+  const interval = reps === 1 ? 1
+                 : reps === 2 ? 3
+                 : reps === 3 ? 7
+                 : Math.min(Math.round((item.interval || 1) * 2.5), 60);
+  return { interval, reps, dueDate: addDays(interval) };
+}
+
+// Firestore への書き込みを debounce（連続回答で叩きすぎない）
+let _saveTimer = null;
+function scheduleSave() {
+  clearTimeout(_saveTimer);
+  _saveTimer = setTimeout(() => saveUserToFirestore(), 3000);
 }
 
 // ─────────────────────────────────────────
