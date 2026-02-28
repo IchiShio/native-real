@@ -27,43 +27,11 @@ try:
 except ImportError:
     pass
 
+from lib import parse_response  # noqa: E402
+
 REPO_ROOT = Path(__file__).parent
 STAGING_JSON = REPO_ROOT / "listening" / "staging.json"
 BATCH_STATE = REPO_ROOT / "listening" / "batch_state.json"
-
-VALID_FIELDS = {"diff", "text", "ja", "answer", "choices", "expl", "kp"}
-VALID_DIFFS = {"lv1", "lv2", "lv3", "lv4", "lv5"}
-
-
-def parse_response(raw):
-    """APIレスポンスをパース・バリデーション"""
-    raw = raw.strip()
-    raw = re.sub(r'^```[a-z]*\n?', '', raw)
-    raw = re.sub(r'\n?```$', '', raw.strip())
-
-    try:
-        questions = json.loads(raw)
-    except json.JSONDecodeError:
-        last_obj_end = raw.rfind("},")
-        if last_obj_end > 0:
-            try:
-                return json.loads(raw[:last_obj_end + 1] + "\n]")
-            except json.JSONDecodeError:
-                pass
-        return []
-
-    valid = []
-    for q in questions:
-        if not isinstance(q, dict):
-            continue
-        if VALID_FIELDS - set(q.keys()):
-            continue
-        if q.get("diff") not in VALID_DIFFS:
-            continue
-        if not isinstance(q.get("choices"), list) or len(q["choices"]) != 5:
-            continue
-        valid.append(q)
-    return valid
 
 
 def deduplicate(questions):
@@ -130,7 +98,7 @@ def main():
     for result in client.messages.batches.results(batch_id):
         if result.result.type == "succeeded":
             raw = result.result.message.content[0].text
-            questions = parse_response(raw)
+            questions = parse_response(raw, raise_on_error=False)
             all_questions.extend(questions)
             print(f"  {result.custom_id}: {len(questions)} 問 取得")
         else:

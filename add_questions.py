@@ -33,8 +33,7 @@ VOICES = [
     "en-GB-RyanNeural",      # UK male
 ]
 
-REQUIRED_FIELDS = {"diff", "text", "ja", "answer", "choices", "expl", "kp"}
-VALID_DIFFS = {"lv1", "lv2", "lv3", "lv4", "lv5"}
+from lib import VALID_FIELDS, VALID_DIFFS
 
 
 def load_staging():
@@ -64,7 +63,7 @@ def load_staging():
     errors = []
     auto_fixed = []
     for i, q in enumerate(data):
-        missing = REQUIRED_FIELDS - set(q.keys())
+        missing = VALID_FIELDS - set(q.keys())
         if missing:
             errors.append(f"  [{i}] 必須フィールドが不足: {missing}")
         if q.get("diff") not in VALID_DIFFS:
@@ -104,13 +103,8 @@ def load_staging():
     return data
 
 
-def get_existing_count():
+def get_existing_count(content):
     """questions.js から現在の問題数を取得"""
-    if not QUESTIONS_JS.exists():
-        print(f"ERROR: {QUESTIONS_JS} が見つかりません", file=sys.stderr)
-        sys.exit(1)
-
-    content = QUESTIONS_JS.read_text(encoding="utf-8")
     # audio フィールドで問題数を数える
     # questions.js は JavaScript オブジェクト記法（キーにクォートなし）
     count = len(re.findall(r'\baudio:', content))
@@ -137,7 +131,11 @@ def format_question_js(q):
     kp_str = json.dumps(q["kp"], ensure_ascii=False)
 
     def esc(s):
-        return s.replace("\\", "\\\\").replace('"', '\\"')
+        return (s.replace("\\", "\\\\")
+                 .replace('"', '\\"')
+                 .replace("\n", "\\n")
+                 .replace("\r", "\\r")
+                 .replace("\t", "\\t"))
 
     axis_part = f', axis: "{esc(q["axis"])}"' if q.get("axis") else ""
 
@@ -149,16 +147,14 @@ def format_question_js(q):
     )
 
 
-def append_to_questions_js(new_questions):
+def append_to_questions_js(content, new_questions):
     """questions.js の末尾 ]; の前に新問題を追記"""
-    content = QUESTIONS_JS.read_text(encoding="utf-8")
-
-    # ]; の直前を見つけて追記
-    # 末尾の ]; を探す
-    last_bracket_pos = content.rfind("];")
-    if last_bracket_pos == -1:
+    # ファイル末尾の ]; を正規表現で探す（文字列内の ]; に誤マッチしないよう末尾固定）
+    m = re.search(r'\];\s*$', content)
+    if not m:
         print("ERROR: questions.js に ]; が見つかりません", file=sys.stderr)
         sys.exit(1)
+    last_bracket_pos = m.start()
 
     # 最後の問題の末尾（,がない場合は追加）
     before = content[:last_bracket_pos].rstrip()
@@ -207,8 +203,12 @@ def main():
     # 1. staging.json 読み込み
     staging = load_staging()
 
-    # 2. 現在の問題数を取得
-    existing_count = get_existing_count()
+    # 2. questions.js を読み込み（以降で2回使うため1回だけ読む）
+    if not QUESTIONS_JS.exists():
+        print(f"ERROR: {QUESTIONS_JS} が見つかりません", file=sys.stderr)
+        sys.exit(1)
+    questions_js_content = QUESTIONS_JS.read_text(encoding="utf-8")
+    existing_count = get_existing_count(questions_js_content)
 
     # 3. audio フィールドを付与
     for i, q in enumerate(staging):
@@ -240,7 +240,7 @@ def main():
 
     # 5. questions.js に追記
     print(f"\nquestions.js に {len(staging)} 問を追記中...")
-    append_to_questions_js(staging)
+    append_to_questions_js(questions_js_content, staging)
     total = existing_count + len(staging)
     print(f"✅ 追記完了（{existing_count} → {total} 問）")
 

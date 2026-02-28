@@ -37,16 +37,16 @@ try:
 except ImportError:
     pass
 
-QUESTIONS_JS = Path(__file__).parent / "listening" / "questions.js"
-STAGING_JSON = Path(__file__).parent / "listening" / "staging.json"
-BATCH_STATE = Path(__file__).parent / "listening" / "batch_state.json"
+from lib import VALID_FIELDS, VALID_DIFFS, parse_response  # noqa: E402
+
+REPO_ROOT = Path(__file__).parent
+QUESTIONS_JS = REPO_ROOT / "listening" / "questions.js"
+STAGING_JSON = REPO_ROOT / "listening" / "staging.json"
+BATCH_STATE = REPO_ROOT / "listening" / "batch_state.json"
 
 DEFAULT_MODEL = "claude-sonnet-4-6"
 MAX_TOKENS = 8192
 BATCH_SIZE = 30
-
-VALID_FIELDS = {"diff", "text", "ja", "answer", "choices", "expl", "kp"}
-VALID_DIFFS = {"lv1", "lv2", "lv3", "lv4", "lv5"}
 
 # exclude リストの上限（プロンプトサイズを 200K トークン以下に抑えるため）
 # 1問 ≈ 25 tokens、200K / 25 ≈ 8,000問が限界。余裕をもって 3,000 問に制限。
@@ -130,39 +130,6 @@ def build_prompt(count, lv1, lv2, lv3, lv4, lv5, existing_texts, axis_only=None)
 
 {existing_list}
 """
-
-
-def parse_response(raw):
-    """APIレスポンスの文字列を問題リストにパース・バリデーション"""
-    raw = raw.strip()
-    raw = re.sub(r'^```[a-z]*\n?', '', raw)
-    raw = re.sub(r'\n?```$', '', raw.strip())
-
-    try:
-        questions = json.loads(raw)
-    except json.JSONDecodeError:
-        last_obj_end = raw.rfind("},")
-        if last_obj_end > 0:
-            try:
-                questions = json.loads(raw[:last_obj_end + 1] + "\n]")
-                print(f"  WARNING: レスポンスが途中で切れたため {len(questions)} 問のみ取得")
-                return questions
-            except json.JSONDecodeError:
-                pass
-        raise
-
-    valid = []
-    for q in questions:
-        if not isinstance(q, dict):
-            continue
-        if VALID_FIELDS - set(q.keys()):
-            continue
-        if q.get("diff") not in VALID_DIFFS:
-            continue
-        if not isinstance(q.get("choices"), list) or len(q["choices"]) != 5:
-            continue
-        valid.append(q)
-    return valid
 
 
 def split_levels(total_lv, remaining, batch_count):
@@ -279,7 +246,7 @@ def run_batch(client, model, count, lv, existing_texts, axis_only=None):
     print(f"   リクエスト数: {len(api_requests)} 件（合計 {count} 問）")
     print(f"   処理時間: 最大24時間")
     print(f"\n翌日以降に以下を実行してください:")
-    print(f"  cd /Users/yusuke/projects/claude/eikaiwa-hikaku && python3 check_batch.py")
+    print(f"  cd /Users/yusuke/projects/claude/native-real && python3 check_batch.py")
 
 
 def main():
@@ -348,7 +315,7 @@ def main():
         )
         print(f"\n✅ {len(all_questions)}問 を listening/staging.json に保存しました")
         print("次のステップ:")
-        print("  cd /Users/yusuke/projects/claude/eikaiwa-hikaku && python3 add_questions.py")
+        print("  cd /Users/yusuke/projects/claude/native-real && python3 add_questions.py")
 
 
 if __name__ == "__main__":
