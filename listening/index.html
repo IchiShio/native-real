@@ -2240,7 +2240,7 @@ if (auth.isSignInWithEmailLink(window.location.href)) {
           localStorage.removeItem(EG_PENDING_PROFILE_KEY);
         }
         saveUserToFirestore(_signinEmail);
-        startFreeQuiz();
+        beginQuiz();
       })
       .catch(function(err) {
         console.warn('[Firebase] signInWithEmailLink error:', err);
@@ -2300,20 +2300,23 @@ function getToday() {
   return new Date().toISOString().slice(0, 10);
 }
 
+function defaultProgress() {
+  return {
+    totalAnswered: 0, totalCorrect: 0, dailyStreak: 0, lastVisitDate: '',
+    todayAnswered: 0, todayDate: '', todayCorrect: 0, visitDates: [],
+    axisStats: { speed:{a:0,c:0}, reduction:{a:0,c:0}, vocab:{a:0,c:0}, context:{a:0,c:0}, distractor:{a:0,c:0} }
+  };
+}
+
 function loadProgress() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    const def = {
-      totalAnswered: 0, totalCorrect: 0, dailyStreak: 0, lastVisitDate: '',
-      todayAnswered: 0, todayDate: '', todayCorrect: 0, visitDates: [],
-      axisStats: { speed:{a:0,c:0}, reduction:{a:0,c:0}, vocab:{a:0,c:0}, context:{a:0,c:0}, distractor:{a:0,c:0} }
-    };
-    if (!raw) return def;
+    if (!raw) return defaultProgress();
     const parsed = JSON.parse(raw);
-    if (!parsed.axisStats) parsed.axisStats = def.axisStats; // 既存ユーザーの移行
+    if (!parsed.axisStats) parsed.axisStats = defaultProgress().axisStats; // 既存ユーザーの移行
     return parsed;
   } catch (e) {
-    return { totalAnswered: 0, totalCorrect: 0, dailyStreak: 0, lastVisitDate: '', todayAnswered: 0, todayDate: '', todayCorrect: 0, visitDates: [], axisStats: { speed:{a:0,c:0}, reduction:{a:0,c:0}, vocab:{a:0,c:0}, context:{a:0,c:0}, distractor:{a:0,c:0} } };
+    return defaultProgress();
   }
 }
 
@@ -2444,10 +2447,6 @@ function scrollToDiffAndUpgrade() {
 // ─────────────────────────────────────────
 // START
 // ─────────────────────────────────────────
-function startFreeQuiz() {
-  beginQuiz();
-}
-
 function beginQuiz() {
   // 連続学習ストリーク更新
   let p = loadProgress();
@@ -2592,12 +2591,7 @@ function render() {
   hintKP.innerHTML = '';
   hintExpl.textContent = '';
   if (hintLevel >= 1 && (current.kp || []).length > 0) {
-    (current.kp || []).forEach(p => {
-      const s = document.createElement('span');
-      s.className = 'kp';
-      s.textContent = p;
-      hintKP.appendChild(s);
-    });
+    appendKpSpans(hintKP, current.kp);
     if (hintLevel >= 2 && current.expl) {
       hintExpl.textContent = current.expl;
     }
@@ -2668,29 +2662,26 @@ function choose(selected) {
     }
   }
   // 進捗をlocalStorageに保存
-  {
-    const p     = loadProgress();
-    const today = getToday();
-    p.totalAnswered++;
-    if (ok) p.totalCorrect++;
-    if (p.todayDate !== today) { p.todayAnswered = 0; p.todayCorrect = 0; p.todayDate = today; }
-    p.todayAnswered++;
-    if (ok) p.todayCorrect++;
-    // axis 別正解率を記録
-    const ax = current.axis;
-    if (ax && p.axisStats && p.axisStats[ax]) {
-      p.axisStats[ax].a++;
-      if (ok) p.axisStats[ax].c++;
-    }
-    saveProgress(p);
+  const p     = loadProgress();
+  const today = getToday();
+  p.totalAnswered++;
+  if (ok) p.totalCorrect++;
+  if (p.todayDate !== today) { p.todayAnswered = 0; p.todayCorrect = 0; p.todayDate = today; }
+  p.todayAnswered++;
+  if (ok) p.todayCorrect++;
+  // axis 別正解率を記録
+  const ax = current.axis;
+  if (ax && p.axisStats && p.axisStats[ax]) {
+    p.axisStats[ax].a++;
+    if (ok) p.axisStats[ax].c++;
   }
+  saveProgress(p);
   updateScore();
 
   // GA4: クイズ回答イベント
   try {
-    const _p = loadProgress();
     const _sessAcc = total > 0 ? Math.round(score / total * 100) : 0;
-    const _lifeAcc = _p.totalAnswered > 0 ? Math.round(_p.totalCorrect / _p.totalAnswered * 100) : 0;
+    const _lifeAcc = p.totalAnswered > 0 ? Math.round(p.totalCorrect / p.totalAnswered * 100) : 0;
     gtag('event', 'quiz_answer', {
       answer_correct: ok,
       question_number: total,
@@ -2698,9 +2689,9 @@ function choose(selected) {
       play_count: playCount,
       session_accuracy: _sessAcc,
       max_level_reached: LEVELS[currentLevel],
-      lifetime_questions: _p.totalAnswered,
+      lifetime_questions: p.totalAnswered,
       lifetime_accuracy: _lifeAcc,
-      daily_streak: _p.dailyStreak,
+      daily_streak: p.dailyStreak,
       is_registered: isRegistered() ? 'true' : 'false'
     });
   } catch(e) { /* gtag未定義の場合は無視 */ }
@@ -2726,12 +2717,7 @@ function choose(selected) {
 
   const kpEl = document.getElementById('explKP');
   kpEl.innerHTML = '';
-  (current.kp || []).forEach(p => {
-    const s = document.createElement('span');
-    s.className = 'kp';
-    s.textContent = p;
-    kpEl.appendChild(s);
-  });
+  appendKpSpans(kpEl, current.kp);
 
   el.classList.add('show');
   showAxisFeedback(current.axis);
@@ -2842,7 +2828,7 @@ function showEmailGate() {
   setTimeout(() => document.getElementById('egInput').focus(), 100);
 
   // GA4: メールゲート表示イベント
-  gtag('event', 'email_gate_view', { questions_answered: total });
+  try { gtag('event', 'email_gate_view', { questions_answered: total }); } catch(e) {}
 }
 
 function closeEmailGate(continuePlay) {
@@ -2888,26 +2874,26 @@ const audioEl = document.getElementById('audioEl');
 
 const AUDIO_BASE = window.location.pathname.startsWith('/listening') ? '/listening/' : '';
 
+function stopPlayback() {
+  isPlaying = false;
+  setPlayBtn(false);
+  document.getElementById('waveform').classList.remove('playing');
+  document.getElementById('audioCard').classList.remove('is-playing');
+}
+
 function speak(audioPath) {
   audioEl.pause();
   audioEl.currentTime = 0;
   audioEl.src = AUDIO_BASE + audioPath;
 
-  const onPlay = () => {
+  audioEl.onplay  = () => {
     isPlaying = true;
     setPlayBtn(true);
     document.getElementById('waveform').classList.add('playing');
     document.getElementById('audioCard').classList.add('is-playing');
   };
-  const done = () => {
-    isPlaying = false;
-    setPlayBtn(false);
-    document.getElementById('waveform').classList.remove('playing');
-    document.getElementById('audioCard').classList.remove('is-playing');
-  };
-  audioEl.onplay   = onPlay;
-  audioEl.onended  = done;
-  audioEl.onerror  = done;
+  audioEl.onended = stopPlayback;
+  audioEl.onerror = stopPlayback;
   audioEl.play();
 }
 
@@ -2916,10 +2902,7 @@ function replay() {
   if (isPlaying) {
     audioEl.pause();
     audioEl.currentTime = 0;
-    isPlaying = false;
-    setPlayBtn(false);
-    document.getElementById('waveform').classList.remove('playing');
-    document.getElementById('audioCard').classList.remove('is-playing');
+    stopPlayback();
   } else {
     playCount++;
     speak(current.audio);
@@ -3077,6 +3060,15 @@ function closeMissionComplete() {
 // ─────────────────────────────────────────
 // HELPERS
 // ─────────────────────────────────────────
+function appendKpSpans(container, kpArray) {
+  (kpArray || []).forEach(kp => {
+    const s = document.createElement('span');
+    s.className = 'kp';
+    s.textContent = kp;
+    container.appendChild(s);
+  });
+}
+
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -3242,7 +3234,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('egOverlay').style.display = 'none';
     document.body.style.overflow = '';
     // GA4: メールゲートスキップイベント
-    gtag('event', 'email_gate_skip');
+    try { gtag('event', 'email_gate_skip'); } catch(e) {}
     // 案B: スキップ = 今日はここで終了（有料誘導を表示）
     showMissionComplete();
   });
