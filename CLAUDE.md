@@ -356,20 +356,19 @@ affiliate-forge の `content_gen.py`（Claude API）が生成するコンテン�
 - CTAボックス内に `<div class="note">本記事はアフィリエイト広告を含みます。</div>` を設置するだけでOK
 - 「著者が実際に受講したわけではありません」等の追加免責は不要
 
-### 記事作成・publish フロー（2026-02-27 確定版）
+### 記事作成・publish フロー（2026-02-28 更新版）
 
 ```
 [1] 生成（native-real に直接書き出し）
     cd ~/projects/claude/native-real
-    python3 generate_articles.py --count 5   # 5件生成
+    python3 generate_articles.py --count 5   # 5件生成（引用リンク付与も自動実行）
     python3 generate_articles.py --list      # 未生成トピック一覧確認
 
 [2] 統計チェック（必須・publishの前に必ず実行）
     python3 check_stats.py
-    → 要確認箇所をリストアップ
-    → WebSearch で疑わしいものを検証
+    → 要確認統計をリストアップ（WebSearch で疑わしいものを検証）
     → 確認できないものは定性表現に置換
-    → 再実行して残件が許容範囲か確認
+    → 引用リンクチェックも自動実行（✅ なら付与済み）
 
 [3] publish
     git add articles/ sitemap.xml && git commit -m "add: 記事X件追加" && git push
@@ -377,6 +376,35 @@ affiliate-forge の `content_gen.py`（Claude API）が生成するコンテン�
 [4] X投稿（任意）
     x-scheduler の reply_url に記事URL設定 → 「要約を生成」→ 翌朝自動投稿
 ```
+
+### 引用リンクシステム（2026-02-28 追加）
+
+記事内の統計・引用表現に公式URLへのリンクを自動付与する仕組みが導入済み。
+
+| ファイル | 役割 |
+|---|---|
+| `data/citation_db.json` | 検証済み引用URLのデータベース（9件登録済み） |
+| `add_citations.py` | HTMLに引用リンクを付与するスクリプト |
+| `check_stats.py` | 統計チェック＋引用リンク未付与の検出（セット） |
+
+**generate_articles.py との統合**: 記事生成直後に `_apply_citations()` が自動呼び出しされるため、新規記事は生成と同時にリンクが付与される。
+
+**citation_db.json に新しい引用元を追加するとき**:
+1. WebFetch でURLが正しく生きているか確認（PDF直リンクは登録しない）
+2. `data/citation_db.json` に以下の形式で追記:
+   ```json
+   "entry_id": {
+     "url": "https://example.com/stable-index-page",
+     "label": "組織名「調査名」",
+     "verified_at": "YYYY-MM-DD",
+     "keywords": ["記事内での呼称", "正規表現パターン.*も可"],
+     "notes": "数値・内容のメモ"
+   }
+   ```
+3. `python3 add_citations.py --verify` で全URL疎通確認
+4. `python3 add_citations.py` で既存記事に一括適用
+
+**URLポリシー**: インデックスページ・トップページのみ登録。年次更新で消えるPDF直リンクは禁止。
 
 ### 記事トピック管理
 
