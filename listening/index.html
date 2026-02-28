@@ -2475,6 +2475,45 @@ function initPools() {
 }
 
 // ─────────────────────────────────────────
+// PICK QUESTION (axis-weighted selection)
+// ─────────────────────────────────────────
+function pickQuestion() {
+  // プールが空なら再初期化
+  if (!pools[currentLevel] || !pools[currentLevel].length) {
+    pools[currentLevel] = shuffle(DATA.filter(q => q.diff === LEVELS[currentLevel]));
+  }
+  const pool = pools[currentLevel];
+
+  // ① 先頭4問以内のリトライ問題を優先（難易度適応のリカバリーフローを壊さない）
+  const retryIdx = pool.slice(0, 4).findIndex(q => q.isRetry);
+  if (retryIdx !== -1) return pool.splice(retryIdx, 1)[0];
+
+  // ② axis優先選択（累積20問以上でアクティベート、70%の確率で適用）
+  const p = loadProgress();
+  const axisStats = p.axisStats || {};
+  const totalAttempts = Object.values(axisStats).reduce((sum, s) => sum + (s.a || 0), 0);
+
+  if (totalAttempts >= 20 && Math.random() < 0.7) {
+    const AXES = ['speed', 'reduction', 'vocab', 'context', 'distractor'];
+    // 3回以上試みたaxisのみ対象（データ不足のaxisを除外）
+    const withData = AXES.filter(ax => (axisStats[ax]?.a || 0) >= 3);
+    if (withData.length >= 2) {
+      const sorted = [...withData].sort((a, b) => {
+        const rA = axisStats[a].c / axisStats[a].a;
+        const rB = axisStats[b].c / axisStats[b].a;
+        return rA - rB; // 正解率の低い順
+      });
+      const weakAxes = sorted.slice(0, 2); // 最も弱い2軸
+      const idx = pool.findIndex(q => weakAxes.includes(q.axis));
+      if (idx !== -1) return pool.splice(idx, 1)[0];
+    }
+  }
+
+  // ③ 通常選択（フォールバック）
+  return pool.shift();
+}
+
+// ─────────────────────────────────────────
 // LOAD QUESTION
 // ─────────────────────────────────────────
 function loadQ() {
@@ -2491,10 +2530,7 @@ function loadQ() {
   document.getElementById('nextBtn').classList.remove('show');
 
   setTimeout(() => {
-    if (!pools[currentLevel] || !pools[currentLevel].length) {
-      pools[currentLevel] = shuffle(DATA.filter(q => q.diff === LEVELS[currentLevel]));
-    }
-    current = pools[currentLevel].shift();
+    current = pickQuestion();
     playCount = 0;
     render();
     document.getElementById('loadingView').classList.remove('show');
@@ -2585,7 +2621,7 @@ function choose(selected) {
       const returnLevel = Math.max(0, currentLevel - 1);
       const recoveryLevel = Math.max(0, currentLevel - 2);
       // 不正解問題を returnLevel のプールに再挿入（ヒントレベルを上げる）
-      const requeuedQ = { ...current, hintLevel: (current.hintLevel || 0) + 1 };
+      const requeuedQ = { ...current, hintLevel: (current.hintLevel || 0) + 1, isRetry: true };
       if (!pools[returnLevel]) pools[returnLevel] = [];
       pools[returnLevel].splice(Math.min(3, pools[returnLevel].length), 0, requeuedQ);
       // リカバリーモードへ
@@ -2595,7 +2631,7 @@ function choose(selected) {
     } else {
       // リカバリー問題も不正解 → さらに1段階下がる
       const nextLevel = Math.max(0, currentLevel - 1);
-      const requeuedQ = { ...current, hintLevel: (current.hintLevel || 0) + 1 };
+      const requeuedQ = { ...current, hintLevel: (current.hintLevel || 0) + 1, isRetry: true };
       if (!pools[nextLevel]) pools[nextLevel] = [];
       pools[nextLevel].splice(Math.min(3, pools[nextLevel].length), 0, requeuedQ);
       postRecoveryLevel = Math.max(0, postRecoveryLevel - 1);
