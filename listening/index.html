@@ -2231,7 +2231,7 @@ if (auth.isSignInWithEmailLink(window.location.href)) {
   }
   if (_signinEmail) {
     auth.signInWithEmailLink(_signinEmail, window.location.href)
-      .then(function(result) {
+      .then(async function(result) {
         firebaseUid = result.user.uid;
         window.history.replaceState({}, document.title, '/listening/');
         localStorage.setItem(EG_REG_KEY, _signinEmail);
@@ -2242,6 +2242,9 @@ if (auth.isSignInWithEmailLink(window.location.href)) {
           localStorage.removeItem(EG_PENDING_PROFILE_KEY);
         }
         saveUserToFirestore(_signinEmail);
+        // onAuthStateChanged より先に beginQuiz() が呼ばれるため、
+        // _firestoreLoadPromise を明示的にセットしてから beginQuiz() を呼ぶ
+        _firestoreLoadPromise = loadFromFirestore();
         beginQuiz();
       })
       .catch(function(err) {
@@ -2488,7 +2491,7 @@ async function beginQuiz() {
   if (_firestoreLoadPromise) {
     await Promise.race([
       _firestoreLoadPromise,
-      new Promise(r => setTimeout(r, 2000))
+      new Promise(r => setTimeout(r, 3000))
     ]);
     _firestoreLoadPromise = null; // 2回目以降は即通過
   }
