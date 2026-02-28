@@ -2161,8 +2161,50 @@
 </div>
 
 <audio id="audioEl" preload="auto"></audio>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
 <script src="questions.js"></script>
 <script>
+// ─────────────────────────────────────────
+// FIREBASE（設定は firebase-config.js で定義）
+// ─────────────────────────────────────────
+firebase.initializeApp(firebaseConfig);
+const db   = firebase.firestore();
+const auth = firebase.auth();
+let firebaseUid = null;
+
+auth.signInAnonymously()
+  .then(result => { firebaseUid = result.user.uid; })
+  .catch(err => console.warn('[Firebase] auth error:', err));
+
+async function saveUserToFirestore(email) {
+  if (!firebaseUid) return;
+  const p = loadProgress();
+  const axisStats = p.axisStats || {};
+  // 弱点軸を事前計算（5問以上回答した軸のみ対象）
+  const ranked = Object.entries(axisStats)
+    .filter(([, s]) => s.a >= 5)
+    .sort((a, b) => (a[1].c / a[1].a) - (b[1].c / b[1].a));
+  const weakestAxis = ranked.length > 0 ? ranked[0][0] : null;
+  const data = {
+    uid:           firebaseUid,
+    lastSeenAt:    firebase.firestore.FieldValue.serverTimestamp(),
+    totalAnswered: p.totalAnswered || 0,
+    totalCorrect:  p.totalCorrect  || 0,
+    axisStats:     axisStats,
+    weakestAxis:   weakestAxis,
+  };
+  if (email) data.email = email;
+  try {
+    await db.collection('users').doc(firebaseUid).set(data, { merge: true });
+  } catch (err) {
+    console.warn('[Firebase] write error:', err);
+  }
+}
+
 const NUMS = ['①', '②', '③', '④', '⑤'];
 
 // 音声アクセント情報（問題番号 % 5 で対応）
@@ -2859,6 +2901,10 @@ function showMissionComplete() {
   }
 
   document.getElementById('missionOverlay').classList.add('show');
+
+  // Firestore へ学習データを保存（セッション終了時に1回）
+  const savedEmail = localStorage.getItem(EG_REG_KEY) || null;
+  saveUserToFirestore(savedEmail);
 }
 
 function closeMissionComplete() {
@@ -2968,6 +3014,8 @@ document.addEventListener('DOMContentLoaded', function() {
     } catch(_) {}
     // GA4: メールゲート登録完了イベント
     gtag('event', 'email_gate_register', { age_group: ageGroup, toeic_score: toeicScore });
+    // Firestore: 匿名UIDにメールを紐付け
+    saveUserToFirestore(email);
     btn.textContent = '✓ 登録完了！続きをどうぞ';
     setTimeout(() => closeEmailGate(true), 900);
   });
