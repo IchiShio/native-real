@@ -2468,6 +2468,7 @@ let streak    = 0;
 let answered           = false;
 let srsItems           = {}; // { "q042": { interval, reps, dueDate } }
 let reviewQueue        = []; // 本日 due の SRS 問題（セッション開始時に確定）
+let wrongOnce          = new Set(); // 1回だけ間違えた問題ID（SRS未登録・登録閾値管理）
 let _firestoreLoadPromise = null; // Firestore 非同期読み込みの Promise（beginQuiz で await）
 let isPlaying          = false;
 
@@ -2504,7 +2505,8 @@ async function beginQuiz() {
   score = 0; total = 0; streak = 0;
   currentLevel = 2; correctStreak = 0;
   recoveryMode = false; postRecoveryLevel = -1; playCount = 0;
-  srsItems = loadSrs(); // Firestore sync 済み or localStorage フォールバック
+  srsItems  = loadSrs();       // Firestore sync 済み or localStorage フォールバック
+  wrongOnce = loadWrongOnce(); // 登録閾値: 1回目間違い記録（localStorage のみ）
   initPools();
   document.getElementById('startScreen').classList.remove('active');
   document.getElementById('quizScreen').classList.add('active');
@@ -2759,13 +2761,31 @@ function choose(selected) {
   saveProgress(p);
 
   // SRS 更新（セッション内即再出題の isRetry は除外）
+  // 案B: 登録閾値 — 2回間違えた問題だけ SRS に登録する
   const srsId = getSrsId(current);
   if (srsId && !current.isRetry) {
-    const updated = updateSrsItem(srsItems[srsId], ok);
-    if (updated.reps >= 5) {
-      delete srsItems[srsId]; // 5回連続正解で卒業
-    } else if (!ok || srsItems[srsId]) {
-      srsItems[srsId] = updated; // 不正解 or 既存SRS問題は更新
+    if (!ok) {
+      if (srsItems[srsId]) {
+        // 既にSRS登録済み → 進捗をリセット（翌日 due）
+        srsItems[srsId] = updateSrsItem(srsItems[srsId], false);
+      } else if (wrongOnce.has(srsId)) {
+        // 2回目の間違い → SRS登録、wrongOnce から卒業
+        srsItems[srsId] = updateSrsItem(undefined, false);
+        wrongOnce.delete(srsId);
+        saveWrongOnce();
+      } else {
+        // 1回目の間違い → wrongOnce に記録（SRS未登録）
+        wrongOnce.add(srsId);
+        saveWrongOnce();
+      }
+    } else if (srsItems[srsId]) {
+      // 正解 & SRS登録済み → 進捗を進める
+      const updated = updateSrsItem(srsItems[srsId], true);
+      if (updated.reps >= 5) {
+        delete srsItems[srsId]; // 5回連続正解で卒業
+      } else {
+        srsItems[srsId] = updated;
+      }
     }
     saveSrs();
     scheduleSave();
@@ -3155,7 +3175,10 @@ function closeMissionComplete() {
 // ─────────────────────────────────────────
 // SRS (Spaced Repetition System)
 // ─────────────────────────────────────────
-const SRS_KEY = 'listenup_srs';
+const SRS_KEY        = 'listenup_srs';
+const WRONG_ONCE_KEY = 'listenup_wo';
+const SRS_TTL_DAYS   = 30;  // due から N日以上過去のアイテムを自動削除
+const SRS_MAX        = 200; // アクティブアイテムの上限（安全弁）
 
 function loadSrs() {
   try {
@@ -3163,7 +3186,35 @@ function loadSrs() {
   } catch { return {}; }
 }
 
+function loadWrongOnce() {
+  try {
+    return new Set(JSON.parse(localStorage.getItem(WRONG_ONCE_KEY) || '[]'));
+  } catch { return new Set(); }
+}
+
+function saveWrongOnce() {
+  try { localStorage.setItem(WRONG_ONCE_KEY, JSON.stringify([...wrongOnce])); } catch {}
+}
+
+// 案A: TTL — due が SRS_TTL_DAYS 日以上過去のアイテムを削除
+function pruneSrsItems() {
+  const cutoff = addDays(-SRS_TTL_DAYS);
+  for (const id of Object.keys(srsItems)) {
+    if (srsItems[id].dueDate < cutoff) delete srsItems[id];
+  }
+}
+
+// 案D: キャップ — SRS_MAX 件を超えたら due が遠い順に削除
+function capSrsItems() {
+  const entries = Object.entries(srsItems);
+  if (entries.length <= SRS_MAX) return;
+  entries.sort((a, b) => b[1].dueDate.localeCompare(a[1].dueDate));
+  for (const [id] of entries.slice(SRS_MAX)) delete srsItems[id];
+}
+
 function saveSrs() {
+  pruneSrsItems();
+  capSrsItems();
   try { localStorage.setItem(SRS_KEY, JSON.stringify(srsItems)); } catch {}
 }
 
