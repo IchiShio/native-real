@@ -18,6 +18,7 @@ CLUSTERS = {
     ],
     "英語学習法（総合）": [
         "english-study-methods-guide",
+        "english-vocabulary-guide",
         "eikaiwa-study-methods",
         "english-habit-morning-routine",
         "english-speaking-fear",
@@ -47,15 +48,22 @@ CLUSTERS = {
     ],
     "英検": [
         "eiken-2kyuu-interview",
+        "eiken-2kyuu-writing",
+        "eiken-2kyuu-vocabulary",
         "eiken-3kyuu-grammar",
         "eiken-4kyuu-guide",
+        "eiken-junni-interview",
+        "eiken-junni-writing",
     ],
     "TOEIC": [
         "toeic-600-study-plan",
+        "toeic-700-guide",
+        "toeic-800-guide",
         "toeic-900-study-plan",
         "toeic-eikaiwa-combination",
     ],
     "社会人・ビジネス・キャリア": [
+        "business-english-guide",
         "english-study-adult-worker",
         "eikaiwa-for-workers",
         "english-job-interview-prep",
@@ -78,6 +86,7 @@ CLUSTERS = {
         "eikaiwa-self-study",
         "eikaiwa-practice-methods",
         "english-phrases-collection",
+        "english-vocabulary-guide",
     ],
     "旅行英語": [
         "travel-english-phrases",
