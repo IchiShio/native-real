@@ -180,8 +180,8 @@ def _md_to_html(text: str) -> str:
             anchor = re.sub(r"[^a-z0-9]", "-", h2text.lower())[:30]
             out.append(f'<h2 id="{anchor}">{h2text}</h2>')
         elif line.startswith("# "):
+            # テンプレートにH1が既にあるためスキップ（重複防止）
             flush_list()
-            out.append(f"<h1>{inline(line[2:])}</h1>")
         elif line.startswith("- ") or line.startswith("* "):
             if not in_ul:
                 flush_list()
