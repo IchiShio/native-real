@@ -904,6 +904,28 @@
     .mission-article-link::before { content: "→"; color: var(--gold); font-weight: 700; flex-shrink: 0; }
     .mission-article-link:hover { background: var(--surface); color: var(--text-1); }
 
+    /* ── MISSION: SERVICE CTA ── */
+    .mission-service-cta {
+      border-top: 1px solid var(--border);
+      padding-top: 14px; margin: 4px 0 18px;
+    }
+    .mission-service-label {
+      font-size: 11px; font-weight: 700; color: var(--text-3);
+      letter-spacing: 0.6px; text-align: center; margin-bottom: 10px;
+    }
+    .mission-service-card {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 12px; border-radius: 10px; margin-bottom: 6px;
+      background: var(--surface); border: 1px solid var(--border);
+      text-decoration: none; transition: all var(--t);
+    }
+    .mission-service-card:hover { border-color: var(--gold); background: rgba(251,191,36,0.05); }
+    .mission-service-icon { font-size: 20px; flex-shrink: 0; }
+    .mission-service-info { flex: 1; text-align: left; }
+    .mission-service-name { display: block; font-size: 13px; font-weight: 700; color: var(--text-1); }
+    .mission-service-desc { display: block; font-size: 11px; color: var(--text-3); margin-top: 1px; }
+    .mission-service-arrow { font-size: 14px; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+
     /* ── LP: BOTTOM EMAIL CTA ── */
     .lp-bottom-cta {
       background: linear-gradient(160deg, #060d1a 0%, #0b1a30 55%, #081320 100%);
@@ -2193,6 +2215,25 @@
       <a class="mission-article-link" href="/articles/english-speaking-improvement/">スピーキングが伸びない3つの共通点と今日からできる改善法</a>
       <a class="mission-article-link" href="/articles/english-habit-guide/">社会人が英語を習慣化する方法【挫折しない7つのコツ】</a>
       <a class="mission-article-link" href="/articles/online-eikaiwa-frequency-guide/">英会話は週何回受けると効果が出る？科学的根拠から解説</a>
+    </div>
+    <div class="mission-service-cta">
+      <div class="mission-service-label">🎯 リスニング力を実践で活かす</div>
+      <a href="https://px.a8.net/svt/ejp?a8mat=4AXFOG+JNCII+1SVU+686ZM" class="mission-service-card" target="_blank" rel="nofollow noopener">
+        <span class="mission-service-icon">🇯🇵</span>
+        <span class="mission-service-info">
+          <span class="mission-service-name">レアジョブ英会話</span>
+          <span class="mission-service-desc">毎日25分・業界最安値クラス・無料体験あり</span>
+        </span>
+        <span class="mission-service-arrow">→</span>
+      </a>
+      <a href="https://px.a8.net/svt/ejp?a8mat=44WLF2+BW2OQA+35VG+6LWTE" class="mission-service-card" target="_blank" rel="nofollow noopener">
+        <span class="mission-service-icon">🌐</span>
+        <span class="mission-service-info">
+          <span class="mission-service-name">ネイティブキャンプ</span>
+          <span class="mission-service-desc">24時間・回数無制限・7日間無料</span>
+        </span>
+        <span class="mission-service-arrow">→</span>
+      </a>
     </div>
     <button class="mission-btn-back" onclick="closeMissionComplete()">← TOPに戻る</button>
   </div>
